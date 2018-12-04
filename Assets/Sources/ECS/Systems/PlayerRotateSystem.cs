@@ -16,7 +16,7 @@ namespace Game
         public void Initialize()
         {
             var _context = Contexts.Instance.game;
-            _group = _context.GetGroup(Matcher<GameEntity>.AllOf(GameMatcher.Rotate, GameMatcher.Player));
+            _group = _context.GetGroup(Matcher<GameEntity>.AllOf(GameMatcher.Rotate));
             Util.ListenCommand<RotateCommand>(HandleRotateCommand);
         }
 

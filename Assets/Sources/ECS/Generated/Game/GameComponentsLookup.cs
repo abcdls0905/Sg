@@ -10,39 +10,44 @@ using System.Collections.Generic;
 
 public static class GameComponentsLookup {
 
-    public const int Animation = 0;
-    public const int Audio = 1;
-    public const int BlastPoint = 2;
-    public const int Box = 3;
-    public const int Bullet = 4;
-    public const int Burn = 5;
-    public const int CheckPoint = 6;
-    public const int Command = 7;
-    public const int Coord = 8;
-    public const int Effect = 9;
-    public const int Frame = 10;
-    public const int GameMaster = 11;
-    public const int GameStart = 12;
-    public const int GroundItem = 13;
-    public const int Hp = 14;
-    public const int HUD = 15;
-    public const int ID = 16;
-    public const int LevelTerms = 17;
-    public const int Limit = 18;
-    public const int Map = 19;
-    public const int Model = 20;
-    public const int Move = 21;
-    public const int Player = 22;
-    public const int Rotate = 23;
-    public const int Score = 24;
-    public const int State = 25;
-    public const int Timer = 26;
-    public const int Transform = 27;
-    public const int View = 28;
+    public const int AI = 0;
+    public const int Animation = 1;
+    public const int Audio = 2;
+    public const int BlastPoint = 3;
+    public const int Box = 4;
+    public const int Bullet = 5;
+    public const int Burn = 6;
+    public const int CheckPoint = 7;
+    public const int Combo = 8;
+    public const int Command = 9;
+    public const int Coord = 10;
+    public const int Effect = 11;
+    public const int Frame = 12;
+    public const int GameMaster = 13;
+    public const int GameStart = 14;
+    public const int GroundItem = 15;
+    public const int Hp = 16;
+    public const int HUD = 17;
+    public const int ID = 18;
+    public const int Item = 19;
+    public const int Level = 20;
+    public const int LevelTerms = 21;
+    public const int Limit = 22;
+    public const int Map = 23;
+    public const int Model = 24;
+    public const int Move = 25;
+    public const int Player = 26;
+    public const int Rotate = 27;
+    public const int Score = 28;
+    public const int State = 29;
+    public const int Timer = 30;
+    public const int Transform = 31;
+    public const int View = 32;
 
-    public const int TotalComponents = 29;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
+        "AI",
         "Animation",
         "Audio",
         "BlastPoint",
@@ -50,6 +55,7 @@ public static class GameComponentsLookup {
         "Bullet",
         "Burn",
         "CheckPoint",
+        "Combo",
         "Command",
         "Coord",
         "Effect",
@@ -60,6 +66,8 @@ public static class GameComponentsLookup {
         "Hp",
         "HUD",
         "ID",
+        "Item",
+        "Level",
         "LevelTerms",
         "Limit",
         "Map",
@@ -75,6 +83,7 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(Game.AIComponent),
         typeof(Game.AnimationComponent),
         typeof(Game.AudioComponent),
         typeof(Game.BlastPointComponent),
@@ -82,6 +91,7 @@ public static class GameComponentsLookup {
         typeof(Game.BulletComponent),
         typeof(Game.BurnComponent),
         typeof(Game.CheckPointComponent),
+        typeof(Game.ComboComponent),
         typeof(Game.CommandComponent),
         typeof(Game.CoordComponent),
         typeof(Game.EffectComponent),
@@ -92,6 +102,8 @@ public static class GameComponentsLookup {
         typeof(Game.HpComponent),
         typeof(Game.HUDComponent),
         typeof(Game.IDComponent),
+        typeof(Game.ItemComponent),
+        typeof(Game.LevelComponent),
         typeof(Game.LevelTermsComponent),
         typeof(Game.LimitComponent),
         typeof(Game.MapComponent),
@@ -108,34 +120,38 @@ public static class GameComponentsLookup {
 
     public static readonly Dictionary<System.Type, int> componentTypesDic = new Dictionary<System.Type, int>()
     {
-        { typeof(Game.AnimationComponent), 0},
-        { typeof(Game.AudioComponent), 1},
-        { typeof(Game.BlastPointComponent), 2},
-        { typeof(Game.BoxComponent), 3},
-        { typeof(Game.BulletComponent), 4},
-        { typeof(Game.BurnComponent), 5},
-        { typeof(Game.CheckPointComponent), 6},
-        { typeof(Game.CommandComponent), 7},
-        { typeof(Game.CoordComponent), 8},
-        { typeof(Game.EffectComponent), 9},
-        { typeof(Game.FrameComponent), 10},
-        { typeof(Game.GameMasterComponent), 11},
-        { typeof(Game.GameStartComponent), 12},
-        { typeof(Game.GroundItemComponent), 13},
-        { typeof(Game.HpComponent), 14},
-        { typeof(Game.HUDComponent), 15},
-        { typeof(Game.IDComponent), 16},
-        { typeof(Game.LevelTermsComponent), 17},
-        { typeof(Game.LimitComponent), 18},
-        { typeof(Game.MapComponent), 19},
-        { typeof(Game.ModelComponent), 20},
-        { typeof(Game.MoveComponent), 21},
-        { typeof(Game.PlayerComponent), 22},
-        { typeof(Game.RotateComponent), 23},
-        { typeof(Game.ScoreComponent), 24},
-        { typeof(Game.StateComponent), 25},
-        { typeof(Game.TimerComponent), 26},
-        { typeof(Game.TransformComponent), 27},
-        { typeof(Game.ViewComponent), 28}
+        { typeof(Game.AIComponent), 0},
+        { typeof(Game.AnimationComponent), 1},
+        { typeof(Game.AudioComponent), 2},
+        { typeof(Game.BlastPointComponent), 3},
+        { typeof(Game.BoxComponent), 4},
+        { typeof(Game.BulletComponent), 5},
+        { typeof(Game.BurnComponent), 6},
+        { typeof(Game.CheckPointComponent), 7},
+        { typeof(Game.ComboComponent), 8},
+        { typeof(Game.CommandComponent), 9},
+        { typeof(Game.CoordComponent), 10},
+        { typeof(Game.EffectComponent), 11},
+        { typeof(Game.FrameComponent), 12},
+        { typeof(Game.GameMasterComponent), 13},
+        { typeof(Game.GameStartComponent), 14},
+        { typeof(Game.GroundItemComponent), 15},
+        { typeof(Game.HpComponent), 16},
+        { typeof(Game.HUDComponent), 17},
+        { typeof(Game.IDComponent), 18},
+        { typeof(Game.ItemComponent), 19},
+        { typeof(Game.LevelComponent), 20},
+        { typeof(Game.LevelTermsComponent), 21},
+        { typeof(Game.LimitComponent), 22},
+        { typeof(Game.MapComponent), 23},
+        { typeof(Game.ModelComponent), 24},
+        { typeof(Game.MoveComponent), 25},
+        { typeof(Game.PlayerComponent), 26},
+        { typeof(Game.RotateComponent), 27},
+        { typeof(Game.ScoreComponent), 28},
+        { typeof(Game.StateComponent), 29},
+        { typeof(Game.TimerComponent), 30},
+        { typeof(Game.TransformComponent), 31},
+        { typeof(Game.ViewComponent), 32}
     };
 }

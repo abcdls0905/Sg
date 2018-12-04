@@ -7,10 +7,11 @@ namespace Game
 {
     public static partial class Util
     {
-        public static void PushCommand<T>(ref T command) where T : ICommand
+        public static void PushCommand<T>(ref T command, ulong id = 0) where T : ICommand
         {
             GameContext game = Contexts.Instance.game;
-            GameEntity master = Contexts.Instance.game.gameMaster.entity;
+            if (id == 0)
+                id = Contexts.Instance.game.gameMaster.entity.iD.value;
             bool single = BattleManager.Instance.isSingle;
             if (single)
             {
@@ -20,7 +21,7 @@ namespace Game
                 if (handler == null || !(handler is CommandHandler<T>))
                     return;
                 FramePackage framePkg = new FramePackage();
-                FrameCommand<T> frameCommand = new FrameCommand<T>(handler as CommandHandler<T>, command, master.iD.value);
+                FrameCommand<T> frameCommand = new FrameCommand<T>(handler as CommandHandler<T>, command, id);
                 framePkg.commands.Add(frameCommand);
                 game.frame.AddLocalCommand(framePkg);
             }

@@ -12,6 +12,7 @@ namespace Game
         public AkBoxColor eLeftColor;
         public AkBoxColor eRightColor;
         public AkBoxColor eDownColor;
+        public AkBoxColor eSrcColor;
         public GameEntity followEntity;
         public Vector3 rotPoint;
         public Vector3 axis;
@@ -26,6 +27,7 @@ namespace Game
             eLeftColor = AkBoxColor.Ak_Max;
             eRightColor = AkBoxColor.Ak_Max;
             eDownColor = AkBoxColor.Ak_Max;
+            eSrcColor = AkBoxColor.Ak_Max;
             followEntity = null;
             eBoxDir = AkTurnDir.Ak_Max;
             rotPoint = new Vector3(0, 0, 0);

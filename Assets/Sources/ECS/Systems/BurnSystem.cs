@@ -57,21 +57,22 @@ namespace Game
 
         public void FixedExecute()
         {
+            LevelComponent levelComp = Contexts.Instance.game.level;
             MapComponent mapComp = Contexts.Instance.game.map;
             BoxConfig burnConfig = DataManager.Instance.boxConfig.Data;
             float frameTime = Contexts.Instance.game.frame.frameTime;
-            float totleTime = burnConfig.dangerTime + burnConfig.stableTime;
+            float totleTime = levelComp.dangerTime + levelComp.stableTime;
             boombList.Clear();
             int count = mapComp.burnEntities.Count;
             for (int i = count - 1; i >= 0; i--)
             {
                 GameEntity burnEntity = mapComp.burnEntities[i];
-                if (burnEntity.burn.burnTime <= burnConfig.stableTime / 1000)
+                if (burnEntity.burn.burnTime <= levelComp.stableTime / 1000)
                 {
                     if (!burnEntity.burn.burnStateMachine.IsState("BurnStableState"))
                         burnEntity.burn.burnStateMachine.ChangeState("BurnStableState");
                 }
-                if (burnEntity.burn.burnTime > burnConfig.stableTime / 1000)
+                if (burnEntity.burn.burnTime > levelComp.stableTime / 1000)
                 {
                     if (!burnEntity.burn.burnStateMachine.IsState("BurnDangerState"))
                         burnEntity.burn.burnStateMachine.ChangeState("BurnDangerState");
@@ -87,9 +88,11 @@ namespace Game
             }
             if (boombList.Count > 0)
             {
-                Contexts.Instance.game.score.score += boombList.Count * 100;
+                ComboComponent combo = Contexts.Instance.game.combo;
                 ScoreParam param = new ScoreParam();
-                param.score = boombList.Count * 100;
+                float score = boombList.Count * (100 + 20 * (boombList.Count - 3) * (1 + 0.1f * combo.value));
+                param.score = (int)score;
+                Contexts.Instance.game.score.value += param.score;
                 EventManager.Instance.PushEvent(GEventType.EVENT_SCORECHANGE, ref param);
                 EffectComponent effectComp = Contexts.Instance.game.effect;
                 for (int i = boombList.Count - 1; i >= 0; i--)
@@ -103,6 +106,9 @@ namespace Game
                     effectComp.effects.Add(effectData);
                     DealBombArround(burnEntity);
                 }
+                DesGroupParam desGroupParam = new DesGroupParam();
+                desGroupParam.boxes = boombList;
+                EventManager.Instance.PushEvent(GEventType.EVENT_BOXDESTORYGROUP, ref desGroupParam);
                 for (int i = boombList.Count - 1; i >= 0; i--)
                 {
                     GameEntity burnEntity = boombList[i];
@@ -110,16 +116,13 @@ namespace Game
                     desParam.entity = burnEntity;
                     EventManager.Instance.PushEvent(GEventType.EVENT_BOXDESTORY, ref desParam);
                     ForceRefreshFollowBox(burnEntity);
-                    Contexts.Instance.game.levelTerms.Add(burnEntity.box.eColor);
+                    //Contexts.Instance.game.levelTerms.Add(burnEntity.box.eColor);
                     CheckPlayerOn(burnEntity);
                     mapComp.mapData[burnEntity.coord.y, burnEntity.coord.x] = null;
                     effectComp.RemoveFollow(burnEntity.iD.value);
                     Util.DestroyEntity(burnEntity);
                     boombList.RemoveAt(i);
                 }
-                DesGroupParam desGroupParam = new DesGroupParam();
-                desGroupParam.count = boombList.Count;
-                EventManager.Instance.PushEvent(GEventType.EVENT_BOXDESTORYGROUP, ref desGroupParam);
                 GameEntity master = Contexts.Instance.game.gameMaster.entity;
                 AudioManager.Instance.PlayAudio("Audio/boom", master.view.gameObject);
             }
@@ -150,7 +153,10 @@ namespace Game
             if (nextEntity != null)
             {
                 if (nextEntity.box.eColor == entity.box.eColor && nextEntity.burn.eBurnState == AkBurnState.Ak_None)
+                {
+                    nextEntity.box.isPositive = false;
                     mapComp.AddBurnEntity(nextEntity);
+                }
             }
             else
             {

@@ -110,7 +110,6 @@ namespace Game
                     bornList.RemoveAt(i);
                     Util.DestroyEntity(born);
                 }
-            
             }
             //同帧生成的方块
             GameEntity targetEntity = mapComp.mapData[coord.y, coord.x];
@@ -167,6 +166,7 @@ namespace Game
                             }
                             boxEntity.animation.animator.SetTrigger("connect");
                         }
+                        boxEntity.box.isPositive = true;
                     }
                     DealPlayerUpdateY(entity.box.followEntity);
                     GameEntity master = Contexts.Instance.game.gameMaster.entity;
@@ -177,6 +177,7 @@ namespace Game
                     for (int i = 0; i < list.Count; i++)
                     {
                         GameEntity boxEntity = list[i];
+                        boxEntity.box.isPositive = true;
                         mapComp.AddBurnEntity(boxEntity);
                     }
                     DealPlayerUpdateY(entity.box.followEntity);

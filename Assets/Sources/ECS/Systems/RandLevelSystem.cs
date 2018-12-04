@@ -17,7 +17,7 @@ namespace Game
             Util.ListenCommand<RestartCommand>(HandleRestartCommand);
             var gameMaster = Contexts.Instance.game.gameMaster.entity;
             AudioManager.Instance.PlayAudio("Audio/bgm", gameMaster.view.gameObject, true);
-            EventManager.Instance.AddEvent<DesGroupParam>(GEventType.EVENT_BOXDESTORYGROUP, DestroyGroup);
+            EventManager.Instance.AddEvent<LevelParam>(GEventType.EVENT_LEVELCHG, OnLevelChg);
         }
 
         void HandleRestartCommand(ref RestartCommand command, ulong entityId)
@@ -47,10 +47,12 @@ namespace Game
                 GameEntity entity = mapComp.bulletList[i];
                 Util.DestroyEntity(entity);
             }
+            Util.DestroyAllMonster();
             mapComp.bornList.Clear();
             mapComp.burnEntities.Clear();
             mapComp.followBoxs.Clear();
             mapComp.bulletList.Clear();
+            mapComp.monsters.Clear();
             Contexts.Instance.game.effect.Reset();
             InitializeMap();
             ECSManager.Instance.Resume();
@@ -123,14 +125,45 @@ namespace Game
             gameMaster.coord.y = iy;
             AudioManager.Instance.PlayAudio("Audio/playstart", gameMaster.view.gameObject);
 
-            //出生动画
+            RandMonster();
 
+            //出生动画
             EffectData effectData = new EffectData();
             effectData.name = "Prefabs/Effect/character_spawn";
             effectData.position = gameMaster.transform.position;
             effectData.lifeTime = 2.0f;
             EffectComponent effectComp = Contexts.Instance.game.effect;
             effectComp.effects.Add(effectData);
+        }
+
+        public List<MapCoord> randList = new List<MapCoord>(100);
+
+        void RandMonster()
+        {
+            randList.Clear();
+            GameEntity master = Contexts.Instance.game.gameMaster.entity;
+            var mapComp = Contexts.Instance.game.map;
+            for (int i = 0; i < mapComp.mapWidth; i++)
+            {
+                for (int j = 0; j < mapComp.mapHeight; j++)
+                {
+                    GameEntity entity = mapComp.mapData[j, i];
+                    if (entity != null && !Util.IsSameCoord(master.coord, entity.coord))
+                        randList.Add(new MapCoord(i, j));
+                }
+            }
+            GameJson.PlayerConfig plyCfg = DataManager.Instance.playerConfig.Data;
+            int index = Random.Range(0, randList.Count);
+
+            MapCoord coord = randList[index];
+            int x = coord.iX;
+            int y = coord.iY;
+
+            GameEntity monster = Util.CreateMonster(Util.GetEntityId());
+            monster.coord.x = x;
+            monster.coord.y = y;
+            monster.transform.position = new Vector3(x, plyCfg.defaultHeight, y);
+            mapComp.monsters.Add(monster);
         }
 
         bool ContainMapCoord(List<MapCoord> list, int x, int y)
@@ -175,10 +208,11 @@ namespace Game
         void UpdateRandBorn()
         {
             MapComponent mapComp = Contexts.Instance.game.map;
+            LevelComponent levelComp = Contexts.Instance.game.level;
             List<GameEntity> bornList = mapComp.bornList;
             GameJson.LevelConfig levelConfig = DataManager.Instance.levelConfig.Data;
             lastTime += Contexts.Instance.game.frame.frameTime;
-            float randTime = levelConfig.randTime;
+            float randTime = levelComp.randTime;
             if (lastTime >= randTime / 1000)
             {
                 lastTime = 0;
@@ -239,32 +273,30 @@ namespace Game
             }
         }
 
-        public void DestroyGroup(ref DesGroupParam param)
+        public void OnLevelChg(ref LevelParam param)
         {
             var levelCfg = DataManager.Instance.levelConfig.Data;
             var burnConfig = DataManager.Instance.boxConfig.Data;
-            LevelComponent levelComp = new LevelComponent();
-            levelComp.destroyCount += param.count;
-            int difLevel = levelComp.destroyCount / levelCfg.difficultyBox + 1;
-            if (difLevel != levelComp.level)
+            LevelComponent levelComp = Contexts.Instance.game.level;
+            LevelTermsComponent terms = Contexts.Instance.game.levelTerms;
+            levelComp.destroyCount = 0;
+            int level = param.level;
+            levelComp.level = level;
+            if (levelComp.level < levelCfg.levelOne)
             {
-                levelComp.level = difLevel;
-                if (difLevel < levelCfg.levelOne)
-                {
-                    levelComp.randTime = levelCfg.randTime - 500 * (difLevel - 1);
-                }
-                else if (difLevel >= levelCfg.levelOne && difLevel < levelCfg.levelTwo)
-                {
-                    levelComp.randTime = 1000;
-                    levelComp.stableTime = burnConfig.stableTime - 500 * (difLevel - 9);
-                }
-                else
-                {
-                    levelComp.randTime = 1000;
-                    levelComp.stableTime = 2000;
-                }
-                levelComp.levelBox = 30 + 10 * (difLevel - 1);
+                levelComp.randTime = levelCfg.randTime - 500 * (level - 1);
             }
+            else if (level >= levelCfg.levelOne && level < levelCfg.levelTwo)
+            {
+                levelComp.randTime = 1000;
+                levelComp.stableTime = burnConfig.stableTime - 500 * (levelComp.level - 9);
+            }
+            else
+            {
+                levelComp.randTime = 1000;
+                levelComp.stableTime = 2000;
+            }
+            RandMonster();
         }
 
         public void FixedExecute()

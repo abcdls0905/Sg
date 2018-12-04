@@ -33,12 +33,6 @@ namespace Game
                 Util.PushCommand<RestartCommand>(ref command);
                 UIManager.Instance.ClosePage<GamePausePage>();
             });
-            GButton btnReStart = contentPane.GetChild("BtnReStart").asButton;
-            btnReStart.onClick.Add(() =>
-            {
-                Util.PlayUIAudio();
-                UIManager.Instance.ClosePage<GamePausePage>();
-            });
         }
     }
 }

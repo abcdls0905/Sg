@@ -26,6 +26,25 @@ namespace Game
     }
     public struct DesGroupParam : IEventParam
     {
-        public int count;
+        public List<GameEntity> boxes;
+    }
+
+    public struct LevelParam : IEventParam
+    {
+        public int level;
+    }
+
+    public struct ComboParam : IEventParam
+    {
+        public int combo;
+    }
+
+    public struct TermsChangeParam : IEventParam
+    {
+
+    }
+    public struct UseItemParam : IEventParam
+    {
+        public AkItemType type;
     }
 }

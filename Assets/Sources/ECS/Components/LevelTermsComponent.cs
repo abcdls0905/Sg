@@ -26,10 +26,44 @@ namespace Game
         public void Add(AkBoxColor eBoxColor, int value = 1)
         {
             int count = 0;
-            if (achieveDic.TryGetValue(eBoxColor, out count))
-                achieveDic[eBoxColor] = achieveDic[eBoxColor] + value;
+            if (termsDic.TryGetValue(eBoxColor, out count))
+                termsDic[eBoxColor] = termsDic[eBoxColor] + value;
             else
-                achieveDic.Add(eBoxColor, value);
+                termsDic.Add(eBoxColor, value);
+        }
+
+        public void ClearTerms()
+        {
+            termsDic.Clear();
+        }
+
+        public void DelTerms(AkBoxColor eColor, int count)
+        {
+            int value = 0;
+            if (termsDic.TryGetValue(eColor, out value))
+            {
+                int temp = value - count;
+                temp = temp > 0 ? temp : 0;
+                termsDic[eColor] = temp;
+            }
+        }
+
+        public int Get(AkBoxColor eColor)
+        {
+            int value = 0;
+            termsDic.TryGetValue(eColor, out value);
+            return value;
+        }
+
+        public bool Empty()
+        {
+            var iter = termsDic.GetEnumerator();
+            while (iter.MoveNext())
+            {
+                if (iter.Current.Value > 0)
+                    return false;
+            }
+            return true;
         }
     }
 }

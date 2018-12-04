@@ -199,6 +199,8 @@ namespace Game
             game.AddEffect();
             game.AddTimer();
             game.AddLevelTerms();
+            game.AddCombo();
+            game.AddLevel();
         }
 
         Systems CreateSystems()
@@ -224,6 +226,10 @@ namespace Game
                 .Add(new ChangeModelSystem())
                 .Add(new CameraSystem())
                 .Add(new TimerSystem())
+                .Add(new ComboSystem())
+                .Add(new TermsSystem())
+                .Add(new ItemSkillSystem())
+                .Add(new AISystem())
                 ;
         }
 

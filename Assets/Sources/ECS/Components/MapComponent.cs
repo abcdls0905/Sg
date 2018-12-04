@@ -23,6 +23,7 @@ namespace Game
         public List<GameEntity> burnEntities = new List<GameEntity>();
         public List<GameEntity> bornList = new List<GameEntity>(8);
         public List<GameEntity> bulletList = new List<GameEntity>(16);
+        public List<GameEntity> monsters = new List<GameEntity>(8);
         public void Reset()
         {
             mapWidth = 10;
@@ -31,6 +32,7 @@ namespace Game
             burnEntities.Clear();
             bornList.Clear();
             bulletList.Clear();
+            monsters.Clear();
         }
 
         public void AddBurnEntity(GameEntity entity)
@@ -39,6 +41,7 @@ namespace Game
                 UnityEngine.Debug.Log(Util.GetStackStrace());
             entity.burn.eBurnState = AkBurnState.Ak_Stable;
             entity.burn.burnTime = 0;
+            entity.box.eSrcColor = entity.box.eColor;
             burnEntities.Add(entity);
         }
     }

@@ -441,5 +441,147 @@ namespace Game
             }
             return null;
         }
+
+        public static AkTurnDir GetDirByCoord(int x, int y, int x1, int y1)
+        {
+            if (x1 == x)
+            {
+                if (y1 < y)
+                    return AkTurnDir.Ak_Back;
+                else
+                    return AkTurnDir.AK_Front;
+            }
+            if (y1 == y)
+            {
+                if (x1 < x)
+                    return AkTurnDir.Ak_Left;
+                else
+                    return AkTurnDir.Ak_Right;
+            }
+            return AkTurnDir.Ak_Max;
+        }
+
+        public static bool IsAbsCrossGrid(GameEntity entity, AkTurnDir eMoveDir)
+        {
+            int width = BattleManager.Instance.mapSize;
+            int height = BattleManager.Instance.mapSize;
+            Vector3 position = entity.transform.position;
+            float gridRadius = Util.GridRadius;
+            if (eMoveDir == AkTurnDir.AK_Front)
+            {
+                float z = position.z;
+                float coordZ = entity.coord.y + gridRadius;
+                if (z > coordZ && z < height)
+                    return true;
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Back)
+            {
+                float z = position.z;
+                float coordZ = entity.coord.y - gridRadius;
+                if (z < coordZ && z < height)
+                    return true;
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Left)
+            {
+                float x = position.x;
+                float coordX = entity.coord.x - gridRadius;
+                if (x < coordX && x >= 0)
+                    return true;
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Right)
+            {
+                float x = position.x;
+                float coordX = entity.coord.x + gridRadius;
+                if (x > coordX && x >= 0)
+                    return true;
+            }
+            return false;
+        }
+
+        public static void DestroyAllMonster()
+        {
+            var mapComp = Contexts.Instance.game.map;
+            for (int i = mapComp.monsters.Count - 1; i >= 0; i--)
+            {
+                GameEntity monster = mapComp.monsters[i];
+                Util.DestroyEntity(monster);
+            }
+        }
+
+        public static AkTurnDir GetOppositeDir(AkTurnDir eDir)
+        {
+            if (eDir == AkTurnDir.AK_Front)
+                return AkTurnDir.Ak_Back;
+            else if (eDir == AkTurnDir.Ak_Back)
+                return AkTurnDir.AK_Front;
+            else if (eDir == AkTurnDir.Ak_Left)
+                return AkTurnDir.Ak_Right;
+            else if (eDir == AkTurnDir.Ak_Right)
+                return AkTurnDir.Ak_Left;
+            return AkTurnDir.Ak_Max;
+        }
+
+        public static void SetEntityCoord(GameEntity entity, int coordX, int coordZ)
+        {
+            entity.coord.x = coordX;
+            entity.coord.y = coordZ;
+        }
+
+        public static bool CheckCrossCoord(GameEntity entity, AkTurnDir eMoveDir)
+        {
+            int width = BattleManager.Instance.mapSize;
+            int height = BattleManager.Instance.mapSize;
+            Vector3 position = entity.transform.position;
+            float gridRadius = Util.GridRadius;
+            if (eMoveDir == AkTurnDir.AK_Front)
+            {
+                float z = position.z;
+                float coordZ = entity.coord.y + gridRadius;
+                if (z > coordZ && z < height)
+                {
+                    SetEntityCoord(entity, entity.coord.x, entity.coord.y + 1);
+                    return true;
+                }
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Back)
+            {
+                float z = position.z;
+                float coordZ = entity.coord.y - gridRadius;
+                if (z < coordZ && z < height)
+                {
+                    SetEntityCoord(entity, entity.coord.x, entity.coord.y - 1);
+                    return true;
+                }
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Left)
+            {
+                float x = position.x;
+                float coordX = entity.coord.x - gridRadius;
+                if (x < coordX && x >= 0)
+                {
+                    SetEntityCoord(entity, entity.coord.x - 1, entity.coord.y);
+                    return true;
+                }
+            }
+            else if (eMoveDir == AkTurnDir.Ak_Right)
+            {
+                float x = position.x;
+                float coordX = entity.coord.x + gridRadius;
+                if (x > coordX && x >= 0)
+                {
+                    SetEntityCoord(entity, entity.coord.x + 1, entity.coord.y);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void GetCoordByPosition(GameEntity entity, ref int x, ref int y)
+        {
+            Vector3 position = entity.transform.position;
+            float gridRadius = Util.GridRadius;
+            x = (int)Mathf.Ceil(position.x - gridRadius);
+            y = (int)Mathf.Ceil(position.y - gridRadius);
+        }
     }
 }

@@ -50,7 +50,10 @@ namespace Game
                 if (boxEntity != null)
                 {
                     if (boxEntity.box.eColor == entity.bullet.eBoxColor && boxEntity.burn.eBurnState == AkBurnState.Ak_None)
+                    {
+                        boxEntity.box.isPositive = false;
                         mapComp.AddBurnEntity(boxEntity);
+                    }
                     return true;
                 }
             }

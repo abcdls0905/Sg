@@ -25,6 +25,7 @@ namespace Game
             entity.AddLimit();
             entity.AddAudio();
             entity.AddRotate();
+            entity.AddItem();
             return entity;
         }
 
@@ -39,6 +40,7 @@ namespace Game
             entity.RemoveLimit();
             entity.RemoveAudio();
             entity.RemoveRotate();
+            entity.RemoveItem();
         }
 
         public static GameEntity CreateBox(ulong uuid)
@@ -91,6 +93,33 @@ namespace Game
             entity.RemoveTransform();
             entity.RemoveView();
             entity.RemoveBullet();
+        }
+
+        public static GameEntity CreateMonster(ulong uuid)
+        {
+            var game = Contexts.Instance.game;
+            GameEntity entity = game.CreateEntity();
+            entity.AddID(uuid);
+            entity.AddTransform();
+            entity.AddView("Prefabs/Monster");
+            entity.AddMove();
+            entity.AddCoord();
+            entity.AddAnimation();
+            entity.AddAI();
+            entity.AddRotate();
+            return entity;
+        }
+
+        public static void RemoveMonster(GameEntity entity)
+        {
+            entity.RemoveID();
+            entity.RemoveTransform();
+            entity.RemoveView();
+            entity.RemoveMove();
+            entity.RemoveCoord();
+            entity.RemoveAnimation();
+            entity.RemoveAI();
+            entity.RemoveRotate();
         }
 
         public static void CreateMaster(ulong uuid)

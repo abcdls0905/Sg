@@ -10,10 +10,10 @@ namespace Game
     [Unique]
     public class ScoreComponent : IComponent
     {
-        public int score;
+        public int value;
         public void Reset()
         {
-            score = 0;
+            value = 0;
         }
     }
 }

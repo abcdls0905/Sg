@@ -210,6 +210,8 @@ namespace Game
 
         public override void OnFixedExecute()
         {
+            if (entity.move.isAI)
+                return;
             Vector3 moveOffset = Util.GetStartMovementByDir(entity, entity.move.moveCommand.eTurnDir, Vector3.forward);
             if (entity.limit.HasLimit(AkLimitType.Ak_LimitCross))
             {
@@ -241,6 +243,7 @@ namespace Game
         public MoveCommand moveCommand;
         public MoveStateMachine moveStateMachine = new MoveStateMachine();
         public bool isUpdateY;
+        public bool isAI;
 
         public void Reset()
         {
@@ -259,6 +262,7 @@ namespace Game
             eAutoDir1 = AkTurnDir.Ak_Max;
             moveStateMachine = new MoveStateMachine();
             isUpdateY = false;
+            isAI = false;
         }
 
         public void ClearAutoMove()

@@ -104,6 +104,7 @@ namespace Game
         // 画质调节
         public static void ApplyRenderQuality()
         {
+            return;
             Shader.globalMaximumLOD = 200;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
             DeviceLevel = SGameRenderQuality.High;
