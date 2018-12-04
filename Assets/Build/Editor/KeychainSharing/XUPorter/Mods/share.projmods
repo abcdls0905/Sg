@@ -1,0 +1,18 @@
+{
+    "group": "",
+    "libs": [],
+    "frameworks":
+	[
+		"CoreTelephony.framework"
+    ],
+    "headerpaths": [],
+    "files":
+	[
+        "Entitlements.plist",
+		"exportOptionsPlist.plist",
+		"config.ini"
+    ],
+    "folders": [],    
+    "excludes": ["^.*.meta$", "^.*.mdown$", "^.*.pdf$"],
+    "linker_flags": []
+}

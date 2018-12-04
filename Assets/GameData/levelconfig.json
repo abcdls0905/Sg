@@ -1,0 +1,13 @@
+{
+    "sevenX":4,
+    "sevenY":4,
+    "tenX":5,
+    "tenY":5,
+    "sevenCount":23,
+    "tenCount":50,
+    "randTime":5000,
+    "difficultyBox":30,
+    "levelOne":10,
+    "levelTwo":18,
+
+}

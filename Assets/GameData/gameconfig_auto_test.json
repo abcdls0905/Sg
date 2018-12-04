@@ -1,0 +1,15 @@
+{
+    "lobbyserver" : "http://192.168.112.72:16500/lobbyreq?proj=m2jh",
+    "DesKey":"abcd1234",
+    "DesIV":"dcba4321",
+    "ip" : "192.168.112.72",
+    "port" : 16000,
+    "gsid" : 504057211,
+    "focuschangetime" : 300,
+    "reconntrycount" : 10,
+    "reconntrytime" : 5,
+    "serverreconntime" : 30,
+    "opengm" : true,
+    "enableupdater" : false,
+    "jumpdevicelogin": false
+}

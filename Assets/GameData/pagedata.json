@@ -1,0 +1,8 @@
+{
+  "GameLeftJoystick":
+  {
+    "radius":65,
+    "deadRadius":10,
+    "limitRadius":130
+  }
+}

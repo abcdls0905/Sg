@@ -1,0 +1,14 @@
+{
+    "lobbyserver" : "",
+    "DesKey":"abcd1234",
+    "DesIV":"dcba4321",
+    "ip" : "61.142.132.40",
+    "port" : 3234,
+    "gsid" : 504000111,
+    "focuschangetime" : 300,
+    "reconntrycount" : 10,
+    "reconntrytime" : 5,
+    "serverreconntime" : 30,
+    "opengm" : true,
+    "enableupdater" : false
+}

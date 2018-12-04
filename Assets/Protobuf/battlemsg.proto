@@ -1,0 +1,1668 @@
+syntax = "proto3";
+package pb;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.gostring_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.goproto_getters_all) = false;
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+enum EntityType {
+    NoType = 0;
+    Player = 1;
+    Box = 2;
+    Bomb = 3;
+    House = 4;
+    Vehicle = 5;
+    Monster = 6;
+    BlockShield = 7;
+    GroundItem = 8;
+    Npc = 9;
+    MoveTrigger = 10;
+
+    EntityTypeMax = 11;
+}
+
+enum VehicleType {
+    VehiclePlane = 0;
+    VehicleCar = 1;
+}
+
+enum FlyStateType {
+    FlyNone = 0;
+    FlyDePlane = 1;
+    FlyParachute = 2;
+}
+
+enum FieldState {
+    None = 0;
+    Prepare = 1;
+    Shrink = 2;
+}
+
+enum OccupyState {
+    EOS_Prepare = 0;
+    EOS_Suspend = 1;
+    EOS_AddScore = 2;
+    EOS_PrepareDecScore = 3;
+    EOS_DecScore = 4;
+    EOS_TOAddScore = 5;
+    EOS_TODecScore = 6;
+    EOS_TOPrepareDecScore = 7;
+    EOS_TOSuspend = 8;
+}
+
+enum HookState {
+    EHS_None = 0;
+    EHS_AddScore = 1;
+    EHS_DecScore = 2;
+    EHS_Suspend = 3;
+    EHS_CoolTime = 4;
+}
+
+enum OpDoorType {
+    Open = 0;
+    Close = 1;
+    Destroy = 2;
+    DestroyEnter = 3;
+    Revive = 4;
+}
+
+enum BlastStateType {
+    BlastClose = 0;
+    BlastOpen = 1;
+    BlastLock = 2;
+}
+
+enum PackagePosType {
+    MainWeapon = 0;
+    SecondWeapon = 1;
+    Helmet = 2;
+    Pet = 3;
+    FirstCore = 4;
+    SecondCore = 5;
+    ThirdCore = 6;
+    Backpack = 7;
+    PassivePack = 8;
+}
+
+enum PackageOperate {
+    PackOpNone = 0;
+    PackOpUpdate = 1;
+    PackOpDelete = 2;
+}
+
+enum KillReason {
+    EKRNone = 0;
+    EKRPlayer = 1;
+    EKRElectric = 2;
+    EKROffline = 3;
+    EKRVehicle = 4;
+    EKRGM = 5;
+    EKRBurnBomb = 6;
+    EKRKill = 7;
+    EKRFall = 8;
+    EKRPoison = 9;
+}
+
+enum ShieldState {
+    ESSNone = 0;
+    ESSFull = 1;
+    ESSDmg = 2;
+    ESSRecoverying = 3;
+}
+
+enum SignalTowerState {
+    ESTSNone = 0;
+    ESTSActive = 1;
+    ESTSActived = 2;
+    ESTSSuspend = 3;
+    ESTSAddScore = 4;
+    ESTSDecScore = 5;
+    ESTSDefDecScore = 6;
+    ESTSOpened = 7;
+    
+}
+
+enum ControlState {
+    ECSNone = 0;
+    ECSAddScore = 1;
+    ECSDecScore = 2;
+    ECSSuspend = 3;
+    ECSAddProgress = 4;
+    ECSSpeAddScore = 5;
+    ECSSpeReload = 6;
+}
+
+enum PVPNpcState{
+    EPNSOpenDown = 0;
+    EPNSCloseDown = 1;
+    EPNSClose = 2;
+}
+
+message Vector2PB {
+    float x = 1;
+    float y = 2;
+}
+
+message Vector3PB {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Vector4PB {
+    float w = 1;
+    float x = 2;
+    float y = 3;
+    float z = 4;
+}
+
+message C2B_PlayerCommand {
+    message C2B_Move {
+        float x = 1;
+        float y = 2;
+        float z = 3;
+    }
+    message C2B_Jump {
+        bool jump = 1;
+    }
+    message C2B_Rotation {
+        float dirX = 1;
+        float dirY = 2;
+        float dirZ = 3;
+    }
+    message C2B_Attack {
+        uint32 skillid = 1;
+        Vector3PB footoffset = 2 [(gogoproto.nullable) = false];
+        message Raycast {
+            uint64 targetuid = 1;
+            uint32 targetFrame = 2;
+            float lerp = 3;
+            float tlerp = 4;
+            float attx = 5;
+            float atty = 6;
+            float attz = 7;
+        }
+        repeated Raycast rayatt = 3 [(gogoproto.nullable) = false];
+
+        message Grenade {
+            float attx = 1;
+            float atty = 2;
+            float attz = 3;
+            float dirx = 4;
+            float diry = 5;
+            float dirz = 6;
+            uint64 targetuid = 7;
+        }
+        repeated Grenade greatt = 4 [(gogoproto.nullable) = false];
+
+        message AreaSkill {
+            float attx = 1;
+            float atty = 2;
+            float attz = 3;
+        }
+        repeated AreaSkill areaatt = 5 [(gogoproto.nullable) = false];
+
+        uint32 repeatenum = 6;// 当前连发次数
+        bool lastrepeate = 7;// 最后一次连发
+        uint64 targetuid = 8;// 指向性技能目标
+    }
+    message C2B_EmptyGun {
+        uint32 skillid = 1;
+    }
+    message C2B_OpenBox {
+        uint64 boxID = 1;
+    }
+    message C2B_GetBoxItem {
+        uint64 uuid = 1;
+    }
+    message C2B_PickUpItem {
+        uint64 itemuid = 1;
+        int32 num = 2;
+        bool tobackpack = 3;
+    }
+    message C2B_DropItem {
+        uint64 itemuid = 1;
+        int32 num = 2;
+    }
+    message C2B_Motion {
+        bool crouch = 1;
+        bool prone = 2;
+        bool running = 3;
+        bool climb = 4;
+    }
+    message C2B_Aiming {
+        bool aiming = 1;
+        bool usinggrenade = 2;
+    }
+    message C2B_DePlane {
+        uint64 planeid = 1;
+    }
+    message C2B_Parachute {
+    }
+    message C2B_EquipBoxItem {
+        uint64 itemuid = 1;
+        PackagePosType index = 2;
+        int32 num = 3;
+    }
+    message C2B_EquipBackpackItem {
+        uint64 itemuid = 1;
+        PackagePosType index = 2;
+    }
+    message C2B_ExChangeAttach {
+        uint32 itemtype = 1;
+    }
+    message C2B_UnEquipItem {
+        uint64 itemuid = 1;
+    }
+    message C2B_ReloadBullet {
+    }
+    message C2B_ChangeWeapon {
+        int32 activeidx = 1;
+    }
+    message C2B_MarkPoint {
+        float x = 1;
+        float y = 2;
+    }
+    message C2B_UseItem {
+        uint64 itemuid = 1;
+        int32 num = 2;
+    }
+    message C2B_KillWeak {
+        uint64 target = 1;
+    }
+    message C2B_CureWeak {
+        uint64 target = 1;
+    }
+    message C2B_OperateDoor {
+        uint64 entityid = 1;
+        bool open = 2;
+    }
+    message C2B_OperateVehicle {
+        uint64 entityid = 1;
+        bool open = 2;
+        uint32 seatid = 3;
+    }
+    message C2B_MoveVehicle {
+        uint64 entityid = 1;
+        Vector3PB movepos = 2 [(gogoproto.nullable) = false];
+        Vector4PB facedir = 3 [(gogoproto.nullable) = false];
+    }
+    message C2B_SendItemToSharePack {
+        uint64 itemuid = 1;
+        int32 num = 2;
+    }
+    message C2B_SendItemFromEquipment {
+        uint64 itemuid = 1;
+    }
+    message C2B_PickItemFromSharePack {
+        uint64 itemuid = 1;
+        int32 num = 2;
+        uint64 ownerid = 3;
+    }
+    message C2B_FallGround {
+
+    }
+    message C2B_ClimbEffect {
+        Vector3PB climbpos = 1;
+        Vector3PB climbdir = 2;
+    }
+    message C2B_SkillState {
+        SkillStateData skillstatedata = 1;
+    }
+    message C2B_SightInfo {
+        float distance = 1;
+    }
+    message C2B_OpBlast {
+        uint64 entityid = 1;
+        bool open = 2;
+    }
+    message C2B_DesEnterHouse{
+        uint64 entityid = 1;
+    }
+    message C2B_ShieldSkill{
+        uint32 skillid = 1;
+        uint32 state = 2;
+    }
+    message C2B_Gamble{
+        uint64 itemuid = 1;
+    }
+    message C2B_WarningEffect{
+        float x = 1;
+        float y = 2;
+        float z = 3;
+        uint32 skillid = 4;
+        int32 lifetime = 5;
+        float radius = 6;
+    }
+    message C2B_PickGroundItem{
+        uint64 entityid = 1;
+        bool tobackpack = 2;
+    }
+    message C2B_ExchangeCore{
+        int32 dstIdx = 1;
+        int32 srcIdx = 2;
+    }
+    message C2B_ClickNpc{
+        uint64 npcuid = 1;
+    }
+    message C2B_CatchNpc{
+        uint64 uuid = 1;
+    }
+    message C2B_EquipGroundItem {
+        uint64 itemuid = 1;
+        PackagePosType index = 2;
+        int32 num = 3;
+    }
+    message C2B_NpcGameble{
+        uint64 npcuid = 1;
+        int32 index = 2;
+        bool leave = 3;
+    }
+    message C2B_GetGambleBoxItem{
+        uint64 itemuid = 1;
+        bool drop = 2;
+    }
+    message C2B_NpcSellItem{
+        uint64 npcuid = 1;
+        uint64 itemuid = 2;
+        int32 num = 3;
+    }
+    message C2B_NpcLevelUpItem{
+        uint64 npcuid = 1;
+        uint64 itemuid = 2;
+    }
+    oneof CommandData {
+        C2B_Move move = 1;
+        C2B_Rotation rotation = 2;
+        C2B_Attack attack = 3;
+        C2B_PickUpItem pickupitem = 4;
+        C2B_DropItem dropitem = 5;
+        C2B_Motion motion = 6;
+        C2B_OpenBox openbox = 7;
+        C2B_GetBoxItem getboxitem = 8;
+        C2B_DePlane deplane = 9;
+        C2B_EquipBoxItem equipboxitem = 10;
+        C2B_EquipBackpackItem equipbackpackitem = 11;
+        C2B_ExChangeAttach exchangeattach = 12;
+        C2B_ReloadBullet reloadbullet = 13;
+        C2B_UnEquipItem unequipitem = 14;
+        C2B_ChangeWeapon changeweapon = 15;
+        C2B_MarkPoint markpoint = 16;
+        C2B_UseItem useitem = 17;
+        C2B_Parachute parachute = 18;
+        C2B_KillWeak killweak = 19;
+        C2B_CureWeak cureweak = 20;
+        C2B_OperateDoor opdoor = 21;
+        C2B_OperateVehicle opvehicle = 22;
+        C2B_MoveVehicle movevehicle = 23;
+        C2B_SendItemToSharePack senditemtosharepack = 24;
+        C2B_SendItemFromEquipment senditemfromequipment = 25;
+        C2B_PickItemFromSharePack pickitemfromsharepack = 26;
+        C2B_FallGround fallground = 27;
+        C2B_EmptyGun emptyray = 28;
+        C2B_Aiming aiming = 29;
+        C2B_ClimbEffect climbeffect = 30;
+        C2B_SkillState skillstate = 31;
+        C2B_Jump jump = 32;
+        C2B_SightInfo sight = 33;
+        C2B_OpBlast blast = 34;
+        C2B_DesEnterHouse forceenterhouse = 35;
+        C2B_Gamble gamble = 36;
+        C2B_ShieldSkill shieldskill = 37;
+        C2B_WarningEffect warningeffect = 38;
+        C2B_PickGroundItem pickitem = 39;
+        C2B_ExchangeCore exchangecore = 40;
+        C2B_ClickNpc clicknpc = 41;
+        C2B_CatchNpc catchnpc = 42;
+        C2B_EquipGroundItem equipGroundItem = 43;
+        C2B_NpcGameble npcgamble = 44;
+        C2B_GetGambleBoxItem getGambleBoxItem = 45;
+        C2B_NpcSellItem npcsell = 46;
+        C2B_NpcLevelUpItem npclvup = 47;
+    }
+}
+
+message C2B_Frame {
+    uint32 frame = 1;
+    uint32 frameRunCache = 2;
+    repeated C2B_PlayerCommand commands = 3 [(gogoproto.nullable) = false];
+}
+
+message B2C_State {
+    message B2C_Outlook {
+        uint32 charid = 1;
+        float scale = 2;
+    }
+    message B2C_Move {
+        Vector3PB pos = 1 [(gogoproto.nullable) = false];
+        Vector3PB velocity = 2 [(gogoproto.nullable) = false];
+        bool teleport = 3;
+    }
+    message B2C_Rotation {
+        float dirX = 1;
+        float dirY = 2;
+        float dirZ = 3;
+    }
+    message B2C_HP {
+        int32 hp = 1;
+        int32 weakhp = 2;
+        KillReason reason = 3;
+    }
+    message B2C_Live {
+        bool live = 1;
+        bool inweak = 2;
+    }
+    message B2C_MaxHP {
+        int32 maxhp = 1;
+        int32 maxweakhp = 2;
+    }
+    message B2C_Motion {
+        bool crouch = 1;
+        bool prone = 2;
+        bool running = 3;
+        bool climb = 4;
+    }
+    message B2C_Aiming {
+        bool aiming = 1;
+        bool usinggrenade = 2;
+    }
+    message B2C_Pos {
+        float x = 1;
+        float y = 2;
+        float z = 3;
+    }
+    message B2C_BoxOpen {
+        bool opened = 1;
+        uint32 boxid = 2;
+        bool empty = 3;
+    }
+    message B2C_BoxType {
+        uint32 boxtype = 1;
+        bool isairdrop = 2;
+        uint32 boxid = 3;
+        uint64 owner = 4;
+    }
+    message B2C_PlaneState {
+        uint64 planeid = 1;
+        float startx = 2;
+        float starty = 3;
+        float startz = 4;
+        float endx = 5;
+        float endy = 6;
+        float endz = 7;
+        int64 starttime = 8;
+        float speed = 9;
+    }
+
+    message B2C_Equipment {
+        uint32 helmet = 1;
+        uint32 vest = 2;
+        uint32 weapon = 3;
+        uint32 backmain = 4;
+        uint32 backsecond = 5;
+        uint32 shoes = 6;
+        bool weaponready = 7;
+        bool backmainready = 8;
+        bool backsecready = 9;
+        uint32 pet = 10;
+    }
+    message B2C_BeCureEffect {
+        bool becuring = 1;
+    }
+    message B2C_CureEffect {
+        bool curing = 1;
+    }
+    message B2C_KillEffect {
+        bool killing = 1;
+    }
+    message B2C_SlowRecovery {
+        int32 recovery = 1;
+    }
+    message B2C_HouseData {
+        int32 state = 1;
+        int32 doorid = 2;
+        bool revive = 3;
+    }
+    message B2C_VehicleState {
+        Vector3PB pos = 1 [(gogoproto.nullable) = false];
+        Vector4PB facedir = 2 [(gogoproto.nullable) = false];
+        uint32 vehicletypeid = 3;
+    }
+    message B2C_PlayerVehicle {
+        uint64 vehicleid = 1;
+        uint32 seatid = 2;
+        VehicleType type = 3;
+    }
+    message B2C_Bullet {
+        int32 mainbullet = 1;
+        int32 secondbullet = 2;
+        int32 defbullet = 3;
+    }
+    message B2C_Weapon {
+        int32 activeIdx = 1;
+    }
+    message B2C_Package {
+        int32 maxweight = 1;
+        int32 weight = 2;
+        ItemData mainweapon = 3 [(gogoproto.nullable) = false];
+        ItemData secondweapon = 4 [(gogoproto.nullable) = false];
+        repeated ItemData cores = 5 [(gogoproto.nullable) = false];
+        repeated ItemData backpack = 6 [(gogoproto.nullable) = false];
+        ItemData helmet = 7 [(gogoproto.nullable) = false];
+        repeated ItemData passive = 8 [(gogoproto.nullable) = false];
+        ItemData pet = 9 [(gogoproto.nullable) = false];
+    }
+    message B2C_ReloadEffect {
+        bool reloading = 1;
+    }
+    message B2C_RecoveryEffect {
+        bool recovering = 1;
+    }
+    message B2C_GrenadeData {
+        float x = 1;
+        float y = 2;
+        float z = 3;
+        uint32 skillid = 4;
+        uint64 owner = 5;
+        float dirx = 6;
+        float diry = 7;
+        float dirz = 8;
+    }
+    message B2C_Shield {
+        int32 shieldhp = 1;
+        int32 shieldmaxhp = 2;
+        KillReason reason = 3;
+    }
+    message B2C_Endurance {
+        int32 vest = 1;
+        int32 helmet = 2;
+    }
+    message B2C_ShieldState {
+        ShieldState state = 1;
+        uint32 id = 2;
+    }
+    message B2C_OpBlasting {
+        bool open = 1;
+        bool reloading = 2;
+    }
+    message B2C_Superheat {
+        int32 mainEnergy = 1;
+        int32 secondEnergy = 2;
+        int32 defEnergy = 3;
+        bool isMainSuperheat = 4;
+        bool isSecondSuperheat = 5;
+        bool isDefSuperheat = 6;
+    }
+    message B2C_PlyState {
+        message State{
+            uint32 id = 1;
+            int64 lifetime = 2;
+            int64 totaltime = 3;
+        }
+        repeated State states = 1;
+    }
+    message B2C_Gamble{
+        uint32 gamblenum = 1;
+        uint32 maxgamble = 2;
+    }
+    message B2C_MonsterState {
+        float sight = 1;
+        uint64 ownerid = 2;
+        uint32 monsterid = 3;
+        uint32 forceid = 4;
+    }
+
+    message B2C_BlockShieldData{
+        float x = 1;
+        float y = 2;
+        float z = 3;
+        uint32 skillid = 4;
+        uint64 owner = 5;
+        bool destroy = 6;
+    }
+    message B2C_Shop{
+        repeated ShopItem normalshop = 1;
+        repeated ShopItem blackshop = 2;
+        bool hasblack = 3;
+    }
+    message B2C_CharacterProperty{
+        message NormalProperty{
+            uint32 type = 1;
+            float data = 2;
+        }
+        message PointProperty{
+            uint32 type = 1;
+            int64 data = 2;
+            int64 max = 3;
+        }
+        message BaseProperty{
+            uint32 type = 1;
+            float data = 2;
+        }
+        message ExMoney{
+            uint32 type = 1;
+            int32 value = 2;
+        }
+        repeated NormalProperty normal = 1;
+        repeated PointProperty point = 2;
+        repeated BaseProperty base = 3;
+        repeated ExMoney exmoneys = 4;
+    }
+    message B2C_ChargeEnergy{
+        int32 def = 1;
+        int32 main = 2;
+        int32 sec = 3;
+    }
+    message B2C_InitFeatures{
+        repeated uint32 initfine = 1;
+        repeated uint32 initbad = 2;
+        repeated uint32 defskill = 3;
+    }
+    message B2C_GroundItem{
+        uint32 itemid = 1;
+        bool visible = 2;
+        uint64 owner = 3;
+        bool teampick = 4;
+    }
+    message B2C_Npc{
+        uint32 npcid = 1;
+    }
+    message B2C_MoveTriggerData{
+        float x = 1;
+        float y = 2;
+        float z = 3;
+        uint32 triggerid = 4;
+        uint64 owner = 5;
+    }
+    message B2C_PowerClip{
+        int32 power = 1;
+        int32 max = 2;
+    }
+    uint32 frame = 1;
+    oneof StateData {
+        B2C_Move move = 2;
+        B2C_Rotation rotation = 3;
+        B2C_HP hp = 4;
+        B2C_Live live = 5;
+        B2C_Motion motion = 6;
+        B2C_Pos Pos = 7;
+        B2C_BoxOpen boxopen = 8;
+        B2C_PlaneState planeinfo = 9;
+        B2C_MaxHP maxhp = 10;
+        B2C_Equipment equipment = 11;
+        B2C_BeCureEffect becureeffect = 12;
+        B2C_CureEffect cureeffect = 13;
+        B2C_KillEffect killeffect = 14;
+        B2C_SlowRecovery slowrecovery = 15;
+        B2C_HouseData housedata = 16;
+        B2C_VehicleState vehidata = 17;
+        B2C_PlayerVehicle plyvehi = 18;
+        B2C_BoxType boxtype = 19;
+        B2C_Package package = 20;
+        FlyStateType flystate = 21;
+        B2C_Bullet bullet = 22;
+        B2C_Weapon weapon = 23;
+        B2C_Aiming aiming = 24;
+        B2C_ReloadEffect reloadeffect = 25;
+        B2C_RecoveryEffect recovering = 26;
+        B2C_GrenadeData grenade = 27;
+        B2C_Shield shield = 28;
+        B2C_Endurance endurance = 29;
+        B2C_ShieldState shieldstate = 30;
+        B2C_Outlook outlook = 31;
+        B2C_Superheat superheat = 32;
+        B2C_PlyState plystate = 33;
+        B2C_Gamble gamble = 34;
+        B2C_MonsterState monsterstate = 35;
+        B2C_BlockShieldData blockshield = 36;
+        B2C_Shop shopdata = 37;
+        B2C_CharacterProperty characterproperty = 38;
+        B2C_CharacterProperty allproperty = 39;
+        B2C_ChargeEnergy changeenergy = 40;
+        B2C_InitFeatures initfeatures = 41;
+        B2C_GroundItem grounditem = 42;
+        B2C_Npc npc = 43;
+        B2C_MoveTriggerData movetrigger = 44;
+        B2C_PowerClip powerclip = 45;
+    }
+}
+
+message B2C_Event {
+    message B2C_Attack {
+        uint32 skillid = 1;
+        Vector3PB attdir = 2 [(gogoproto.nullable) = false];
+        Vector3PB footoffset = 3 [(gogoproto.nullable) = false];
+        float flashhidder = 4;
+        uint64 target = 5;
+        int64 duration = 6;// 持续毫秒时间
+        Vector3PB attpos = 7 [(gogoproto.nullable) = false];
+        float radius = 8;
+        float length = 9;
+        uint32 effectid = 10;
+    }
+    message B2C_EmptyGun {
+        uint32 skillid = 1;
+    }
+    message B2C_Grenade {
+        float attx = 1;
+        float atty = 2;
+        float attz = 3;
+        float dirx = 4;
+        float diry = 5;
+        float dirz = 6;
+        uint32 skillid = 7;
+        uint64 owner = 8;
+    }
+    message B2C_BeHit {
+        uint64 uuid = 1;
+        uint32 skillid = 2;
+        bool critical = 3;
+        int64 damage = 4;
+        bool shield = 5;
+        bool vulnerable = 6;
+    }
+    message B2C_GetBoxItem {
+        uint64 uuid = 1;
+        repeated ItemData boxitemdata = 2 [(gogoproto.nullable) = false];
+    }
+    message B2C_LeavePlane {
+        uint64 planeid = 1;
+        float x = 2;
+        float y = 3;
+        float z = 4;
+    }
+    message B2C_Parachute {
+    }
+    message S2C_Teleport {
+    }
+    message S2C_SpeMove {
+    }
+    message B2C_HitDown {
+        string targetname = 1;
+    }
+    message B2C_OperateDoor {
+        uint32 doorid = 1;
+        OpDoorType type = 2;
+        uint64 opplyid = 3;
+    }
+    message B2C_OperateVehicle {
+        uint64 entityid = 1;
+        bool open = 2;
+    }
+    message B2C_FallGround {
+    }
+    message B2C_VehicleContact {
+        EntityType targtype = 1;
+        uint64 targuuid = 2;
+        float speed = 3;
+    }
+    message B2C_ReloadBullet {
+        uint32 weaponid = 1;
+        bool begin = 2;
+    }
+    message B2C_Casting {
+        uint32 type = 1;
+        bool start = 2;
+        uint64 breakuid = 3;
+        bool break = 4;
+        uint32 itemid = 5;
+        int64 castingtime = 6;
+        string stringkey = 7;
+    }
+    message B2C_HitBack {
+        Vector3PB dir = 1 [(gogoproto.nullable) = false];
+        float v1 = 2;
+        int32 t1 = 3;
+        float k = 4;
+        int32 t2 = 5;
+    }
+    message B2C_PackageItem {
+        message UpdateData {
+            ItemData item = 1 [(gogoproto.nullable) = false];
+            PackageOperate operate = 2;
+            PackagePosType pos = 3;
+        }
+        repeated UpdateData data = 1 [(gogoproto.nullable) = false];
+    }
+    message B2C_PackageWeight {
+        int32 maxweight = 1;
+        int32 weight = 2;
+    }
+    message B2C_KillNum {
+        int32 num = 1;
+    }
+    message B2C_ClimbEffect {
+        Vector3PB climbpos = 1 [(gogoproto.nullable) = false];
+        Vector3PB climbdir = 2 [(gogoproto.nullable) = false];
+    }
+    message B2C_ShieldBreakEffect {
+        uint32 id = 1;
+    }
+    message B2C_SkillState {
+        SkillStateData skillstatedata = 1;
+    }
+    message B2C_MonsterAttack {
+        uint64 targetid = 1;
+    }
+    message B2C_WarningEffect{
+        float x = 1;
+        float y = 2;
+        float z = 3;
+        uint32 skillid = 4;
+        int32 lifetime = 5;
+        float radius = 6;
+    }
+    message B2C_WaitWeaponReady{
+        message WeaponWaitTime{
+            uint64 itemuid = 1;
+            bool ready = 2;
+        }
+        repeated WeaponWaitTime waitweapon = 1;
+    }
+    message B2C_QuickColdSkill{
+        message SkillQuickCold{
+            uint32 skillid = 1;
+            int64 cold= 2;
+        }
+        repeated SkillQuickCold skillquickcold = 1;
+    }
+    message B2C_CatchingEntity{
+        bool create = 1;
+        Vector3PB pos = 2;
+        uint64 entityid = 3;
+        uint32 featureid = 4;
+        uint64 target = 5;
+    }
+    message B2C_CreateGroundItem{
+        uint32 itemid = 1;
+        Vector3PB pos = 2 [(gogoproto.nullable) = false];
+        uint64 owner = 3;
+        bool teampick = 4;
+    }
+    message B2C_SkillCold{
+        message OneSkill{
+            uint32 skillid = 1;
+            int32 pilenum = 2;
+            bool del = 3;
+        }
+        repeated OneSkill skills = 1;
+    }
+    message B2C_Interface{
+        message NormalShop{
+            repeated ShopItem normalshop = 1;
+        }
+        message BlackShop{
+            repeated ShopItem blackshop = 2;
+        }
+        uint32 interfaceid = 1;
+        int32 errno = 2;
+        oneof InterfaceData{
+            NormalShop normalshop = 3;
+            BlackShop blackshop = 4;
+        }
+    }
+    message B2C_SkillMove{
+        uint32 skillid = 1;
+        bool stop = 2;
+    }
+    message B2C_GambleBox{
+        message GambleItem{
+            ItemData item = 1;
+            bool add = 2;
+        }
+        repeated GambleItem items = 1;
+    }
+    message B2C_CharacterYell{
+        uint64 targetuid = 1;
+        uint32 content = 2;
+    }
+    message B2C_LevelUpItemRet{
+        uint64 itemuid = 1;
+        uint32 error = 2;
+    }
+    message B2C_PlayerState{
+        uint32 stateid = 1;
+        int64 lifetime = 2;
+        int64 totaltime = 3;
+        bool del = 4;
+    }
+    oneof EventData {
+        B2C_Attack attack = 1;
+        B2C_BeHit beHit = 2;
+        B2C_GetBoxItem getboxitem = 3;
+        B2C_LeavePlane deplane = 4;
+        B2C_Parachute parachute = 5;
+        S2C_Teleport teleport = 6;
+        S2C_SpeMove spemove = 7;
+        B2C_HitDown hitdown = 8;
+        B2C_Grenade grenade = 9;
+        B2C_OperateDoor opdoor = 11;
+        B2C_OperateVehicle opvehicle = 12;
+        B2C_FallGround fallground = 13;
+        B2C_VehicleContact vehicontact = 14;
+        B2C_EmptyGun emptyray = 15;
+        B2C_ReloadBullet rebullet = 16;
+        B2C_Casting casting = 17;
+        B2C_HitBack hitback = 18;
+        B2C_PackageItem packageitem = 19;
+        B2C_PackageWeight packageweight = 20;
+        B2C_KillNum killnum = 21;
+        B2C_ClimbEffect climbeffect = 22;
+        B2C_ShieldBreakEffect shieldbreakeffect = 23;
+        B2C_SkillState skillstate = 24;
+        B2C_MonsterAttack monsterattack = 25;
+        B2C_WarningEffect warningeffect = 26;
+        B2C_WaitWeaponReady waitweaponready = 27;
+        B2C_QuickColdSkill quickcoldskill = 28;
+        B2C_CatchingEntity catchingentity = 29;
+        B2C_CreateGroundItem grounditem = 30;
+        B2C_SkillCold skillcold = 31;
+        B2C_Interface interface = 32;
+        B2C_SkillMove skillmove = 33;
+        B2C_GambleBox gamblebox = 34;
+        B2C_CharacterYell charyell = 35;
+        B2C_LevelUpItemRet lvupRet = 36;
+        B2C_PlayerState playerstate = 37;
+    }
+}
+
+message SkillStateData {
+    uint32 skillid = 1;
+    uint32 skillstate = 2;
+}
+
+message ItemData {
+    uint64 uuid = 1;
+    uint32 itemid = 2;
+    int32 num = 3;
+    int32 endurance = 4;
+    int32 skilldamage = 5;
+    int32 distance = 6;
+    int32 oneclipnum = 7;
+    int32 reloadtime = 8;
+}
+
+message ShopElemData {
+    uint32 itemid = 1;
+    int32 num = 2;
+    uint32 itemprice = 3;
+    bool besaled = 4;
+}
+
+message ShopItem {
+    ItemData iteminfo = 1;
+    ShopElemData shopinfo = 2;
+}
+
+message BinShopElems{
+    repeated ShopElemData elems = 1;
+}
+
+enum DropBoxState {
+    DropNone = 0;
+    DropReady = 1;
+    DropStart = 2;
+    DropEnd = 3;
+}
+
+message RoleScoreInfo{
+    uint64 role = 1;
+    uint32 score = 2;
+    uint32 scoretimestamp = 3;
+}
+
+message B2C_EntityDirty {
+    uint64 uuid = 1;
+    EntityType entitytype = 2;
+    repeated B2C_State state = 3;
+    repeated B2C_Event event = 4;
+}
+
+message B2C_WorldData {
+    message B2C_ElectricField {
+        float startx = 1;
+        float starty = 2;
+        float endx = 3;
+        float endy = 4;
+        uint32 startrange = 5;
+        uint32 endrange = 6;
+        float currange = 7;
+        uint32 totaltime = 8;
+        FieldState state = 9;
+        uint32 delaytime = 10;
+        uint32 remaintime = 11;
+    }
+    message B2C_AliveNum {
+        int32 alive = 1;
+    }
+    message B2C_AirDropBoxData {
+        message B2C_AirDropBox {
+            float x = 1;
+            float y = 2;
+            float z = 3;
+            uint32 startTime = 4;
+            DropBoxState dropState = 5;
+        }
+        repeated B2C_AirDropBox dropBoxs = 1 [(gogoproto.nullable) = false];
+    }
+    message B2C_BlastingData {
+        message B2C_Blasting {
+            BlastStateType status = 1;
+            uint64 entityid = 2;
+            int64 remaintime = 3;
+            uint32 id = 4;
+        }
+        repeated B2C_Blasting blasting = 1 [(gogoproto.nullable) = false];
+        int64 gameremaintime = 2;
+    }
+    message B2C_BombItem {
+        uint64 owner = 1;
+        Vector3PB pos = 2 [(gogoproto.nullable) = false];
+        bool isbox = 3;
+    }
+    message B2C_MultiGame{
+        uint32 curgameid = 1;
+        message GameResult{
+            uint32 teamid = 1;
+            uint32 wingame = 2;
+        }
+        repeated GameResult result = 2[(gogoproto.nullable) = false];
+    }
+    message B2C_TeamScore{
+        message TeamScore{
+            uint32 teamid = 1;
+            uint32 score = 2;
+        }
+        repeated TeamScore teamScore = 1[(gogoproto.nullable) = false];
+    }
+    message B2C_HuntData{
+        message HuntRole{
+            uint32 teamid = 1;
+            uint64 dest = 2;
+        }
+        repeated HuntRole huntRole = 1[(gogoproto.nullable) = false];
+        repeated uint64 huntMon = 2;
+    }
+    message B2C_OccupyData{
+        OccupyState state = 1;
+        uint32 attInCircleTime = 2;
+        uint32 attOutCircleTime = 3;
+        uint32 remaintime = 4;
+    }
+    message B2C_SceneTriggerActive{
+        message OneData{
+            uint32 scenetriggerid = 1;
+            uint32 triggerid = 2;
+            bool active = 3;
+            bool visible = 4;
+        }
+        repeated OneData triggers = 1;
+    }
+    message B2C_SignalTowerData{
+        message OneFiledTower {
+            message OneSignalTower{
+                uint32 triggerid = 1;
+                SignalTowerState status = 2;
+                uint32 ownerTeam = 3;
+                uint32 inCircleTime = 4;
+                uint32 remainactive = 5;
+            }
+            repeated OneSignalTower onetower = 1;
+        }
+        repeated OneFiledTower onefield = 1;
+    }
+    message B2C_TelportTower{
+        message TelportTower{
+            uint32 ownerTeam = 1;
+            Vector3PB pos = 2 [(gogoproto.nullable) = false];
+            uint64 uuid = 3;
+            float decscale = 4;
+            uint32 inCircleTime = 5;
+            uint32 totalTime = 6;
+        }
+        repeated TelportTower telTower = 1;
+    }
+    message B2C_WorldTime{
+        uint32 worldTime = 1;
+    }
+    message B2C_MonsterRefreshPos{
+        message PosData{
+            Vector3PB pos = 1;
+            uint32 posid = 2;
+        }
+        repeated PosData monsterrefreshpos = 1;
+    }
+    message B2C_MoveObstacle{
+        message MoveObstacle{
+            uint32 id = 1;
+            bool open = 2;
+            repeated uint32 passteam = 3;
+        }
+        repeated MoveObstacle info = 1[(gogoproto.nullable) = false];
+    }
+    message B2C_ControlMode{
+        message TeamProgress{
+            uint32 teamid = 1;
+            uint32 progress = 2;
+            uint32 occupytime = 3;
+            uint32 totaltime = 4;
+        }
+        repeated TeamProgress teamprogress = 1;
+        bool timeout = 2;
+        uint32 controlprop = 3;
+        uint32 ownerteam = 4;
+        ControlState status = 5;
+        uint32 triggerid = 6;
+    }
+    message B2C_HookData{
+        HookState status = 1;
+        uint32 ownerteam = 2;
+        uint32 occupytime = 3;
+        uint32 cooltime = 4;
+    }
+    message B2C_PvPNpcData{
+        message PvPNpcData{
+            PVPNpcState state = 1;
+            uint32 downtime = 2;
+            uint32 npcid = 3;
+        }
+        repeated PvPNpcData pvpdata = 1;
+    }
+    message B2C_DarwinScore{
+        repeated RoleScoreInfo scoreinfo = 1;
+    }
+    message B2C_DarwinFirst{
+        uint64 role = 1;
+        Vector3PB pos = 2 [(gogoproto.nullable) = false];
+    }
+    message B2C_CharacterForce{
+        message ForceData{
+            uint64 entityid = 1;
+            uint32 forceid = 2;
+        }
+        repeated ForceData characterforce = 1;
+    }
+    message B2C_ProcessMode{
+        int32 processmode = 1;
+        uint64 dragon = 2;
+    }
+    message B2C_GlobalMonster{
+        message MonsterData{
+            uint32 monid = 1;
+            Vector3PB pos = 2 [(gogoproto.nullable) = false]; 
+        }
+        MonsterData monsterdata = 1;
+    }
+    oneof StateData{
+        B2C_ElectricField electricfield = 1;
+        B2C_AliveNum alivenum = 2;
+        B2C_AirDropBoxData dropboxs = 3;
+        B2C_BlastingData blastdata = 4;
+        B2C_BombItem bombitem = 5;
+        B2C_MultiGame multigame = 6;
+        B2C_TeamScore teamScore = 7;
+        B2C_HuntData huntData = 8;
+        B2C_OccupyData occupyData = 9;
+        B2C_SceneTriggerActive sceneTriggerActive=10;
+        B2C_SignalTowerData signaltower = 11;
+        B2C_TelportTower telportTower = 12;
+        B2C_WorldTime worldTime = 13;
+        B2C_MonsterRefreshPos monsterrefresh = 14;
+        B2C_MoveObstacle obstacles = 15;
+        B2C_ControlMode controldata = 16;
+        B2C_HookData hookdata = 17;
+        B2C_PvPNpcData pvpnpcdata = 18;
+        B2C_DarwinScore darwinscore = 19;
+        B2C_DarwinFirst darwinfirst = 20;
+        B2C_CharacterForce forcedata = 21;
+        B2C_ProcessMode processmode = 22;
+        B2C_GlobalMonster globalmonster = 23;
+    }
+}
+
+message B2C_WorldEvent {
+    message B2C_KillInfo {
+        uint64 killer = 1;
+        uint64 killed = 2;
+        bool hitdown = 3;
+        KillReason reason = 4;
+        uint32 id = 5;
+    }
+    message B2C_AttackVoice {
+        uint64 attacker = 1;
+        Vector3PB attpos = 2 [(gogoproto.nullable) = false];
+        uint32 skillid = 3;
+        float suppressor = 4;
+    }
+    message B2C_OpBlast {
+        uint64 entityid = 1;
+        bool open = 2;
+        uint32 temaid = 3;
+    }
+    message B2C_SceneTriggerActive{
+        uint32 scenetriggerid = 1;
+        uint32 triggerid = 2;
+        bool active = 3;
+        bool visible = 4;
+    }
+    message B2C_SignalTower{
+        uint32 triggerid = 1;
+        SignalTowerState status = 2;
+        uint32 ownerTeam = 3;
+        uint32 inCircleTime = 4;
+    }
+    message B2C_SceneTriggerActiveWarning{
+        uint32 scenetriggerid = 1;
+    }
+    message B2C_MonsterWarning{
+    }
+    message B2C_WorldMessage{
+        uint32 messagetype = 1;
+        string messagekey = 2;
+    }
+    message B2C_DarwinScore{
+       RoleScoreInfo scoreInfo = 1;
+    }
+    message B2C_GlobalMonster{
+        uint32 monid = 1;
+        Vector3PB pos = 2 [(gogoproto.nullable) = false]; 
+    }
+    oneof EventData {
+        B2C_KillInfo killinfo = 1;
+        B2C_AttackVoice attackvoice = 2;
+        B2C_OpBlast opblast = 3;
+        B2C_SceneTriggerActive scenetriggeractive = 4;
+        B2C_SignalTower signaltower = 5;
+        B2C_SceneTriggerActiveWarning scenetriggeractivewarning = 6;
+        B2C_MonsterWarning monsterwarning = 7;
+        B2C_WorldMessage worldmessage = 8;
+        B2C_DarwinScore darwinscore = 9;
+        B2C_GlobalMonster globalmonster = 10;
+    }
+}
+
+message B2C_WorldDirty {
+    repeated B2C_WorldData worldData = 1 [(gogoproto.nullable) = false];
+    repeated B2C_WorldEvent worldEvent = 2 [(gogoproto.nullable) = false];
+}
+
+message B2C_TeamData {
+    message B2C_MarkPoint {
+        float x = 1;
+        float y = 2;
+    }
+    message B2C_Hp {
+        int32 hp = 1;
+        int32 maxhp = 2;
+        int32 weakhp = 3;
+        int32 maxweakhp = 4;
+    }
+    message B2C_Live {
+        bool weak = 1;
+        bool live = 2;
+    }
+    message B2C_ShareItem {
+        repeated ItemData items = 1 [(gogoproto.nullable) = false];
+    }
+    message B2C_PickShareItem {
+        uint64 owner = 1;
+        uint64 itemuid = 2;
+        int32 num = 3;
+    }
+    message B2C_NetState {
+        bool logout = 1;
+    }
+    message B2C_Shield {
+        int32 shieldhp = 1;
+        int32 shieldmaxhp = 2;
+    }
+    message B2C_TeamerPos {
+        Vector3PB pos = 1;
+        bool isparachute = 2;
+    }
+    message B2C_TeamKillMon{
+        uint32 killnum = 1;
+    }
+    message B2C_VisibleNpc{
+        message VisibleNpc{
+            Vector3PB pos = 1[(gogoproto.nullable) = false];
+            uint32 npcid = 2;
+        }
+        repeated VisibleNpc npcs = 1;
+    }
+    message B2C_Energy{
+        int32 energy = 1;
+    }
+    oneof StateData {
+        B2C_MarkPoint markpoint = 1;
+        B2C_TeamerPos pos = 2;
+        B2C_Hp hp = 3;
+        Vector3PB rotation = 4;
+        B2C_Live live = 5;
+        B2C_ShareItem shareitem = 6;
+        B2C_PickShareItem pickshareitem = 7;
+        B2C_NetState netstate = 8;
+        B2C_Shield shield = 9;
+        B2C_TeamKillMon killmon = 10;
+        B2C_VisibleNpc npcs = 11;
+        B2C_Energy energy = 12;
+    }
+}
+
+message B2C_TeamEvent{
+
+}
+
+message B2C_TeamDirty {
+    uint64 uuid = 1;
+    repeated B2C_TeamData state = 2 [(gogoproto.nullable) = false];
+    repeated B2C_TeamEvent event = 3 [(gogoproto.nullable) = false];
+}
+
+message B2C_Frame {
+    uint32 frame = 1;
+    int32 frameDeviation = 2;
+    repeated B2C_EntityDirty entityDirty = 3 [(gogoproto.nullable) = false];
+    B2C_WorldDirty worldDirty = 4 [(gogoproto.nullable) = false];
+    repeated B2C_TeamDirty teamData = 5 [(gogoproto.nullable) = false];
+    repeated uint64 disappear = 6;
+}
+
+message C2B_BattleLogin {
+    uint32 roleid = 1;
+    uint32 sceneid = 2;
+}
+
+message B2C_BattleLogin {
+    int32 errno = 1;
+}
+
+message B2C_EntityDisappear {
+    uint32 frame = 1;
+    uint64 uuid = 2;
+}
+
+message LoadingData {
+    uint32 progress = 1;
+    uint32 roleid = 2;
+}
+
+message C2B_Loading {
+    LoadingData loading = 1 [(gogoproto.nullable) = false];
+}
+
+message B2C_Loading {
+    repeated LoadingData loadings = 1 [(gogoproto.nullable) = false];
+}
+
+message B2C_StartGame {
+    uint64 uuid = 1;
+    uint32 frame = 2;
+}
+
+message PlayerInitBatInfo {
+    uint64 uuid = 1;
+    uint32 roleid = 2;
+    string name = 3;
+    uint32 teamid = 4;
+    uint32 unitid = 5;
+    bool isRobot = 6;
+    bool issupply = 7;
+}
+
+message B2C_BattleAllPlayer{
+    repeated PlayerInitBatInfo allplys = 1 [(gogoproto.nullable) = false];
+    uint32 maxTeamMember = 2;
+}
+
+message SingleVoteEquip{
+    uint32 roleid = 1;
+    uint32 mainWeapon = 2;
+    uint32 secondWeapon = 3;
+}
+
+message B2C_SingleVote{
+    repeated SingleVoteEquip equips = 1;
+}
+
+message VoteResult{
+    uint64 uuid = 1;
+    uint32 votenum = 2;
+}
+
+message B2C_VoteResult{
+    uint64 maxuuid = 1;
+    repeated VoteResult result = 2;
+}
+
+message C2B_SingleVote{
+    uint32 destid = 1;
+}
+
+message B2C_GetBoxItem {
+    uint64 uuid = 1;
+    repeated ItemData boxitemdata = 2 [(gogoproto.nullable) = false];
+}
+
+message TeammateFinishData {
+    uint64 uuid = 1;
+    uint32 killNum = 2;
+    uint32 treatNum = 3;
+    SettleReward reward = 4;
+    uint32 damage = 5;
+    repeated uint32 weapons = 6;
+    repeated uint32 cores = 7;
+}
+
+message TeamFinishData {
+    uint32 teamid = 1;
+    uint32 rank = 2;
+    repeated TeammateFinishData teammatefinishdata = 3 [(gogoproto.nullable) = false];
+}
+
+message B2C_GameEnd {
+    repeated TeamFinishData teamfinishdata = 1 [(gogoproto.nullable) = false];
+    bool realend = 2;
+    uint32 sceneid = 3;
+}
+
+message C2B_PlayerQuitGame {
+}
+
+message B2C_PlayerQuitGame {
+}
+
+message SettleReward {
+    int32 money = 1;
+    int32 exp = 2;
+    repeated ItemData randitem = 3;
+    uint32 grade = 4;
+    int32 challengenum = 5;
+}
+
+message B2C_Settlement {
+    bool self = 1;
+    SettleReward reward = 2;
+    TeamFinishData finishdata = 3;
+    bool revive = 4;
+    bool complete = 5;
+    uint32 revivetime = 6;
+}
+
+message B2C_AllDoGM {
+    string cmd = 1;
+    uint64 uuid = 2;
+}
+
+message C2B_BattleReconnect {
+    uint32 roleid = 1;
+    uint32 sceneid = 2;
+}
+
+message B2C_BattleReconnect {
+    int32 errno = 1;
+}
+
+message WatchData {
+    Vector3PB camerapos = 1;
+    Vector3PB cameraangle = 2;
+    bool isopencamera = 3;
+    bool sightbeadvisible = 4;
+    bool comsightbeadvisible = 5;
+    Vector2PB uipos = 6;
+    int32 itemID = 7;
+    float viewrange = 8;
+}
+
+message C2B_Watch {
+    message C2B_WatchBattle {
+        uint64 bewatch = 1;
+        bool watchenemy = 2;
+        bool watchend = 3;
+    }
+    message C2B_WatchData {
+        WatchData data = 1;
+    }
+    oneof WatchCmd {
+        C2B_WatchBattle watchbattle = 1;
+        C2B_WatchData watchdata = 2;
+    }
+}
+
+message B2C_Watch {
+    message B2C_WatchData {
+        uint64 bewatch = 1;
+        WatchData data = 2;
+    }
+    message B2C_WatchBattle {
+        uint64 wather = 1;
+        uint64 bewatch = 2;
+    }
+    oneof WatchCmd {
+        B2C_WatchBattle watchbattle = 1;
+        B2C_WatchData watchdata = 2;
+    }
+}
+
+message B2C_AudioAdd {
+}
+
+message C2B_AudioEnter {
+    string userip = 1;
+}
+
+message B2C_AudioEnter {
+    message ServerElem {
+        uint32 type = 1;
+        string as_ip = 2;
+        uint32 as_tcp = 3;
+        uint32 as_udp = 4;
+        string dgw_ip = 5;
+        uint32 dgw_port = 6;
+    }
+    message BattleServer {
+        string password = 1;
+        repeated ServerElem servers = 2;
+        uint32 sid = 3;
+        uint32 csid = 4;
+        uint32 bchid = 5;
+    }
+    message TeamServer {
+        string password = 1;
+        repeated ServerElem servers = 2;
+        uint32 sid = 3;
+        uint32 csid = 4;
+        uint32 tchid = 5;
+    }
+
+    BattleServer battleserver = 1;
+    TeamServer teamserver = 2;
+    uint32 errno = 3;
+}
+
+enum BattleChatType {
+    BCT_Team = 0;
+    BCT_All = 1;
+}
+
+message C2B_Chat {
+    string data = 1;
+    BattleChatType type = 2;
+}
+
+message B2C_Chat {
+    string data = 1;
+    uint32 sender = 2;
+    BattleChatType type = 3;
+    string name = 4;
+}
+
+message B2C_Test {
+    bytes data = 1;
+}
+
+message C2B_ReplaceEquip{
+    uint64 olduid = 1;
+    uint64 newuid = 2;
+    bool finish = 3;
+}
+
+message C2B_BuyItem{
+    uint64 olditemuid = 1;
+    uint64 newitemuid = 2;
+    uint32 itemprice = 3;
+    bool blackshop = 4;
+    PackagePosType index = 5;
+}
+
+message B2C_BuyItem{
+    uint64 buyitemuid = 1;
+    uint32 error = 2;
+}
+
+message B2C_SupplySelect{
+    SettleReward reward = 1;
+}
+
+message C2B_EnterPvPVote{
+    bool enter = 1;
+    uint64 collid = 2;
+}
+
+message B2C_EnterPvPVote{
+    message VoteInfo{
+        uint64 voter = 1;
+        bool enter = 2;
+    }
+    uint64 promote = 1;
+    uint64 collid = 2;
+    repeated VoteInfo info = 3;
+}
+
+message C2B_PvPCharChoice{
+    uint32 charid = 1;
+}
+
+message B2C_PvPCharChoice{
+    uint64 roleid = 1;
+    uint32 charid = 2;
+}
+
+message B2C_ItemError{
+    uint32 error = 1;
+}
+
+message B2C_LevelUpChooseTalent{
+    int32 level = 1;
+    repeated int32 talentidx = 2;
+    uint32 charid = 3;
+}
+
+message C2B_LevelUpChooseTalent{
+    int32 idx = 1;
+}

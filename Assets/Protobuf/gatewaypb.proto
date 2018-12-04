@@ -1,0 +1,67 @@
+syntax = "proto3";
+package gatewaypb;
+
+enum MSG {
+	MSG_NONE = 0;
+	MSG_HEART = 1;
+	MSG_DISCONNCET = 2;
+	MSG_DIAL = 3;
+	MSG_GSRECONNECT = 4;
+	MSG_REGIST = 5;
+	MSG_CONNECT = 6;
+	MSG_KICK = 7;
+	MSG_CROSS = 8;
+	MSG_GWMAX = 100;
+}
+
+message Heart {
+	int64 PingTime = 1;
+}
+
+message G2C_Disconnect {
+	int32 GsID = 1;
+}
+
+message G2S_Disconnect {
+	uint32 ConnID = 1;
+}
+
+message C2G_Dial {
+	int32 GsID = 1;
+}
+
+message G2C_Dial {
+	int32 GsID = 1;
+	uint32 ConnID = 2;
+	string Err = 3;
+}
+
+message G2C_Reconnect {
+	int32 GsID = 1;
+	bool Reconnect = 2;
+}
+
+message S2G_Kick {
+	uint32 ConnID = 1;
+}
+
+message G2C_Kick {
+	uint32 ConnID = 1;
+}
+
+message S2G_Cross {
+    uint32 ConnID = 1;
+    int32 DstGsID = 2;
+}
+
+message G2S_Cross {
+    uint32 ConnID = 1;
+    int32 SrcGsID = 2;
+    int32 DstGsID = 3;
+}
+
+message G2S_Connect {
+	uint32 ConnID = 1;
+}
+
+

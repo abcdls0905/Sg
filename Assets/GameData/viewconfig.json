@@ -1,0 +1,41 @@
+{
+    "viewRange":60,
+    "noAimViewRange":35,
+    "inCarViewRange":50,
+    "inCarCastShadowRange":35,
+
+    "upperViewHeight":2,
+    "lowerViewHeight":-1,
+
+    "shadowThreshold":0.55,
+    "castShadowHeight":15,
+    "shadowOffset":0.05,
+    "fadeStretchFactor":50,
+
+    "canLockAlpha":0.1,
+    "lockExposeAlpha":0.2,
+    "lockExposeDis":1,
+
+    "wallShadowAngle":10,
+    "lowWallShadowAngle":10,
+
+    "noWindowShadowRange":2,
+    "windowShadowAlpha":0.775,
+
+    "inGrassValue":180,
+    "grassHideAlpha":0.15,
+    "lowGrassHideAlpha":0.3,
+    "grassHideSpeedLimit":2,
+    "grassHideTime":0,
+    "grassSneakTime":0,
+    "grassHideSpeed":0.5,
+    "grassExposeSpeed":3,
+
+    "exposeShadowAlpha":0.05,
+    "exposeDuration":3,
+    "exposeRecoverDuration":1,
+
+    "smokeAlpha":0.5,
+    "smokeInnerRange":3,
+    "smokeOuterRange":5
+}

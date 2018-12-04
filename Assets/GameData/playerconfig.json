@@ -1,0 +1,9 @@
+{
+    "moveSpeed":3.125,
+    "speedUp":150,
+    "rotationSpeed":281.25,
+    "autoTime":160,
+    "crossRadius":0.2,
+    "animationRate":2,
+    "defaultHeight":0.5
+}

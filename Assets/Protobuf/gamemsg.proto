@@ -1,0 +1,888 @@
+syntax = "proto3";
+package pb;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.gostring_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.goproto_getters_all) = false;
+option (gogoproto.goproto_enum_prefix_all) = false;
+
+/*
+C - client
+S - gs
+B - bs
+D - db
+M - ms
+G - gate
+P - passport
+*/
+
+enum MSG {
+    MSG_None = 0;
+    // 角色相关
+    MSG_DeviceLogin = 1000;
+    MSG_CreateUser = 1001;
+    MSG_LoadUser = 1002;
+    MSG_UserRename = 1003;
+    MSG_AcctBind = 1004;
+    MSG_GetAcctInfo = 1005;
+    MSG_GMCMD = 1006;
+    MSG_PlayerSetting = 1007;
+    MSG_ConfirmRecon = 1008;
+    MSG_QueryScene = 1009;
+    MSG_GMReloadRet = 1010;
+    MSG_ReloadInter = 1011;
+    MSG_ChangeCharacter = 1012;
+    MSG_EchoTest = 1013;
+    MSG_Chat = 1014;
+
+    // Room相关
+    MSG_CreateRoom = 1100;
+    MSG_JoinRoom = 1101;
+    MSG_LeaveRoom = 1102;
+    MSG_RoomUpdate = 1103;
+    MSG_RoomReady = 1104;
+    MSG_RoomChangePos = 1105;
+    MSG_StartRoomGame = 1106;
+    MSG_AutoJoinRoom = 1107;
+    MSG_RoomChangeMap = 1108;
+    MSG_RoomKickUser = 1109;
+    MSG_RoomBeKicked = 1110;
+    MSG_RoomAddRobot = 1111;
+    MSG_RoomRemoveRobot = 1112;
+    MSG_RoomFullRobot = 1113;
+    MSG_AutoJoinCSRoom = 1114;
+
+    // 排队相关
+    MSG_BatQueMatchEnter = 1150;
+    MSG_BatQueMatchLeave = 1151;
+    MSG_BatQueMatchInfo = 1152;
+    MSG_BatQueMatchPreInfo = 1153;
+    MSG_BatQueMatchQueInfo = 1154;
+
+    // 好友消息
+    MSG_FriendAdd = 1200;
+    MSG_ApplyList = 1201;
+    MSG_FriendAccept = 1202;
+    MSG_FriendRefuse = 1203;
+    MSG_FriendDel = 1204;
+    MSG_FriendFind = 1205;
+    MSG_FriendList = 1206;
+    MSG_FriendUpdate = 1207;
+    MSG_FriendChat = 1208;
+    MSG_PullFriendMsg = 1209;
+
+    // 组队消息
+    MSG_TeamRequest = 1250;
+    MSG_TeamAccept = 1251;
+    MSG_LeaveTeam = 1252;
+    MSG_TeamKick = 1253;
+    MSG_TeamUpdate = 1254;
+    MSG_TeamReady = 1255;
+    MSG_TeamRefuse = 1256;
+    MSG_TeamCancel = 1257;
+    MSG_UpgradeLeader = 1258;
+
+    // 战场消息
+    MSG_BattleLogin = 2000;
+    MSG_BattleFrame = 2001;
+    MSG_EntityDisAppear = 2002;
+    MSG_GameLoading = 2003;
+    MSG_GameStart = 2004;
+    MSG_GameEnd = 2005;
+    MSG_PlayerQuitGame = 2006;
+    MSG_Settlement = 2007;
+    MSG_BattleChat = 2008;
+    MSG_BattleReconnect = 2009;
+    MSG_Watch = 2010;
+    MSG_BattleAllPlayer = 2011;
+    MSG_ReplaceEquip = 2012;
+    MSG_SupplySelect = 2013;
+    MSG_SingleVote = 2014;
+
+    MSG_CheckPointChoice = 2015;// 关卡选择
+    MSG_CheckPointResult = 2016;// 关卡选择结果
+    MSG_CheckPointCharChoice = 2017; // 关卡选择角色
+    MSG_CheckPointCharInfo = 2018; // 关卡角色选择信息
+    MSG_VoteResult = 2019;
+    MSG_BuyItem = 2020; // 购买道具
+    MSG_EnterPvPVote = 2021;
+    MSG_ComeBackWorld = 2022;
+    MSG_PvPCharChoice = 2023;
+    MSG_ItemError = 2024; // 道具相关错误
+    MSG_TalentChoose = 2025; // 天赋选择
+
+    // 语音消息
+    MSG_AddAudioChannel = 3000;
+    MSG_EnterAudioChannel = 3001;
+
+
+    MSG_AllDoGM = 5001;
+
+    // 测试消息
+    MSG_Test = 6001;
+}
+
+enum StartGameType {
+    StartByMatch = 0;
+    StartByRoom = 1;
+    StartBySupplyMatch = 2;
+}
+
+message BinBattleData {
+    uint32 sceneid = 1;
+    int32 bsid = 2;
+    uint32 mapid = 3;
+}
+
+message ExMoney {
+    int32 gold = 1; // 金币
+}
+
+message BinFrequentRole {
+    BinBattleData worldbsdata = 1; // bs数据用于重连
+    uint64 exp = 2; // 经验值
+    ExMoney exmoney = 3; // 货币相关 该类型可以为负数(后面会删除)
+    repeated int32 exmoneys = 4; // 货币相关 该类型可以为负数
+}
+
+message BinNormalRole {
+    string name = 1; // 名字
+    PlySetting setting = 2; // 系统设置
+    uint32 level = 3; // 等级
+    uint32 charid = 4; // 当前角色ID
+    uint32 playerversion = 5; // 玩家版本号
+}
+
+message C2S_DeviceLogin {
+    string ip = 1;
+    string mac = 2;
+    string password = 3;
+    string passmd5 = 4;
+    string account = 5;
+    string deviceid = 6;
+    string bindflag = 7;
+    int32 platform = 8;
+}
+
+message S2C_DeviceLogin {
+    uint32 number = 1;
+    uint32 usercount = 2;
+    string userids = 3;
+    string bindflag = 4;
+    string bindemail = 5;
+    string bindnick = 6;
+    uint32 devicefreeze = 7;
+    int32 passret = 8;
+    int32 errno = 9;
+}
+
+message PlySetting {
+    uint64 setting = 1;
+    uint64 tutorial = 2;
+}
+
+message C2S_CreateUser {
+    string ip = 1;
+    uint32 number = 2;
+    string name = 3;
+    string mac = 4;
+    string password = 5;
+    string account = 6;
+    string deviceid = 7;
+    PlySetting setting = 8;
+    uint32 charid = 9;
+    int32 platform = 10;
+}
+
+message S2C_CreateUser {
+    uint32 roleid = 1;
+    string name = 2;
+    uint32 idx = 3;
+    int32 errno = 4;
+    int32 passret = 5;
+}
+
+message C2S_LoadUser {
+    uint32 roleid = 1;
+    uint32 version = 2;
+    uint32 sversion = 3;
+    uint32 number = 4;
+    string deviceid = 5;
+    uint32 fversion = 6;
+    uint32 nversion = 7;
+    string reconntoken = 8;
+}
+
+message S2C_LoadUser {
+    int32 errno = 1;
+    BinFrequentRole frequent = 2;
+    BinNormalRole normal = 3;
+    uint32 pubmversion = 4;
+    uint32 serverid = 5;
+    int64 servertime = 6;
+    uint32 fversion = 7;
+    uint32 nversion = 8;
+}
+
+message GsRoomInfo {
+    uint64 roomid = 1;
+    uint32 owner = 2;
+    int32 mapid = 3;
+    int64 version = 4;
+    uint32 maxnum = 5;
+    uint32 grpmem = 6;
+}
+message GsRoomMember {
+    uint32 roleid = 1;
+    string name = 2;
+    uint32 grpid = 3;
+    uint32 pos = 4;
+    bool ready = 5;
+    uint32 operation = 6;
+    bool isrobot = 7;
+}
+
+message C2S_CreateRoom {
+    int32 mapid = 1;
+    string name = 2;
+    int64 version = 3;
+    uint32 grpmem = 4;
+}
+
+message S2C_CreateRoomRet {
+    int32 errno = 1;
+    GsRoomInfo roominfo = 2;
+    repeated GsRoomMember roommember = 3;
+}
+
+message C2S_JoinRoom {
+    string name = 1;
+    int64 version = 2;
+    uint64 roomid = 3;
+}
+
+message S2C_JoinRoomRet {
+    int32 errno = 1;
+    GsRoomInfo roominfo = 2;
+    repeated GsRoomMember roommember = 3;
+}
+
+message C2S_LeaveRoom {
+}
+
+message S2C_LeaveRoomRet {
+    int32 errno = 1;
+}
+
+message S2C_RoomUpdate {
+    GsRoomInfo roominfo = 1;
+    repeated GsRoomMember roommember = 2;
+}
+
+message C2S_RoomReady {
+    bool ready = 1;
+}
+
+message S2C_RoomReadyRet {
+    int32 errno = 1;
+    bool ready = 2;
+}
+
+message C2S_RoomChangePos {
+    uint32 pos = 1;
+}
+
+message S2C_RoomChangePosRet {
+    int32 errno = 1;
+    uint32 newpos = 2;
+}
+
+message C2S_RoomChangeMap {
+    uint32 mapid = 1;
+}
+
+message S2C_RoomChangeMapRet {
+    int32 errno = 1;
+    uint32 mapid = 2;
+}
+
+message C2S_StartRoomGame {
+
+}
+
+message S2C_StartRoomGame {
+     uint32 sceneid = 1;
+     int32 bsid = 2;
+     uint32 mapid = 3;
+     int32 errno = 4;
+     uint32 starttype = 5;
+ }
+
+message C2S_AutoJoinRoom {
+    int32 mapid = 1;
+    string name = 2;
+    int64 version = 3;
+    uint32 grpmem = 4;
+}
+
+message S2C_AutoJoinRoomRet {
+    int32 errno = 1;
+    GsRoomInfo roominfo = 2;
+    repeated GsRoomMember roommember = 3;
+}
+
+message C2S_AutoJoinCSRoom {
+    int32 mapid = 1;
+    string name = 2;
+    int64 version = 3;
+    uint32 grpnum = 4;
+}
+
+message C2S_RoomKickUser {
+    uint32 kicked = 1;
+}
+
+message S2C_RoomKickUserRet {
+    int32 errno = 1;
+    GsRoomInfo roominfo = 2;
+    repeated GsRoomMember roommember = 3;
+}
+
+message S2C_RoomBeKicked {
+}
+
+message C2S_RoomAddRobot {
+}
+
+message S2C_RoomAddRobot {
+    int32 errno = 1;
+    uint32 roleid = 2;
+}
+
+message C2S_RoomRemoveRobot {
+    uint32 roleid = 1;
+}
+
+message S2C_RoomRemoveRobot {
+    int32 errno = 1;
+}
+
+message C2S_RoomFullRobot {
+}
+
+message S2C_RoomFullRobot {
+    int32 errno = 1;
+}
+
+// 加入匹配团体类别
+enum BatMatchElemType {
+    BMET_Person = 0; // 个人匹配
+    BMET_Team = 1; // 组队匹配
+}
+
+// 添加队友类型
+enum PUBGAddTeamrType {
+    PUBG_ATT_CanAdd = 0; // 可以加人
+    PUBG_ATT_NotAdd = 1; // 不可加人
+    PUBG_ATT_MustAdd = 2; // 必须加人
+}
+
+// 匹配类型
+enum BatMatchStrategy {
+    BMS_PUBG = 0;// 大逃杀匹配
+    BMS_CheckPoint = 1;// 关卡匹配
+}
+
+message C2S_BatQueMatchEnter {
+    uint32 mapid = 1;
+    uint32 teammode = 2;
+    BatMatchElemType elemtype = 3;
+    PUBGAddTeamrType addteamr = 4;
+    bool onlyrobot = 5; // 人机
+    BatMatchStrategy strategy = 6;
+    uint32 schemeid = 7;// 关卡模式id
+    uint32 pointnum = 8;// 关卡编号
+    uint32 grade = 9;// 难度
+    bool sparring = 10;// 陪练
+}
+
+message S2C_BatQueMatchEnter {
+    C2S_BatQueMatchEnter enterinfo = 1 [(gogoproto.nullable) = false];
+    int32 errno = 2;
+}
+
+message C2S_BatQueMatchLeave {
+}
+
+message S2C_BatQueMatchLeave {
+    int32 errno = 1;
+    uint32 srcroleid = 2;
+    string srcrolename = 3;
+}
+
+message C2S_BatQueMatchInfo {
+}
+
+message S2C_BatQueMatchInfo {
+    bool inmatch = 1;
+    C2S_BatQueMatchEnter enterinfo = 2 [(gogoproto.nullable) = false];
+    int32 queueplynum = 3;
+    int32 needmaxply = 4;
+    int32 waitsecond = 5;
+    int32 aiopensecond = 6;
+}
+
+message C2S_BatQueMatchPreInfo {
+    uint32 teammode = 1;
+}
+
+message C2S_BatQueMatchQueInfo {
+    uint32 mapid = 1;
+}
+
+message S2C_BatQueMatchQueInfo {
+    uint32 mapid = 1;
+    message Mode {
+        uint32 teammode = 1;
+        int32 queueplynum = 2;
+        int32 needmaxply = 3;
+    }
+    repeated Mode infos = 2 [(gogoproto.nullable) = false];
+}
+
+message C2S_AcctBind {
+    string ip = 1;
+    string email = 2;
+    string password = 3;
+    string nick = 4;
+    string passmd5 = 5;
+    string bindtype = 6;
+}
+
+message S2C_AcctBind {
+    int32 errno = 1;
+    int32 dytnumber = 2;
+}
+
+message C2S_GetAcctInfo {
+    string ip = 1;
+    string email = 2;
+    string password = 3;
+    string passmd5 = 4;
+    string bindtype = 5;
+}
+
+message S2C_GetAcctInfo {
+    int32 errno = 1;
+    string number = 2;
+    string account = 3;
+    string password = 4;
+    string number_taget = 5;
+}
+
+message C2S_UserRename {
+    string ip = 1;
+    string newname = 2;
+}
+
+message S2C_UserRename {
+    string newname = 1;
+    uint32 idx = 2;
+    string relatename = 3;
+    int32 errno = 4;
+}
+
+message C2S_GMCommand {
+    string cmd = 1;
+    uint32 roleid = 2;
+    uint64 eid = 3;
+    bool bscmd = 4;
+}
+
+message S2C_GMCommandRet {
+    int32 ret = 1;
+}
+
+message S2C_GMReloadRet {
+    int32 errno = 1;
+    string filename = 2;
+    string servername = 3;
+}
+
+message C2S_PlayerSetting {
+    PlySetting setting = 1;
+}
+
+message C2S_ConfirmRecon {
+    bool confirm = 1;
+}
+
+message S2C_ConfirmRecon {
+    int32 errno = 1;
+}
+
+message C2S_QueryScene {
+
+}
+
+message S2C_QueryScene {
+    int32 errno = 1;
+}
+
+message ApplyInfo {
+    uint32 roleid = 1;
+    string name = 2;
+    string reason = 3;
+}
+
+message C2S_FriendAdd {
+    uint32 roleid = 1;
+    string reason = 2;
+}
+
+message S2C_FriendAdd {
+    int32 errno = 1;
+    uint32 roleid = 2;
+    ApplyInfo applyinfo = 3;
+}
+
+message C2S_Applylist {
+
+}
+
+message S2C_Applylist {
+    int32 errno = 1;
+    repeated ApplyInfo listdata = 2;
+}
+
+message C2S_FriendAccept {
+    uint32 roleid = 1;
+}
+
+message S2C_FriendAccept {
+    int32 errno = 1;
+    uint32 srcid = 2;
+    string name = 3;
+    bool online = 4;
+    uint32 destid = 5;
+    uint64 roomid = 6;
+    uint64 teamid = 7;
+    uint32 sceneid = 8;
+}
+
+message C2S_FriendRefuse {
+    uint32 roleid = 1;
+}
+
+message S2C_FriendRefuse {
+    int32 errno = 1;
+    uint32 roleid = 2;
+    string name = 3;
+}
+
+message C2S_FriendDel {
+    uint32 roleid = 1;
+}
+
+message S2C_FriendDel {
+    int32 errno = 1;
+    uint32 srcid = 2;
+    uint32 destid = 3;
+}
+
+message QueryInfo {
+    uint32 roleid = 1;
+    string name = 2;
+}
+
+message C2S_FriendFind {
+    uint32 roleid = 1;
+    string name = 2;
+}
+
+message S2C_FriendFind {
+    int32 errno = 1;
+    repeated QueryInfo queryinfo = 2;
+}
+
+message FriendInfo {
+    uint32 roleid = 1;
+    string name = 2;
+    bool online = 3;
+    uint64 roomid = 4;
+    uint64 teamid = 5;
+    uint32 sceneid = 6;
+}
+
+message C2S_FriendList {
+}
+
+message S2C_FriendList {
+    int32 errno = 1;
+    repeated FriendInfo friendinfo = 2;
+}
+
+
+message S2C_FriendUpdate {
+    FriendInfo friendinfo = 1;
+}
+
+message C2S_RequestTeam {
+    uint32 roleid = 1;
+    string name = 2;
+}
+
+message S2C_RequestTeam {
+    int32 errno = 1;
+    uint32 request = 2;
+    uint64 teamid = 3;
+    string name = 4;
+    uint32 roleid = 5;
+    uint32 destcharid = 6;
+}
+
+message C2S_AcceptTeam {
+    uint64 teamid = 1;
+    uint32 request = 2;
+}
+
+message S2C_AcceptTeam {
+    int32 errno = 1;
+    uint32 roleid = 2;
+    uint32 request = 3;
+}
+
+message C2S_LeaveTeam {
+
+}
+
+message S2C_LeaveTeam {
+    int32 errno = 1;
+    uint32 roleid = 2;
+}
+
+message C2S_KickTeam {
+    uint32 roleid = 1;
+}
+
+message S2C_KickTeam {
+    int32 errno = 1;
+    uint32 kicker = 2;
+    string name = 3;
+    uint32 roleid = 4;
+}
+
+message C2S_TeamReady {
+    bool ready = 1;
+}
+
+message S2C_TeamReady {
+    int32 errno = 1;
+}
+
+message C2S_TeamRefuse {
+    uint64 teamid = 1;
+    uint32 request = 2;
+}
+
+message S2C_TeamRefuse {
+    int32 errno = 1;
+    uint32 roleid = 2;
+    string name = 3;
+    uint32 request = 4;
+}
+
+message C2S_TeamCancel {
+    uint32 roleid = 1;
+}
+
+message S2C_TeamCancel {
+    int32 errno = 1;
+    uint32 roleid = 2;
+    uint64 teamid = 3;
+    uint32 request = 4;
+}
+
+message GsTeamInfo {
+    uint64 teamid = 1;
+    uint32 owner = 2;
+    uint32 maxnum = 3;
+    uint32 matchmode = 4;
+}
+
+message GsTeamMember {
+    uint32 roleid = 1;
+    string name = 2;
+    uint32 pos = 3;
+    bool accept = 4;
+    bool ready = 5;
+    uint32 request = 6;
+    bool logout = 7;
+    uint32 charid = 8;
+}
+
+message S2C_TeamUpdate {
+    GsTeamInfo infos = 1;
+    repeated GsTeamMember members = 2;
+}
+
+message C2S_UpgradeLeader {
+    uint32 roleid = 1;
+}
+
+message S2C_UpgradeLeader {
+    int32 errno = 1;
+}
+
+message S2C_ReloadInter {
+    int32 errno = 1;
+}
+
+message C2S_ChangeCharacter {
+    uint32 charid = 1;
+}
+
+message S2C_ChangeCharacter {
+    int32 errno = 1;
+    uint32 charid = 2;
+}
+
+message C2S_EchoTest {
+    bytes teststr = 1;
+}
+
+message S2C_EchoTest {
+    bytes teststr = 1;
+}
+
+enum ChatType {
+    CT_None = 0;
+    CT_Team = 1;
+    CT_Room = 2;
+    CT_World = 3;
+    CT_Battle = 4;
+    CT_Friend = 5;
+}
+
+message C2S_Chat {
+    ChatType type = 1;
+    string data = 2;
+}
+
+message S2C_Chat {
+    uint32 sender = 1;
+    string name = 2;
+    ChatType type = 3;
+    string data = 4;
+    int32 errno = 5;
+}
+
+message C2S_FriendChat {
+    uint32 destid = 1;
+    string data = 2;
+}
+
+message C2S_PullFriendMsg {
+}
+
+message S2C_FriendMsg {
+    message OneMessage {
+        uint32 sender = 1;
+        string name = 2;
+        int64 sendtime = 3;
+        string data = 4;
+    }
+    repeated OneMessage allmsg = 1;
+    int32 errno = 2;
+}
+
+message CheckPointOneChoice {
+    uint32 elemid = 1;
+    uint32 mapid = 2;
+    uint32 grade = 3;
+    uint32 quetype = 4;
+    bool isnext = 5;
+    repeated uint32 chooseteamr = 6;
+    uint32 openlimit = 7;//选择限制(0无,1Gold,2挑战次数)
+    uint32 rewardid = 8;
+}
+
+message CheckPointChoicesRole {
+    uint32 roleid = 1;
+    int32 goldnum = 2;
+}
+
+message S2C_CheckPointChoices {
+    repeated CheckPointOneChoice choices = 1;
+    uint32 schemeid = 2;
+    uint32 pointnum = 3;
+    int64 endsecond = 4;
+    uint64 collid = 5;
+    uint32 fromgs = 6;
+    int32 maxfailnum = 7;
+    int32 nowfailnum = 8;
+    int32 maxpointnum = 9;
+    int32 maxfinishnum = 10;
+    int32 nowfinishnum = 11;
+    repeated CheckPointChoicesRole roleinfo = 12;
+    int32 allfinishnum = 13;
+}
+
+message C2S_CheckPointChoose {
+    uint32 elemid = 1;// elemid为0即选择下一关
+    uint64 collid = 2;
+    uint32 fromgs = 3;
+}
+
+message S2C_CheckPointResult{
+    repeated CheckPointOneChoice choice = 1;
+    uint32 schemeid = 2;
+    uint32 pointnum = 3;
+    int32 finalelemid = 4;
+}
+
+message CheckPointInitChar {
+    uint32 charid = 1;
+    int32 hp = 2;
+    int32 shield = 3;
+    float speed = 4;
+    repeated uint32 finefeatures = 5;
+    repeated uint32 badfeatures = 6;
+    repeated uint32 initweapon = 7;
+    repeated uint32 defskill = 8;
+    int32 energy = 9;
+    int32 energymax = 10;
+}
+
+message S2C_CheckPointCharChoice {
+    repeated CheckPointInitChar choices = 1;
+    int64 endsecond = 2;
+    uint64 collid = 3;
+    uint32 fromgs = 4;
+}
+
+message C2S_CheckPointCharChoice {
+    uint32 charid = 1;
+    uint64 collid = 2;
+    uint32 fromgs = 3;
+}
+
+message C2S_CheckPointCharScan {
+    uint32 charid = 1;
+    uint64 collid = 2;
+    uint32 fromgs = 3;
+}
+
+message S2C_CheckPointCharInfo {
+    uint32 roleid = 1;
+    CheckPointInitChar info = 2;
+    bool confirm = 3;
+}
+
+message S2C_ComeBackWorld{
+	BinBattleData worldbsdata = 1;
+}

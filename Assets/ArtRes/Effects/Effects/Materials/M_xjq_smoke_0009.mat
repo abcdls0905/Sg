@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: M_xjq_smoke_0009
+  m_Shader: {fileID: 4800000, guid: de2b411c6c0b6a14aac1c59eb00a6c06, type: 3}
+  m_ShaderKeywords: _SPECTEST_NONE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AnisoNormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColor:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtyTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FakeLight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlassTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: a02043a901983364d800b7327ff53bc1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: 92655af61c7fd7c48bea67b62d46fe9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskB:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatCap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatcapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampRGB:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _T_mask:
+        m_Texture: {fileID: 2800000, guid: e7173928ccf3d6744bdb3eb8aab3d223, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex02:
+        m_Texture: {fileID: 2800000, guid: e7173928ccf3d6744bdb3eb8aab3d223, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AOIntensity: 0.5
+    - _ActionVarX: 0
+    - _ActionVarY: 0
+    - _Alpha: 1
+    - _AnisoOffset: 1
+    - _BaseColorIntensity: 1
+    - _BlackRate: 0.4
+    - _BlendFactor: 1
+    - _BlendMode: 0
+    - _BloomFactor: 1
+    - _ClipValue: 0.4
+    - _Cloak: 0
+    - _CloakAlpha: 0.5
+    - _CloakPower: 10
+    - _CubeIntensity: 0.15
+    - _CullMode: 0
+    - _Cutoff: 0.5
+    - _DirtyIntensity: -0.01
+    - _Dissolve: 0
+    - _DissolveEdge: 0.54
+    - _DissolveThreshold: 2
+    - _DstBlend: 10
+    - _Emission: 3
+    - _EmissionMulti: 1
+    - _EnableNormalMap: 0
+    - _FakeLightIntensity: 1
+    - _FlowIntensity: 1
+    - _FlowSpeedX: 0
+    - _FlowSpeedY: 0
+    - _FlowXSpeed: 0.2
+    - _FlowYSpeed: 0.2
+    - _FogAtten: 0.01
+    - _FogHeight: 40
+    - _FogIntensityLerp: 0
+    - _FogWeight: 0.4
+    - _Frequency: 1
+    - _FresnelMultiplier: 3
+    - _FresnelPower: 0
+    - _Glossiness: 0.8
+    - _HighLight: 0.3
+    - _HorizontalAmount: 1
+    - _Intensity: 0.01
+    - _InvFade: 1
+    - _LayerMixer: 0.1
+    - _LevelScale: 0.125
+    - _LightScale: 2
+    - _MMultiplier: 1
+    - _Magnitude: 0.01
+    - _MatCapIntensity: 1
+    - _MatcapIntensity: 0
+    - _Metallic: 0.5
+    - _Mode: 0
+    - _N_BY_KD: 24
+    - _N_BY_QD: 25
+    - _N_mask: 16
+    - _NoAlphaChannel: 0
+    - _NormalStrengh: 1
+    - _Offset: 0
+    - _RampOffset: 0
+    - _RampRegion: 0
+    - _ReflectionIntensity: 2
+    - _RimIntensity: 1
+    - _RimPower: 4
+    - _RotSpeed: 0
+    - _Rotation: 0
+    - _RotationStart: 0
+    - _RotationX: 0
+    - _RotationY: 0
+    - _SSSFactor: 1.5
+    - _ScrollX: 0
+    - _ScrollY: 0
+    - _ShadowMap: 0
+    - _Shininess: 0.078125
+    - _Smoothness: 0.5
+    - _SpecTest: 0
+    - _Specular: 0
+    - _SpecularIntensity: 1
+    - _SpecularLevel: 128
+    - _Speed: 1
+    - _SrcBlend: 5
+    - _TestBlue: 0
+    - _UVRotation: 0
+    - _UseColor: 0
+    - _UseFog: 0
+    - _UseTexST: 0
+    - _VerticalAmount: 0.9
+    - _XSpeed: 1
+    - _XSpeed01: 1
+    - _XSpeed02: 0
+    - _XSpeedM: 0
+    - _YSpeed: 0
+    - _YSpeed01: 0
+    - _YSpeed02: 0
+    - _YSpeedM: -2
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _bHunt: 0
+    - _dissolve1: 1
+    - _dissolve2: 1
+    - _sssShadowIntensity: 0.5
+    m_Colors:
+    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
+    - _C_BYcolor: {r: 0.60294116, g: 0.057634063, b: 0.057634063, a: 1}
+    - _Center: {r: 0, g: 0, b: 0, a: 1}
+    - _Channel: {r: 1, g: 0, b: 0, a: 0}
+    - _CloakDir: {r: 1, g: 4, b: -13, a: 1}
+    - _Color: {r: 3, g: 3, b: 3, a: 1}
+    - _Color01: {r: 1, g: 1, b: 1, a: 1}
+    - _Color02: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorMask: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveColor: {r: 0.09910249, g: 0.24359412, b: 0.3455882, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _HighLightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HuntColor: {r: 1, g: 0, b: 0, a: 1}
+    - _InvWaveLength: {r: 0, g: 0, b: 0, a: 0}
+    - _LightDir: {r: 3.65, g: 6.34, b: 1.7, a: 0}
+    - _Normal: {r: 0, g: 0, b: 1, a: 0}
+    - _RampColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimDir: {r: 1, g: 1, b: 1, a: 1}
+    - _Scale: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.34, g: 0.31, b: 0.2, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SpecDir: {r: 1.5, g: 5.5, b: 0.5, a: 0}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
+    - _TintColor1: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _TintColor2: {r: 0.5, g: 0.5, b: 0.5, a: 1}
