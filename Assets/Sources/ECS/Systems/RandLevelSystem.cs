@@ -18,6 +18,7 @@ namespace Game
             var gameMaster = Contexts.Instance.game.gameMaster.entity;
             AudioManager.Instance.PlayAudio("Audio/bgm", gameMaster.view.gameObject, true);
             EventManager.Instance.AddEvent<LevelParam>(GEventType.EVENT_LEVELCHG, OnLevelChg);
+            EventManager.Instance.AddEvent<DesGroupParam>(GEventType.EVENT_BOXDESTORYGROUP, DestroyGroup);
         }
 
         void HandleRestartCommand(ref RestartCommand command, ulong entityId)
@@ -125,8 +126,6 @@ namespace Game
             gameMaster.coord.y = iy;
             AudioManager.Instance.PlayAudio("Audio/playstart", gameMaster.view.gameObject);
 
-            RandMonster();
-
             //出生动画
             EffectData effectData = new EffectData();
             effectData.name = "Prefabs/Effect/character_spawn";
@@ -205,6 +204,46 @@ namespace Game
             }
         }
 
+        bool GenerateBox()
+        {
+            RefreshEmptyGrid();
+            MapComponent mapComp = Contexts.Instance.game.map;
+            List<GameEntity> bornList = mapComp.bornList;
+            if (emptyList.Count > 0)
+            {
+                int index = Random.Range(0, emptyList.Count);
+                MapCoord coord = emptyList[index];
+
+                GameEntity boxEntity = Util.CreateBox(Util.GetEntityId());
+                Util.LoadBoxMainModel(boxEntity);
+                Util.InitializeBoxDir(boxEntity);
+                int randIndex = Random.Range(0, 10000) % (int)AkTurnDir.Ak_Max;
+                AkTurnDir eTurnDir = (AkTurnDir)randIndex;
+                Util.TurnDiceBox(boxEntity, eTurnDir);
+                Vector3 rot = Util.GetTurnDirRotation(eTurnDir);
+                boxEntity.transform.position = new Vector3(coord.iX, -0.5f, coord.iY);
+                rot += boxEntity.transform.rotation.eulerAngles;
+                boxEntity.transform.rotation = Quaternion.Euler(rot);
+                boxEntity.coord.x = coord.iX;
+                boxEntity.coord.y = coord.iY;
+
+                bornList.Add(boxEntity);
+
+                //effect
+                EffectData effectData = new EffectData();
+                effectData.name = "Prefabs/Effect/cube_spawn_01a";
+                effectData.position = boxEntity.transform.position;
+                effectData.lifeTime = 0.8f;
+                EffectComponent effectComp = Contexts.Instance.game.effect;
+                effectComp.effects.Add(effectData);
+
+                GameEntity master = Contexts.Instance.game.gameMaster.entity;
+                AudioManager.Instance.PlayAudio("Audio/boxborn", master.view.gameObject);
+                return true;
+            }
+            return false;
+        }
+
         void UpdateRandBorn()
         {
             MapComponent mapComp = Contexts.Instance.game.map;
@@ -216,37 +255,14 @@ namespace Game
             if (lastTime >= randTime / 1000)
             {
                 lastTime = 0;
-                RefreshEmptyGrid();
-                if (emptyList.Count > 0)
+                if (GenerateBox())
                 {
-                    int index = Random.Range(0, emptyList.Count);
-                    MapCoord coord = emptyList[index];
-
-                    GameEntity boxEntity = Util.CreateBox(Util.GetEntityId());
-                    Util.LoadBoxMainModel(boxEntity);
-                    Util.InitializeBoxDir(boxEntity);
-                    int randIndex = Random.Range(0, 10000) % (int)AkTurnDir.Ak_Max;
-                    AkTurnDir eTurnDir = (AkTurnDir)randIndex;
-                    Util.TurnDiceBox(boxEntity, eTurnDir);
-                    Vector3 rot = Util.GetTurnDirRotation(eTurnDir);
-                    boxEntity.transform.position = new Vector3(coord.iX, -0.5f, coord.iY);
-                    rot += boxEntity.transform.rotation.eulerAngles;
-                    boxEntity.transform.rotation = Quaternion.Euler(rot);
-                    boxEntity.coord.x = coord.iX;
-                    boxEntity.coord.y = coord.iY;
-
-                    bornList.Add(boxEntity);
-
-                    //effect
-                    EffectData effectData = new EffectData();
-                    effectData.name = "Prefabs/Effect/cube_spawn_01a";
-                    effectData.position = boxEntity.transform.position;
-                    effectData.lifeTime = 0.8f;
-                    EffectComponent effectComp = Contexts.Instance.game.effect;
-                    effectComp.effects.Add(effectData);
-
-                    GameEntity master = Contexts.Instance.game.gameMaster.entity;
-                    AudioManager.Instance.PlayAudio("Audio/boxborn", master.view.gameObject);
+                    levelComp.randBox++;
+                    if (levelComp.randBox > levelConfig.randMonster)
+                    {
+                        levelComp.randBox = 0;
+                        RandMonster();
+                    }
                 }
                 else
                 {
@@ -296,7 +312,46 @@ namespace Game
                 levelComp.randTime = 1000;
                 levelComp.stableTime = 2000;
             }
-            RandMonster();
+        }
+
+        int GetBoxCount()
+        {
+            int count = 0;
+            MapComponent mapComp = Contexts.Instance.game.map;
+            for (int i = 0; i < mapComp.mapWidth; i++)
+            {
+                for (int j = 0; j < mapComp.mapHeight; j++)
+                {
+                    GameEntity entity = mapComp.mapData[j, i];
+                    if (entity != null)
+                        count++;
+                }
+            }
+            return count;
+        }
+
+        //应急刷新策略
+        void DestroyGroup(ref DesGroupParam param)
+        {
+            int count = 0;
+            var mapComp = Contexts.Instance.game.map;
+            for (int j = 0; j < param.boxes.Count; j++)
+            {
+                GameEntity entity = param.boxes[j];
+                if (entity.box.isPositive)
+                    count++;
+            }
+            int boxCount = GetBoxCount();
+            int remain = boxCount - param.boxes.Count;
+            var levelCfg = DataManager.Instance.levelConfig.Data;
+            if (remain < levelCfg.urgentNum)
+            {
+                int addNum = count + levelCfg.urgentAdd;
+                for (int i = 0; i < addNum; i++)
+                {
+                    GenerateBox();
+                }
+            }
         }
 
         public void FixedExecute()

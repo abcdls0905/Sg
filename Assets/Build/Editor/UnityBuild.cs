@@ -66,7 +66,7 @@ namespace GameBuild
                     case BuildTarget.StandaloneWindows64:
                         {
                             //RenameResourcesDir(false);
-                            BuildPipeline.BuildPlayer(BuildUtility.GetBuildScenes(), Application.dataPath + "/../Output/sg.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
+                            BuildPipeline.BuildPlayer(BuildUtility.GetBuildScenes(), Application.dataPath + "/../sg/sg.exe", BuildTarget.StandaloneWindows64, BuildOptions.None);
                             //RenameResourcesDir(true);
                         }
                         break;

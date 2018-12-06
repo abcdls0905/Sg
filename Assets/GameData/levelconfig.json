@@ -9,5 +9,7 @@
     "difficultyBox":30,
     "levelOne":10,
     "levelTwo":18,
-
+    "urgentNum":25,
+    "urgentAdd":5,
+    "randMonster":5,
 }

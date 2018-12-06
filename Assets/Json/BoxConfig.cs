@@ -41,5 +41,8 @@ namespace GameJson
         public int difficultyBox;
         public int levelOne;
         public int levelTwo;
+        public int urgentNum;
+        public int urgentAdd;
+        public int randMonster;
     }
 }
