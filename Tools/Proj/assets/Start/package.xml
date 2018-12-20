@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="cvto320r" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="b4gpp2s" name="ComProgress.xml" path="/components/"/>
+    <component id="b4gpp3i" name="StartLoadingPage.xml" path="/pages/" exported="true"/>
+    <component id="b4gpp3j" name="ComProgressY.xml" path="/components/"/>
+    <image id="b4gpp3k" name="Public_Bar_Loading2.png" path="/images/" scale="9grid" scale9grid="10,4,18,4"/>
+    <image id="b4gpp3l" name="Public_Bar_Loading1.png" path="/images/"/>
+    <image id="b4gpp52" name="Loading_Img_Line.png" path="/images/Loading/" scale="9grid" scale9grid="110,3,220,6"/>
+    <component id="gtxvp6j" name="StartLoginPage.xml" path="/pages/" exported="true"/>
+    <image id="11khzp8z" name="Package_Sign_JianTou.png" path="/images/Loading/"/>
+    <component id="l48rzpfd" name="BtnSetting.xml" path="/components/"/>
+    <image id="vsu7lzpg5" name="UI_zb_button1.png" path="/images/"/>
+    <image id="vsu7lzpg6" name="UI_zb_fanhui_button.png" path="/images/"/>
+    <image id="vsu7lzpg7" name="UI_zb_kaishi_button.png" path="/images/"/>
+    <image id="vsu7lzpg8" name="UI_zb_touxiang.png" path="/images/"/>
+    <image id="vsu7lzpg9" name="UI_zb_shezhi.png" path="/images/"/>
+    <image id="vsu7lzpga" name="UI_zb_liangsesaizi.png" path="/images/"/>
+    <image id="vsu7lzpgb" name="UI_zb_sansesaizi.png" path="/images/"/>
+    <component id="vsu7lzpgc" name="BtnModeT.xml" path="/components/"/>
+    <component id="vsu7lzpgd" name="ModeComp.xml" path="/components/"/>
+    <component id="vsu7lzpge" name="BtnModeTh.xml" path="/components/"/>
+    <component id="vsu7lzpgf" name="NumberComp.xml" path="/components/"/>
+    <component id="vsu7lzpgg" name="PlayComp.xml" path="/components/"/>
+    <component id="vsu7lzpgh" name="BtnNumSeven.xml" path="/components/"/>
+    <component id="vsu7lzpgi" name="BtnArrow.xml" path="/components/"/>
+    <component id="vsu7lzpgj" name="BtnPlay.xml" path="/components/"/>
+    <component id="vsu7lzpgk" name="BtnNumTen.xml" path="/components/"/>
+    <image id="xgitlzpgl" name="Package_Frame_DiKuangB.png" path="/images/"/>
+    <image id="ecoqlzpgp" name="loading.png" path="/images/" atlas="alone"/>
+    <image id="s3hwlzpgq" name="临时大厅.jpg" path="/images/" atlas="alone"/>
+    <image id="fcnwlzpgs" name="game start .png" path="/images/" scale="" atlas="3"/>
+    <image id="gg8tlzpif" name="mianUI_backpanel.png" path="/images/" scale="" atlas="alone"/>
+    <image id="gg8tlzpig" name="crystal_add.png" path="/images/crystal_count/" scale="" atlas="3"/>
+    <image id="gg8tlzpih" name="crystal_count_panel.png" path="/images/crystal_count/" scale="" atlas="3"/>
+    <image id="gg8tlzpii" name="crystal_icon.png" path="/images/crystal_count/" scale="" atlas="3"/>
+    <image id="gg8tlzpij" name="0.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpik" name="1.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpil" name="2.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpim" name="3.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpin" name="4.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpio" name="5.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpip" name="6.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpiq" name="7.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpir" name="8.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpis" name="9.png" path="/images/crystal_count/number/" exported="true"/>
+    <image id="gg8tlzpit" name="bast_sale.png" path="/images/funtion_icon/" scale="" atlas="3"/>
+    <image id="gg8tlzpiu" name="New_item.png" path="/images/funtion_icon/" scale="" atlas="3"/>
+    <image id="gg8tlzpiv" name="WatchMovies.png" path="/images/funtion_icon/" scale="" atlas="3"/>
+    <image id="gg8tlzpiw" name="BAST_.png" path="/images/High_score/" scale="" atlas="3"/>
+    <image id="gg8tlzpix" name="high_score_backpanel.png" path="/images/High_score/" scale="" atlas="4"/>
+    <image id="gg8tlzpiy" name="0.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpiz" name="1.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj0" name="2.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj1" name="3.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj2" name="4.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj3" name="5.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj4" name="6.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj5" name="7.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj6" name="8.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj7" name="9.png" path="/images/High_score/numbers/" exported="true"/>
+    <image id="gg8tlzpj8" name="LV.png" path="/images/level_statu/" scale="" atlas="3"/>
+    <image id="gg8tlzpj9" name="0.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpja" name="1.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjb" name="2.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjc" name="3.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjd" name="4.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpje" name="5.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjf" name="6.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjg" name="7.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjh" name="8.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpji" name="9.png" path="/images/level_statu/number/"/>
+    <image id="gg8tlzpjj" name="statu.png" path="/images/level_statu/" scale="" atlas="3"/>
+    <image id="gg8tlzpjk" name="statu_panel.png" path="/images/level_statu/" scale="" atlas="3"/>
+    <image id="gg8tlzpjl" name="tips.png" path="/images/level_statu/" scale="" atlas="3"/>
+    <image id="gg8tlzpjm" name="back_panel_hideenbutton.png" path="/images/shortcut/" scale="" atlas="3"/>
+    <image id="gg8tlzpjn" name="disableAD.png" path="/images/shortcut/" scale="" atlas="3"/>
+    <image id="gg8tlzpjo" name="Facebool.png" path="/images/shortcut/" scale="" atlas="3"/>
+    <image id="gg8tlzpjp" name="shop.png" path="/images/shortcut/" scale="" atlas="3"/>
+    <image id="gg8tlzpjq" name="shortcut_backpanel.png" path="/images/shortcut/" scale="" atlas="3"/>
+    <image id="gg8tlzpjr" name="Appraise.png" path="/images/system_icons/"/>
+    <image id="gg8tlzpjs" name="bottom_bar.png" path="/images/system_icons/"/>
+    <image id="gg8tlzpjt" name="leadboard_icon.png" path="/images/system_icons/"/>
+    <image id="gg8tlzpju" name="option_icon.png" path="/images/system_icons/" scale="" atlas="3"/>
+    <image id="gg8tlzpjv" name="Tutprial.png" path="/images/system_icons/" scale="" atlas="3"/>
+    <component id="xdfulzpjw" name="ComRTBar.xml" path="/components/"/>
+    <component id="xdfulzpjx" name="BtnAddDiamond.xml" path="/components/"/>
+    <component id="xdfulzpjy" name="ComRBar.xml" path="/components/"/>
+    <component id="xdfulzpjz" name="BtnDiamond.xml" path="/components/"/>
+    <component id="xdfulzpk0" name="BtnMoive.xml" path="/components/"/>
+    <component id="xdfulzpk1" name="ComLevel.xml" path="/components/"/>
+    <component id="xdfulzpk2" name="ComLTBar.xml" path="/components/"/>
+    <component id="xdfulzpk3" name="BtnLeftBar.xml" path="/components/"/>
+    <component id="xdfulzpk4" name="ComLDBar.xml" path="/components/"/>
+    <component id="xdfulzpk5" name="BtnTrophy.xml" path="/components/"/>
+    <component id="xdfulzpk6" name="BtnAppraise.xml" path="/components/"/>
+    <component id="xdfulzpk7" name="BtnTutprial.xml" path="/components/"/>
+  </resources>
+  <publish name="Start" maxAtlasSize="1024" extractAlpha="true">
+    <atlas name="default" index="0"/>
+    <atlas name="guide" index="1"/>
+    <atlas name="main" index="2"/>
+    <atlas name="none2" index="3"/>
+    <atlas name="none3" index="4"/>
+    <atlas name="none4" index="5"/>
+    <atlas name="none5" index="6"/>
+  </publish>
+</packageDescription>

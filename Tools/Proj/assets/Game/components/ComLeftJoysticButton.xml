@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1,1" extention="Button">
+  <controller name="button" pages="1,up,0,down" selected="0"/>
+  <displayList>
+    <image id="n8_9nj2" name="up" src="9nj2y67tl7" xy="-53,-76" size="107,107">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <image id="n9_e404" name="down" src="9nj2y67tl7" xy="-53,-53" size="107,107">
+      <gearDisplay controller="button" pages="0"/>
+    </image>
+  </displayList>
+  <Button/>
+</component>

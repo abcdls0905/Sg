@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,400">
+  <displayList>
+    <image id="n1_xdfu" name="n1" src="gg8tlzpjk" fileName="images/level_statu/statu_panel.png" xy="46,64"/>
+    <image id="n0_xdfu" name="n0" src="gg8tlzpjj" fileName="images/level_statu/statu.png" xy="57,76"/>
+    <image id="n2_xdfu" name="n2" src="gg8tlzpj8" fileName="images/level_statu/LV.png" xy="161,238"/>
+    <image id="n3_xdfu" name="n3" src="gg8tlzpjf" fileName="images/level_statu/number/6.png" xy="140,163"/>
+    <image id="n4_xdfu" name="n4" src="gg8tlzpjf" fileName="images/level_statu/number/6.png" xy="193,163"/>
+    <image id="n5_xdfu" name="n5" src="gg8tlzpjl" fileName="images/level_statu/tips.png" xy="301,40"/>
+  </displayList>
+</component>

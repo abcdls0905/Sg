@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="614,78">
+  <displayList>
+    <image id="n1_xdfu" name="n1" src="xdfuy67tmr" fileName="images/highscore_bar/highscore_panel.png" xy="0,0"/>
+    <image id="n0_xdfu" name="n0" src="xdfuy67tmq" fileName="images/highscore_bar/coin .png" xy="288,7"/>
+    <loader id="n7_rdxu" name="ImgNum0" xy="366,5" size="38,72" url="ui://dxn6078hxdfuy67tms" align="center" vAlign="middle"/>
+    <loader id="n8_rdxu" name="ImgNum1" xy="402,6" size="38,72" url="ui://dxn6078hxdfuy67tmt" align="center" vAlign="middle"/>
+    <loader id="n9_rdxu" name="ImgNum2" xy="440,6" size="38,72" url="ui://dxn6078hxdfuy67tmu" align="center" vAlign="middle"/>
+    <loader id="n10_rdxu" name="ImgNum3" xy="476,6" size="38,72" url="ui://dxn6078hxdfuy67tmv" align="center" vAlign="middle"/>
+    <loader id="n11_rdxu" name="ImgNum4" xy="511,6" size="38,72" url="ui://dxn6078hxdfuy67tmw" align="center" vAlign="middle"/>
+    <loader id="n12_rdxu" name="ImgNum5" xy="549,6" size="38,72" url="ui://dxn6078hxdfuy67tmx" align="center" vAlign="middle"/>
+  </displayList>
+</component>

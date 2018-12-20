@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1344,750">
+  <displayList>
+    <loader id="n0_mgn8" name="n0" xy="0,0" size="1344,750" url="ui://k6y025mzmgn81" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <text id="n2_mgn8" name="TextError" xy="19,19" size="1305,717" fontSize="24" color="#ff0000" autoSize="none" text="12312321312312"/>
+  </displayList>
+</component>

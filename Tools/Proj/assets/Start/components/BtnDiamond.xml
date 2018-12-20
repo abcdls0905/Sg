@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="156,156" pivot="0.5,0.5" extention="Button">
+  <displayList>
+    <image id="n0_xdfu" name="n0" src="gg8tlzpit" fileName="images/funtion_icon/bast_sale.png" xy="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.80"/>
+</component>

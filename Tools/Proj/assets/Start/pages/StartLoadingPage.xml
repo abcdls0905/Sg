@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" adaptationTest="FitSize">
+  <displayList>
+    <loader id="n6_djyk" name="bg" xy="0,0" size="1334,750" url="ui://cvto320recoqlzpgp" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <component id="n12_dxif" name="comProgress" src="b4gpp3j" xy="275,698">
+      <relation target="n6_djyk" sidePair="center-center,top-bottom"/>
+    </component>
+  </displayList>
+</component>

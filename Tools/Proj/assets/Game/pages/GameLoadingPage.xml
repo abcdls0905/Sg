@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" adaptationTest="FitSize">
+  <displayList>
+    <graph id="n11_fgzm" name="bgBlack" xy="-93,0" pivot="0.5,0.5" size="1520,750" type="rect" lineSize="0" fillColor="#ff333333">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <loader id="n6_djyk" name="bg" xy="162,120" size="1010,510" url="ui://dxn6078hnbsyy67rph" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="n11_fgzm" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n12_dxif" name="comProgress" src="muhxy67t1d" xy="282,670">
+      <relation target="n6_djyk" sidePair="center-center,top-bottom"/>
+    </component>
+  </displayList>
+</component>

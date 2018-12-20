@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" adaptationTest="FitSize">
+  <displayList>
+    <image id="n28_xdfu" name="n28" src="gg8tlzpif" fileName="images/mianUI_backpanel.png" xy="0,0"/>
+    <component id="n35_xdfu" name="n35" src="xdfulzpk4" fileName="components/ComLDBar.xml" xy="0,645"/>
+    <component id="n33_xdfu" name="n33" src="xdfulzpk2" fileName="components/ComLTBar.xml" xy="0,0"/>
+    <component id="n29_xdfu" name="BtnPlay" src="vsu7lzpgj" fileName="components/BtnPlay.xml" xy="658,571"/>
+    <component id="n30_xdfu" name="n30" src="xdfulzpjw" fileName="components/ComRTBar.xml" xy="918,0"/>
+    <component id="n31_xdfu" name="n31" src="xdfulzpjy" fileName="components/ComRBar.xml" xy="1161,152"/>
+    <component id="n32_xdfu" name="n32" src="xdfulzpk1" fileName="components/ComLevel.xml" xy="705,158"/>
+    <component id="n34_xdfu" name="n34" src="xdfulzpk3" fileName="components/BtnLeftBar.xml" xy="0,307"/>
+  </displayList>
+  <transition name="t0"/>
+</component>

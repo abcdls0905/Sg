@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="k6y025mz" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="mgn80" name="GameLogPage.xml" path="/page/" exported="true"/>
+    <image id="mgn81" name="Package_Frame_DiKuangB.png" path="/Image/"/>
+  </resources>
+  <publish name="Common"/>
+</packageDescription>

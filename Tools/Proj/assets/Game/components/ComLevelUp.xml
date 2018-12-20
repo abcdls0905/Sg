@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1096,750">
+  <displayList>
+    <image id="n0_ihei" name="n0" src="iheiy67tom" fileName="images/level_up/black_mask.png" xy="0,0"/>
+    <image id="n1_ihei" name="n1" src="iheiy67ton" fileName="images/level_up/glow.png" xy="295,112"/>
+    <image id="n3_ihei" name="n3" src="iheiy67toz" fileName="images/level_up/stars.png" xy="304,352"/>
+    <image id="n2_ihei" name="n2" src="iheiy67too" fileName="images/level_up/LEVEL UP.png" xy="433,392"/>
+    <loader id="n4_ihei" name="ImgNum0" xy="445,253" size="101,124" url="ui://dxn6078hiheiy67toq" align="center" vAlign="middle"/>
+    <loader id="n5_ihei" name="ImgNum1" xy="546,253" size="101,124" url="ui://dxn6078hiheiy67tos" align="center" vAlign="middle"/>
+  </displayList>
+</component>

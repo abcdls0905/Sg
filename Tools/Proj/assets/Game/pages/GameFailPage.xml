@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750">
+  <displayList>
+    <image id="n0_9nj2" name="n0" src="9nj2y67tl2" xy="315,174"/>
+    <component id="n2_9nj2" name="BtnAgain" src="9nj2y67tlm" xy="386,488">
+      <Button title="再来一次"/>
+    </component>
+    <component id="n1_9nj2" name="BtnLeave" src="9nj2y67tlm" xy="698,488"/>
+  </displayList>
+</component>

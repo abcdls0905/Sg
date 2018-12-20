@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="928,100">
+  <displayList>
+    <image id="n1_xdfu" name="n1" src="gg8tlzpjs" fileName="images/system_icons/bottom_bar.png" xy="0,0"/>
+    <component id="n2_xdfu" name="n2" src="xdfulzpk6" fileName="components/BtnAppraise.xml" xy="257,7"/>
+    <component id="n3_xdfu" name="n3" src="l48rzpfd" fileName="components/BtnSetting.xml" xy="30,11"/>
+    <component id="n4_xdfu" name="n4" src="xdfulzpk5" fileName="components/BtnTrophy.xml" xy="137,9"/>
+    <component id="n5_xdfu" name="n5" src="xdfulzpk7" fileName="components/BtnTutprial.xml" xy="376,9"/>
+  </displayList>
+</component>

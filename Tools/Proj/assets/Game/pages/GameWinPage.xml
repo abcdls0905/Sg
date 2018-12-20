@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750">
+  <displayList>
+    <image id="n0_9nj2" name="n0" src="9nj2y67tl3" xy="301,105"/>
+    <text id="n1_9nj2" name="n1" xy="503,159" size="388,79" fontSize="66" color="#ff7c24" autoSize="none" bold="true" singleLine="true" text="大获全胜！"/>
+    <text id="n2_9nj2" name="TextScore" xy="554,242" size="275,57" fontSize="46" color="#44d596" autoSize="none" text="Score:21500&#xA;"/>
+    <image id="n3_9nj2" name="n3" src="9nj2y67tli" xy="526,314"/>
+    <image id="n4_9nj2" name="n4" src="9nj2y67tli" xy="717,313"/>
+    <image id="n5_9nj2" name="n5" src="9nj2y67tlk" xy="736,331"/>
+    <image id="n6_9nj2" name="n6" src="9nj2y67tlj" xy="546,331"/>
+    <component id="n8_9nj2" name="BtnAgain" src="9nj2y67tlm" xy="398,591">
+      <Button title="再来一次"/>
+    </component>
+    <component id="n7_9nj2" name="BtnLeave" src="9nj2y67tlm" xy="720,591">
+      <Button title="离开"/>
+    </component>
+    <text id="n9_9nj2" name="TextGlod" xy="519,464" size="166,57" fontSize="46" color="#44d596" align="center" vAlign="middle" autoSize="none" text="+1200&#xA;"/>
+    <text id="n10_9nj2" name="TextBlock" xy="701,464" size="168,57" fontSize="46" color="#44d596" align="center" vAlign="middle" autoSize="none" text="10/30"/>
+  </displayList>
+</component>

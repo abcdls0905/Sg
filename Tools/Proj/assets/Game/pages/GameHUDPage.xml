@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" designImageLayer="1" bgColorEnabled="true" bgColor="#999999" adaptationTest="FitSize">
+  <controller name="state" pages="0,normal,1,down" selected="0"/>
+  <displayList>
+    <image id="n184_xdfu" name="n184" src="xdfuy67tm8" fileName="images/background_pattern.png" xy="0,0" size="1334,750" visible="false"/>
+    <component id="n188_xdfu" name="ComRTBar" src="xdfuy67to2" fileName="components/ComRTBar.xml" xy="720,0"/>
+    <component id="n162_9nj2" name="BtnPause" src="9nj2y67tl5" fileName="components/ComPause.xml" xy="1223,82">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n163_9nj2" name="BtnSetting" src="9nj2y67tl6" fileName="components/ComSetting.xml" xy="1378,81">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n167_t7h8" name="BtnDown" src="t7h8y67tls" fileName="components/ComCamera.xml" xy="1104,95">
+      <gearDisplay controller="state" pages="0"/>
+      <relation target="" sidePair="right-right,top-top"/>
+      <Button title="下拉"/>
+    </component>
+    <component id="n168_t7h8" name="BtnUp" src="t7h8y67tls" fileName="components/ComCamera.xml" xy="1160,122">
+      <gearDisplay controller="state" pages="1"/>
+      <relation target="" sidePair="right-right,top-top"/>
+      <Button title="还原"/>
+    </component>
+    <component id="n181_gao5" name="ComItem1" src="gao5y67tm5" fileName="components/ComItem1.xml" xy="933,647">
+      <relation target="" sidePair="left-left,bottom-bottom"/>
+    </component>
+    <component id="n182_gao5" name="ComItem2" src="gao5y67tm6" fileName="components/ComItem2.xml" xy="1071,647">
+      <relation target="" sidePair="left-left,bottom-bottom"/>
+    </component>
+    <component id="n183_gao5" name="ComItem3" src="gao5y67tm7" fileName="components/ComItem3.xml" xy="1207,647">
+      <relation target="" sidePair="left-left,bottom-bottom"/>
+    </component>
+    <component id="n186_xdfu" name="ComLTBar" src="xdfuy67to0" fileName="components/ComLTBar.xml" xy="0,0"/>
+    <text id="n155_9nj2" name="n155" xy="306,46" size="126,47" visible="false" fontSize="38" color="#ffffff" autoSize="none" bold="true" singleLine="true" text="50120">
+      <relation target="" sidePair="left-left,top-top"/>
+    </text>
+    <text id="n169_8pbm" name="TextDebug" xy="7,153" size="433,337" visible="false" fontSize="20" color="#ff0000" autoSize="none" bold="true" text="FPS:60&#xA;MoveSpeed:3.5"/>
+    <text id="n171_ryf0" name="textLevel" xy="306,1" size="126,47" visible="false" fontSize="38" color="#ffffff" autoSize="none" bold="true" singleLine="true" text="1">
+      <relation target="" sidePair="left-left,top-top"/>
+    </text>
+    <component id="n187_xdfu" name="n187" src="xdfuy67to1" fileName="components/BtnMoive.xml" xy="0,105"/>
+    <component id="n189_rdxu" name="ComTarBlue" src="rdxuy67to6" fileName="components/ComTargetBlue.xml" xy="649,20"/>
+    <component id="n190_rdxu" name="ComTarRed" src="rdxuy67to7" fileName="components/ComTargetRed.xml" xy="780,20"/>
+    <component id="n191_rdxu" name="ComTarYellow" src="jpk9y67tm2" fileName="components/ComTargetYellow.xml" xy="522,20"/>
+  </displayList>
+</component>

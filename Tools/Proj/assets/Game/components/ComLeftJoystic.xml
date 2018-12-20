@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="161,161">
+  <displayList>
+    <component id="n11_g21y" name="Center" src="f9zzy67rr7" xy="0,0" size="160,160"/>
+    <component id="n12_g21y" name="Button" src="f9zzy67rr6" xy="80,80"/>
+  </displayList>
+</component>

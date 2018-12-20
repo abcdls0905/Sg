@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="dxn6078h" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="i7uuc5z" name="GameRightJoystickPage.xml" path="/pages/" exported="true"/>
+    <component id="s0z4y67rdo" name="GameHUDPage.xml" path="/pages/" exported="true"/>
+    <component id="saiuy67rj6" name="GameLeftJoystic.xml" path="/pages/" exported="true"/>
+    <image id="jsdoy67rld" name="Battle_Btn_SheJiA.png" path="/images/Battle/" atlas="6"/>
+    <image id="jsdoy67rle" name="Battle_Btn_SheJiB.png" path="/images/Battle/" atlas="6"/>
+    <image id="jsdoy67rlj" name="Battle_Btn_YaoGanA.png" path="/images/Battle/" atlas="6"/>
+    <component id="f9zzy67rr5" name="ComLeftJoystic.xml" path="/components/"/>
+    <component id="f9zzy67rr6" name="ComLeftJoysticButton.xml" path="/components/"/>
+    <component id="f9zzy67rr7" name="ComLeftJoysticCenter.xml" path="/components/"/>
+    <image id="lmhky67s5t" name="Battle_Btn_YaoGanB.png" path="/images/Battle/"/>
+    <font id="p9hey67sl2" name="NoticeNumber.fnt" path="/Font/" exported="true"/>
+    <component id="b4gpy67t57" name="GameLoadingPage.xml" path="/pages/" exported="true"/>
+    <image id="v2vsy67t78" name="Battle_Btn_YaoPin.png" path="/images/Battle/"/>
+    <image id="upmyy67t8d" name="Battle_Btn_SheJi1F.png" path="/images/Battle/"/>
+    <component id="b46ey67tk8" name="GameMainUIPage.xml" path="/pages/" exported="true"/>
+    <image id="u5wcy67tkq" name="UI_zb_touxiang.png" path="/images/"/>
+    <image id="u5wcy67tkr" name="UI_zb_shezhi.png" path="/images/"/>
+    <image id="u5wcy67tks" name="UI_zandou_zhanting.png" path="/images/"/>
+    <image id="9nj2y67tkt" name="UI_zandou_xiaochuyanse.png" path="/images/"/>
+    <image id="9nj2y67tku" name="UI_zandou_sm.png" path="/images/"/>
+    <image id="9nj2y67tkv" name="UI_zandou_smw.png" path="/images/"/>
+    <image id="9nj2y67tkw" name="UI_zandou_zt_chongkai.png" path="/images/"/>
+    <image id="9nj2y67tkx" name="UI_zandou_zt_kaishi.png" path="/images/"/>
+    <image id="9nj2y67tky" name="UI_zandou_zt_zhuye.png" path="/images/"/>
+    <image id="9nj2y67tkz" name="UI_zandou_daoju2.png" path="/images/"/>
+    <image id="9nj2y67tl0" name="UI_zandou_daoju1.png" path="/images/"/>
+    <image id="9nj2y67tl1" name="UI_zandou_daoju3.png" path="/images/"/>
+    <image id="9nj2y67tl2" name="UI_js_shibai.png" path="/images/"/>
+    <image id="9nj2y67tl3" name="UI_js_sld.png" path="/images/"/>
+    <component id="9nj2y67tl4" name="ComLife.xml" path="/components/"/>
+    <component id="9nj2y67tl5" name="ComPause.xml" path="/components/"/>
+    <component id="9nj2y67tl6" name="ComSetting.xml" path="/components/"/>
+    <image id="9nj2y67tl7" name="UI_zandou_yaogans.png" path="/images/"/>
+    <image id="9nj2y67tl9" name="UI_zandou_yaoganxia.png" path="/images/"/>
+    <component id="9nj2y67tla" name="ComMain.xml" path="/components/"/>
+    <component id="9nj2y67tlb" name="ComRefresh.xml" path="/components/"/>
+    <component id="9nj2y67tlc" name="ComReStart.xml" path="/components/"/>
+    <component id="9nj2y67tld" name="GamePausePage.xml" path="/pages/" exported="true"/>
+    <image id="9nj2y67tle" name="UI_zandou_zt_di.png" path="/images/"/>
+    <component id="9nj2y67tlf" name="GameWinPage.xml" path="/pages/" exported="true"/>
+    <component id="9nj2y67tlg" name="GameFailPage.xml" path="/pages/" exported="true"/>
+    <image id="9nj2y67tli" name="UI_js_wpkuang.png" path="/images/"/>
+    <image id="9nj2y67tlj" name="UI_js_jb.png" path="/images/"/>
+    <image id="9nj2y67tlk" name="UI_js_xx.png" path="/images/"/>
+    <image id="9nj2y67tll" name="UI_js_quedin_button.png" path="/images/"/>
+    <component id="9nj2y67tlm" name="BtnLeave.xml" path="/components/"/>
+    <image id="gybxy67tln" name="Package_Frame_DiKuangB.png" path="/images/"/>
+    <component id="fjq4y67tlo" name="GameSettingPage.xml" path="/pages/" exported="true"/>
+    <component id="fjq4y67tlp" name="CtrlComp.xml" path="/components/"/>
+    <component id="r88ay67tlq" name="GamePopInfoPage.xml" path="/pages/" exported="true"/>
+    <component id="p83fy67tlr" name="ComPopCombo.xml" path="/components/" exported="true"/>
+    <component id="t7h8y67tls" name="ComCamera.xml" path="/components/"/>
+    <component id="sfmzy67tlt" name="BtnCommon.xml" path="/components/"/>
+    <image id="f4d0y67tlu" name="guanbi.png" path="/images/"/>
+    <image id="ecoqy67tlv" name="linshi_UI_yindao01.png" path="/images/" atlas="alone"/>
+    <image id="ecoqy67tlw" name="linshi_UI_zhezhao.png" path="/images/"/>
+    <component id="ecoqy67tlx" name="GameGuidePage.xml" path="/pages/" exported="true"/>
+    <component id="ryf0y67tly" name="ComPopScore.xml" path="/components/" exported="true"/>
+    <image id="jpk9y67tlz" name="TargetRed.png" path="/images/"/>
+    <image id="jpk9y67tm0" name="TargetYellow.png" path="/images/"/>
+    <image id="jpk9y67tm1" name="TargetBlue.png" path="/images/"/>
+    <component id="jpk9y67tm2" name="ComTargetYellow.xml" path="/components/"/>
+    <component id="gao5y67tm5" name="ComItem1.xml" path="/components/"/>
+    <component id="gao5y67tm6" name="ComItem2.xml" path="/components/"/>
+    <component id="gao5y67tm7" name="ComItem3.xml" path="/components/"/>
+    <image id="xdfuy67tm8" name="background_pattern.png" path="/images/" scale="" atlas="alone"/>
+    <image id="xdfuy67tm9" name="pasue_icon.png" path="/images/" scale="" atlas="1"/>
+    <image id="xdfuy67tma" name="WatchMovies.png" path="/images/" scale="" atlas="1"/>
+    <image id="xdfuy67tmb" name="bottom_panel.png" path="/images/funtion_icon/"/>
+    <image id="xdfuy67tmc" name="icon_glow.png" path="/images/funtion_icon/"/>
+    <image id="xdfuy67tmd" name="icon_panel.png" path="/images/funtion_icon/"/>
+    <image id="xdfuy67tme" name="item_icon_sample.png" path="/images/funtion_icon/"/>
+    <image id="xdfuy67tmf" name="0.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmg" name="1.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmh" name="2.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmi" name="3.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmj" name="4.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmk" name="5.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tml" name="6.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmm" name="7.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmn" name="8.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmo" name="9.png" path="/images/funtion_icon/numbers/" exported="true"/>
+    <image id="xdfuy67tmp" name="number_panel.png" path="/images/funtion_icon/"/>
+    <image id="xdfuy67tmq" name="coin .png" path="/images/highscore_bar/" scale="" atlas="1"/>
+    <image id="xdfuy67tmr" name="highscore_panel.png" path="/images/highscore_bar/" scale="" atlas="1"/>
+    <image id="xdfuy67tms" name="ImgScore0.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmt" name="ImgScore1.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmu" name="ImgScore2.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmv" name="ImgScore3.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmw" name="ImgScore4.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmx" name="ImgScore5.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmy" name="ImgScore6.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tmz" name="ImgScore7.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tn0" name="ImgScore8.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tn1" name="ImgScore9.png" path="/images/highscore_bar/numbers/" exported="true"/>
+    <image id="xdfuy67tn2" name="back_panel.png" path="/images/level_panel/" scale="" atlas="1"/>
+    <image id="xdfuy67tn3" name="LEVEL.png" path="/images/level_panel/" scale="" atlas="1"/>
+    <image id="xdfuy67tn4" name="ImgLevel0.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tn5" name="ImgLevel1.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tn6" name="ImgLevel2.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tn7" name="ImgLevel3.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tn8" name="ImgLevel4.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tn9" name="ImgLevel5.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tna" name="ImgLevel6.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tnb" name="ImgLevel7.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tnc" name="ImgLevel8.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tnd" name="ImgLevel9.png" path="/images/level_panel/numbers/" exported="true"/>
+    <image id="xdfuy67tne" name="moon.png" path="/images/objective/" scale="" atlas="1"/>
+    <image id="xdfuy67tnf" name="ImgTar0.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tng" name="ImgTar1.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnh" name="ImgTar2.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tni" name="ImgTar3.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnj" name="ImgTar4.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnk" name="ImgTar5.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnl" name="ImgTar6.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnm" name="ImgTar7.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnn" name="ImgTar8.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tno" name="ImgTar9.png" path="/images/objective/numbers/" exported="true"/>
+    <image id="xdfuy67tnp" name="square.png" path="/images/objective/" scale="" atlas="1"/>
+    <image id="xdfuy67tnq" name="star.png" path="/images/objective/" scale="" atlas="1"/>
+    <image id="xdfuy67tnr" name="black_mssk.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tns" name="music_swith_off.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tnt" name="music_swith_on.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tnu" name="panel.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tnv" name="quit_swith.png" path="/images/pause_panel/" scale="" atlas="2"/>
+    <image id="xdfuy67tnw" name="restart_swith.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tnx" name="sound_swith_off.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tny" name="sound_swith_on.png" path="/images/pause_panel/"/>
+    <image id="xdfuy67tnz" name="support_swith.png" path="/images/pause_panel/"/>
+    <component id="xdfuy67to0" name="ComLTBar.xml" path="/components/"/>
+    <component id="xdfuy67to1" name="BtnMoive.xml" path="/components/"/>
+    <component id="xdfuy67to2" name="ComRTBar.xml" path="/components/"/>
+    <component id="c6msy67to3" name="BtnVedio1.xml" path="/components/"/>
+    <component id="c6msy67to4" name="BtnVedio2.xml" path="/components/"/>
+    <component id="c6msy67to5" name="BtnSupport.xml" path="/components/"/>
+    <component id="rdxuy67to6" name="ComTargetBlue.xml" path="/components/"/>
+    <component id="rdxuy67to7" name="ComTargetRed.xml" path="/components/"/>
+    <image id="rdxuy67to8" name="back_penal.png" path="/images/combo/"/>
+    <image id="rdxuy67to9" name="COMBO.png" path="/images/combo/"/>
+    <image id="rdxuy67toa" name="ImgCombo0.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67tob" name="ImgCombo1.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67toc" name="ImgCombo2.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67tod" name="ImgCombo3.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67toe" name="ImgCombo4.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67tof" name="ImgCombo5.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67tog" name="ImgCombo6.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67toh" name="ImgCombo7.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67toi" name="ImgCombo8.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67toj" name="ImgCombo9.png" path="/images/combo/numbers/" exported="true"/>
+    <image id="rdxuy67tok" name="number_sample.png" path="/images/combo/"/>
+    <component id="rdxuy67tol" name="ComLevelUp.xml" path="/components/" exported="true"/>
+    <image id="iheiy67tom" name="black_mask.png" path="/images/level_up/"/>
+    <image id="iheiy67ton" name="glow.png" path="/images/level_up/"/>
+    <image id="iheiy67too" name="LEVEL UP.png" path="/images/level_up/"/>
+    <image id="iheiy67top" name="ImgLevelup0.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67toq" name="ImgLevelup1.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tor" name="ImgLevelup2.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tos" name="ImgLevelup3.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tot" name="ImgLevelup4.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tou" name="ImgLevelup5.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tov" name="ImgLevelup6.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tow" name="ImgLevelup7.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67tox" name="ImgLevelup8.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67toy" name="ImgLevelup9.png" path="/images/level_up/numbers/" exported="true"/>
+    <image id="iheiy67toz" name="stars.png" path="/images/level_up/"/>
+  </resources>
+  <publish name="Game" maxAtlasSize="1024" square="true" extractAlpha="true">
+    <atlas name="默认" index="0"/>
+    <atlas name="扩展" index="1"/>
+    <atlas name="扩展2" index="2"/>
+    <atlas name="Battle2" index="3"/>
+    <atlas name="Start" index="4"/>
+    <atlas name="Map" compression="true" index="5"/>
+    <atlas name="Battle" index="6"/>
+    <atlas name="Backpack" index="7"/>
+    <atlas name="Guid" compression="true" index="8"/>
+    <atlas name="BackpackEx" index="9"/>
+  </publish>
+</packageDescription>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="180,118" pivot="0.5,0.5" extention="Button">
+  <controller name="state" pages="0,on,1,off" selected="0"/>
+  <displayList>
+    <image id="n0_c6ms" name="n0" src="xdfuy67tny" fileName="images/pause_panel/sound_swith_on.png" xy="0,0">
+      <gearDisplay controller="state" pages="0"/>
+    </image>
+    <image id="n1_c6ms" name="n1" src="xdfuy67tnx" fileName="images/pause_panel/sound_swith_off.png" xy="0,0">
+      <gearDisplay controller="state" pages="1"/>
+    </image>
+  </displayList>
+  <Button/>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="22,22">
+  <controller name="state" pages="0,normal,1,selected" selected="1"/>
+  <displayList>
+    <image id="n2_g6ol" name="bg" src="b4gpp2t" xy="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1_g6ol" name="bg2" src="b4gpp2u" xy="-5,-5">
+      <gearDisplay controller="state" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+  </displayList>
+</component>

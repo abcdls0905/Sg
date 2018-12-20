@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" opaque="false" designImageAlpha="18" designImageLayer="1" adaptationTest="FitSize">
+  <displayList>
+    <component id="n196_mdxk" name="ComProps" src="omh8y67rn9" xy="1169,641" size="64,70">
+      <relation target="n197_vc0x" sidePair="left-right,bottom-bottom"/>
+      <Button title="道具" icon="ui://dxn6078hjsdoy67rmj"/>
+    </component>
+    <component id="n110_omh8" name="ComEqup" src="omh8y67rn9" xy="1253,641" size="64,70">
+      <relation target="" sidePair="left-right,bottom-bottom"/>
+      <Button title="装备" icon="ui://dxn6078hjsdoy67rmi"/>
+    </component>
+    <component id="n197_vc0x" name="ComPet" src="omh8y67rn9" xy="1083,641" size="64,70">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+      <Button title="宠物" icon="ui://dxn6078hjsdoy67rmi"/>
+    </component>
+  </displayList>
+</component>

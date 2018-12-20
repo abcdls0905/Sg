@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" opaque="false">
+  <displayList>
+    <component id="n13_g21y" name="JoystickMove" src="f9zzy67rr5" xy="90,510">
+      <relation target="" sidePair="bottom-bottom,left-left"/>
+    </component>
+    <graph id="n12_mpbp" name="LimitArea" xy="47,466" size="250,250" touchable="false" type="rect" lineSize="0" fillColor="#00ff0000">
+      <relation target="n13_g21y" sidePair="left-left,bottom-bottom"/>
+    </graph>
+    <graph id="n11_mpbp" name="TouchArea" xy="0,367" size="388,384" type="rect" lineSize="0" fillColor="#00ffffff">
+      <relation target="" sidePair="left-left,bottom-bottom"/>
+    </graph>
+  </displayList>
+</component>

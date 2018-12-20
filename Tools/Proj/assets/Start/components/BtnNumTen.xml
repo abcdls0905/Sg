@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="355,125" extention="Button">
+  <displayList>
+    <image id="n0_vsu7" name="n0" src="vsu7lzpg5" xy="0,0"/>
+    <text id="n1_vsu7" name="title" xy="0,35" size="350,59" fontSize="48" color="#46dfff" align="center" vAlign="middle" letterSpacing="6" autoSize="none" singleLine="true" text="10X10&#xA;">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.80"/>
+  <relation target="" sidePair=""/>
+</component>

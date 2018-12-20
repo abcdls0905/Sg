@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1344,750">
+  <displayList>
+    <loader id="n1_ecoq" name="ComGuide" xy="0,0" size="1344,750" url="ui://dxn6078hecoqy67tlw" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <image id="n2_ecoq" name="n2" src="ecoqy67tlv" xy="68,172">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+  </displayList>
+</component>

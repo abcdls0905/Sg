@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1344,750">
+  <displayList>
+    <loader id="n1_sfmz" name="n1" xy="0,0" size="1344,750" url="ui://dxn6078hgybxy67tln" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <component id="n0_sfmz" name="BtnSendLog" src="sfmzy67tlt" xy="94,71">
+      <relation target="" sidePair="left-left,top-top"/>
+      <Button title="发送log"/>
+    </component>
+    <component id="n2_ij9r" name="BtnClose" src="sfmzy67tlt" xy="1159,22">
+      <Button title="关闭"/>
+    </component>
+  </displayList>
+</component>

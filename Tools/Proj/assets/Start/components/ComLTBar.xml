@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1188,147">
+  <displayList>
+    <image id="n0_xdfu" name="n0" src="gg8tlzpix" fileName="images/High_score/high_score_backpanel.png" xy="0,0"/>
+    <image id="n1_xdfu" name="n1" src="gg8tlzpiw" fileName="images/High_score/BAST_.png" xy="28,13"/>
+    <image id="n2_xdfu" name="n2" src="gg8tlzpj4" fileName="images/High_score/numbers/6.png" xy="247,24"/>
+    <image id="n3_xdfu" name="n3" src="gg8tlzpj4" fileName="images/High_score/numbers/6.png" xy="289,24"/>
+    <image id="n4_xdfu" name="n4" src="gg8tlzpj4" fileName="images/High_score/numbers/6.png" xy="330,24"/>
+    <image id="n5_xdfu" name="n5" src="gg8tlzpj4" fileName="images/High_score/numbers/6.png" xy="372,24"/>
+  </displayList>
+</component>

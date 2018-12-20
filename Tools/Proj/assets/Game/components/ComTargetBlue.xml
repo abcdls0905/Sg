@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="130,60">
+  <displayList>
+    <text id="n1_jpk9" name="textTarget" xy="57,59" size="74,60" visible="false" fontSize="56" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="10"/>
+    <loader id="n3_rdxu" name="ImgNum0" xy="59,1" size="32,58" url="ui://dxn6078hxdfuy67tnf" align="center" vAlign="middle"/>
+    <loader id="n4_rdxu" name="ImgNum1" xy="90,1" size="32,58" url="ui://dxn6078hxdfuy67tng" align="center" vAlign="middle"/>
+    <image id="n5_rdxu" name="n5" src="xdfuy67tne" fileName="images/objective/moon.png" xy="0,0"/>
+  </displayList>
+</component>

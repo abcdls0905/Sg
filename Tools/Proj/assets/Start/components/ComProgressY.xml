@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="784,24" remark="黄色进度条">
+  <displayList>
+    <image id="n0_dxif" name="fram" src="b4gpp3k" xy="4,4" size="776,18"/>
+    <image id="n1_dxif" name="fillAmount" src="b4gpp3l" xy="0,0" fillMethod="hz"/>
+    <text id="n3_ik6b" name="title" xy="371,-23" size="42,26" fontSize="20" color="#ffffff" align="center" vAlign="middle" text="75%"/>
+  </displayList>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="308,78">
+  <displayList>
+    <image id="n0_xdfu" name="n0" src="xdfuy67tn2" fileName="images/level_panel/back_panel.png" xy="0,0"/>
+    <image id="n1_xdfu" name="n1" src="xdfuy67tn3" fileName="images/level_panel/LEVEL.png" xy="14,12"/>
+    <loader id="n5_rdxu" name="ImgNum0" xy="131,-1" size="45,75" url="ui://dxn6078hxdfuy67tn4" align="center" vAlign="middle"/>
+    <loader id="n6_rdxu" name="ImgNum1" xy="176,-1" size="45,75" url="ui://dxn6078hxdfuy67tn5" align="center" vAlign="middle"/>
+    <loader id="n7_rdxu" name="ImgNum2" xy="221,-1" size="45,75" url="ui://dxn6078hxdfuy67tn6" align="center" vAlign="middle"/>
+  </displayList>
+</component>

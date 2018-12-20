@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750">
+  <displayList>
+    <loader id="n7_gybx" name="n7" xy="0,0" size="1344,750" url="ui://dxn6078hgybxy67tln" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <image id="n8_c6ms" name="n8" src="xdfuy67tnu" fileName="images/pause_panel/panel.png" xy="368,18"/>
+    <component id="n9_c6ms" name="BtnMain" src="9nj2y67tla" fileName="components/ComMain.xml" xy="478,326"/>
+    <component id="n10_c6ms" name="BtnRefresh" src="9nj2y67tlc" fileName="components/ComReStart.xml" xy="478,189"/>
+    <component id="n11_c6ms" name="BtnVedio1" src="c6msy67to3" fileName="components/BtnVedio1.xml" xy="473,57"/>
+    <component id="n12_c6ms" name="BtnVedio2" src="c6msy67to4" fileName="components/BtnVedio2.xml" xy="676,57"/>
+    <component id="n13_c6ms" name="BtnSupport" src="c6msy67to5" fileName="components/BtnSupport.xml" xy="478,529"/>
+  </displayList>
+</component>

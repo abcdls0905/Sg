@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="88,88" extention="Button">
+  <displayList>
+    <image id="n0_gao5" name="n0" src="9nj2y67tkz" xy="0,0"/>
+    <image id="n1_11jdf" name="ImgMask" src="ecoqy67tlw" xy="0,0" size="88,88" fillMethod="radial360" fillClockwise="false"/>
+  </displayList>
+  <Button downEffect="dark" downEffectValue="0.90"/>
+</component>

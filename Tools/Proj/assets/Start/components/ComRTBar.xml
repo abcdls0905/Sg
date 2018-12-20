@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="415,135">
+  <displayList>
+    <image id="n0_xdfu" name="n0" src="gg8tlzpih" fileName="images/crystal_count/crystal_count_panel.png" xy="-5,-8"/>
+    <image id="n1_xdfu" name="n1" src="gg8tlzpii" fileName="images/crystal_count/crystal_icon.png" xy="56,7"/>
+    <image id="n2_xdfu" name="n2" src="gg8tlzpis" fileName="images/crystal_count/number/9.png" xy="156,37"/>
+    <image id="n3_xdfu" name="n3" src="gg8tlzpis" fileName="images/crystal_count/number/9.png" xy="204,37"/>
+    <image id="n4_xdfu" name="n4" src="gg8tlzpis" fileName="images/crystal_count/number/9.png" xy="252,37"/>
+    <image id="n5_xdfu" name="n5" src="gg8tlzpis" fileName="images/crystal_count/number/9.png" xy="298,37"/>
+    <component id="n7_xdfu" name="n7" src="xdfulzpjx" fileName="components/BtnAddDiamond.xml" xy="353,39"/>
+  </displayList>
+</component>

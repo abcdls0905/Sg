@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="460,300">
+  <displayList>
+    <component id="n0_vsu7" name="BtnBack" src="vsu7lzpgi" xy="0,128"/>
+    <component id="n1_vsu7" name="BtnPlay" src="vsu7lzpgj" xy="107,98"/>
+  </displayList>
+</component>

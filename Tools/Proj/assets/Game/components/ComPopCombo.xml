@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="300,80">
+  <displayList>
+    <text id="n1_p83f" name="n1" xy="23,80" size="255,78" visible="false" fontSize="56" color="#ff00ff" vAlign="middle" autoSize="none" bold="true" italic="true" singleLine="true" text="Combo 10">
+      <relation target="" sidePair="right-right,middle-middle"/>
+    </text>
+    <image id="n2_rdxu" name="n2" src="rdxuy67to8" fileName="images/combo/back_penal.png" xy="-3,15"/>
+    <image id="n3_rdxu" name="n3" src="rdxuy67to9" fileName="images/combo/COMBO.png" xy="139,19"/>
+    <loader id="n4_rdxu" name="ImgNum0" xy="1,6" size="39,68" url="ui://dxn6078hrdxuy67tob" align="center" vAlign="middle"/>
+    <loader id="n5_rdxu" name="ImgNum1" xy="46,6" size="39,68" url="ui://dxn6078hrdxuy67tof" align="center" vAlign="middle"/>
+    <loader id="n6_rdxu" name="ImgNum2" xy="92,6" size="39,68" url="ui://dxn6078hrdxuy67tog" align="center" vAlign="middle"/>
+  </displayList>
+</component>

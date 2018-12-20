@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="355,125" extention="Button">
+  <displayList>
+    <image id="n0_vsu7" name="n0" src="vsu7lzpg5" xy="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <text id="n1_vsu7" name="title" xy="15,34" size="210,60" fontSize="48" color="#46dfff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="双色模式&#xA;">
+      <relation target="n0_vsu7" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n2_vsu7" name="n2" src="vsu7lzpga" xy="243,1">
+      <relation target="" sidePair="right-right,top-top"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.80"/>
+</component>

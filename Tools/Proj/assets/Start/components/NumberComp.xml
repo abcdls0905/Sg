@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="460,300">
+  <displayList>
+    <component id="n2_vsu7" name="BtnSeven" src="vsu7lzpgh" xy="107,5">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n4_vsu7" name="BtnBack" src="vsu7lzpgi" xy="1,128">
+      <relation target="" sidePair="left-left,middle-middle"/>
+    </component>
+    <component id="n5_vsu7" name="BtnTen" src="vsu7lzpgk" xy="110,169">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+  </displayList>
+</component>

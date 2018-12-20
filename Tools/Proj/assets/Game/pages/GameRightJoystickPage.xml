@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1334,750" opaque="false">
+  <displayList>
+    <component id="n2_m0c1" name="Joystick" src="m0c1y67rri" xy="1090,520" touchable="false">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n3_nop4" name="BtnCancel" src="fcxjy67t4v" xy="1150,247" visible="false" touchable="false">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+  </displayList>
+</component>
