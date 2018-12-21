@@ -21,4 +21,14 @@
         "3":250,
         "4":240,
     },
+    "defRed":10,
+    "defYellow":10,
+    "defBlue":10,
+    "dicTerms":
+    {
+        "1":{"red":"8","yellow":"8", "blue":"8"},
+        "2":{"red":"9","yellow":"9", "blue":"9"},
+        "3":{"red":"10","yellow":"10", "blue":"10"},
+        "4":{"red":"10","yellow":"10", "blue":"10"},
+    },
 }

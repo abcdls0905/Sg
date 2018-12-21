@@ -27,34 +27,46 @@ namespace Game
             var levelCfg = DataManager.Instance.levelConfig.Data;
             int needCount = levelCfg.difficultyBox + 10 * level;
             //int needCount = 3 + 2 * level;
-            int red = 0;
-            int blue = 0;
-            int yellow = 0;
-            if (level >= levelCfg.levelOne && level < levelCfg.levelTwo)
+
+            LevelTerms lelTerms = null;
+            int red = levelCfg.defRed;
+            int blue = levelCfg.defBlue;
+            int yellow = levelCfg.defYellow;
+            if (levelCfg.dicTerms.TryGetValue(level, out lelTerms))
             {
-                //˫ɫ
-                AkBoxColor color1 = (AkBoxColor)UnityEngine.Random.Range(0, (int)AkBoxColor.Ak_Universal);
-                AkBoxColor color2 = (AkBoxColor)UnityEngine.Random.Range(0, (int)AkBoxColor.Ak_Universal);
-                int count1 = UnityEngine.Random.Range(0, needCount);
-                int count2 = needCount - UnityEngine.Random.Range(0, needCount);
-                terms.Add(color1, count1);
-                terms.Add(color2, count2);
-                red = color1 == AkBoxColor.Ak_Red ? count1 : 0;
-                red = color2 == AkBoxColor.Ak_Red ? count2 : 0;
-                blue = color1 == AkBoxColor.Ak_Blue ? count1 : 0;
-                blue = color2 == AkBoxColor.Ak_Blue ? count2 : 0;
-                yellow = color1 == AkBoxColor.Ak_Yellow ? count1 : 0;
-                yellow = color2 == AkBoxColor.Ak_Yellow ? count2 : 0;
+                red = lelTerms.red;
+                blue = lelTerms.yellow;
+                yellow = lelTerms.blue;
             }
-            else
-            {
-                red = UnityEngine.Random.Range(0, needCount / 2 - 1) + 1;
-                blue = UnityEngine.Random.Range(0, needCount / 2 - 1) + 1;
-                yellow = needCount - red - blue;
-                terms.Add(AkBoxColor.Ak_Red, red);
-                terms.Add(AkBoxColor.Ak_Blue, blue);
-                terms.Add(AkBoxColor.Ak_Yellow, yellow);
-            }
+            terms.Add(AkBoxColor.Ak_Red, red);
+            terms.Add(AkBoxColor.Ak_Blue, blue);
+            terms.Add(AkBoxColor.Ak_Yellow, yellow);
+//             return;
+//             if (level >= levelCfg.levelOne && level < levelCfg.levelTwo)
+//             {
+//                 //˫ɫ
+//                 AkBoxColor color1 = (AkBoxColor)UnityEngine.Random.Range(0, (int)AkBoxColor.Ak_Universal);
+//                 AkBoxColor color2 = (AkBoxColor)UnityEngine.Random.Range(0, (int)AkBoxColor.Ak_Universal);
+//                 int count1 = UnityEngine.Random.Range(0, needCount);
+//                 int count2 = needCount - UnityEngine.Random.Range(0, needCount);
+//                 terms.Add(color1, count1);
+//                 terms.Add(color2, count2);
+//                 red = color1 == AkBoxColor.Ak_Red ? count1 : 0;
+//                 red = color2 == AkBoxColor.Ak_Red ? count2 : 0;
+//                 blue = color1 == AkBoxColor.Ak_Blue ? count1 : 0;
+//                 blue = color2 == AkBoxColor.Ak_Blue ? count2 : 0;
+//                 yellow = color1 == AkBoxColor.Ak_Yellow ? count1 : 0;
+//                 yellow = color2 == AkBoxColor.Ak_Yellow ? count2 : 0;
+//             }
+//             else
+//             {
+//                 red = UnityEngine.Random.Range(0, needCount / 2 - 1) + 1;
+//                 blue = UnityEngine.Random.Range(0, needCount / 2 - 1) + 1;
+//                 yellow = needCount - red - blue;
+//                 terms.Add(AkBoxColor.Ak_Red, red);
+//                 terms.Add(AkBoxColor.Ak_Blue, blue);
+//                 terms.Add(AkBoxColor.Ak_Yellow, yellow);
+//             }
         }
 
         public void DestroyGroup(ref DesGroupParam param)

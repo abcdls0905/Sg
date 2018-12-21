@@ -35,6 +35,14 @@ namespace GameJson
     }
 
     [Serializable]
+    public class LevelTerms
+    {
+        public int red;
+        public int yellow;
+        public int blue;
+    }
+
+    [Serializable]
     public class LevelConfig
     {
         public int sevenX;
@@ -53,5 +61,9 @@ namespace GameJson
         public int defaultTime;
         public int addTime;
         public Dictionary<int, int> dicTimes;
+        public int defRed;
+        public int defYellow;
+        public int defBlue;
+        public Dictionary<int, LevelTerms> dicTerms;
     }
 }
