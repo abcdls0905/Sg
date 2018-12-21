@@ -19,6 +19,7 @@ namespace Game
         public AkTurnDir eBoxDir;
         public float rotateValue;
         public bool isPositive;
+        public bool isRoting;
         public void Reset()
         {
             eColor = AkBoxColor.Ak_Max;
@@ -34,6 +35,7 @@ namespace Game
             axis = new Vector3(0, 0, 0);
             rotateValue = 0;
             isPositive = false;
+            isRoting = false;
         }
     }
 }

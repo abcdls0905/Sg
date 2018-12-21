@@ -581,7 +581,7 @@ namespace Game
             Vector3 position = entity.transform.position;
             float gridRadius = Util.GridRadius;
             x = (int)Mathf.Ceil(position.x - gridRadius);
-            y = (int)Mathf.Ceil(position.y - gridRadius);
+            y = (int)Mathf.Ceil(position.z - gridRadius);
         }
     }
 }

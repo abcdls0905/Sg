@@ -29,6 +29,12 @@ namespace GameJson
     }
 
     [Serializable]
+    public class LevelTime
+    {
+        public Dictionary<int, int> dicTimes;
+    }
+
+    [Serializable]
     public class LevelConfig
     {
         public int sevenX;
@@ -44,5 +50,8 @@ namespace GameJson
         public int urgentNum;
         public int urgentAdd;
         public int randMonster;
+        public int defaultTime;
+        public int addTime;
+        public Dictionary<int, int> dicTimes;
     }
 }

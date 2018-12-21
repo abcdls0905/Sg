@@ -84,6 +84,7 @@ namespace Game
                 ix = levelConfig.tenX;
                 iy = levelConfig.tenY;
             }
+            boxCount = 10;
             emptyList = new List<MapCoord>(mapWidth * mapHeight);
 
             List<MapCoord> list = new List<MapCoord>();
@@ -125,6 +126,8 @@ namespace Game
             gameMaster.coord.x = ix;
             gameMaster.coord.y = iy;
             AudioManager.Instance.PlayAudio("Audio/playstart", gameMaster.view.gameObject);
+
+            RandMonster();
 
             //³öÉú¶¯»­
             EffectData effectData = new EffectData();
@@ -354,10 +357,22 @@ namespace Game
             }
         }
 
+        public void UpdateTimeLeft()
+        {
+            var frame = Contexts.Instance.game.frame;
+            LevelComponent level = Contexts.Instance.game.level;
+            level.timeLeft -= frame.frameTime;
+            if (level.timeLeft <= 0)
+            {
+                ECSManager.Instance.GameEnd();
+            }
+        }
+
         public void FixedExecute()
         {
             UpdateRandBorn();
             UpdateBornPos();
+            UpdateTimeLeft();
         }
     }
 }

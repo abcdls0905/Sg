@@ -15,6 +15,7 @@ namespace Game
         public float dangerTime;
         public int levelBox;
         public int randBox;
+        public float timeLeft;
         public void Reset()
         {
             destroyCount = 0;
@@ -26,6 +27,7 @@ namespace Game
             dangerTime = burnConfig.dangerTime;
             levelBox = levelConfig.difficultyBox;
             randBox = 0;
+            timeLeft = levelConfig.defaultTime;
         }
     }
 }

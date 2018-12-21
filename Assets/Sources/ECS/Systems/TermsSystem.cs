@@ -59,6 +59,9 @@ namespace Game
 
         public void DestroyGroup(ref DesGroupParam param)
         {
+            var levelConfig = DataManager.Instance.levelConfig.Data;
+            LevelComponent levelComp = Contexts.Instance.game.level;
+            bool isPositive = false;
             int red = 0;
             int blue = 0;
             int yellow = 0;
@@ -71,7 +74,11 @@ namespace Game
                     blue++;
                 if (box.box.eSrcColor == AkBoxColor.Ak_Yellow)
                     yellow++;
+                if (box.box.isPositive)
+                    isPositive = true;
             }
+            if (isPositive)
+                levelComp.timeLeft += levelConfig.addTime;
             LevelTermsComponent terms = Contexts.Instance.game.levelTerms;
             terms.DelTerms(AkBoxColor.Ak_Red, red);
             terms.DelTerms(AkBoxColor.Ak_Blue, blue);
@@ -79,10 +86,12 @@ namespace Game
 
             if (terms.Empty())
             {
-                LevelComponent levelComp = Contexts.Instance.game.level;
                 levelComp.level = levelComp.level + 1;
                 LevelParam paramLevel = new LevelParam();
                 paramLevel.level = levelComp.level;
+                levelComp.timeLeft = 0;
+                int timeLeft = levelConfig.defaultTime;
+                levelConfig.dicTimes.TryGetValue(levelComp.level, out timeLeft);
                 EventManager.Instance.PushEvent<LevelParam>(GEventType.EVENT_LEVELCHG, ref paramLevel);
                 RandNextTerms(levelComp.level);
             }

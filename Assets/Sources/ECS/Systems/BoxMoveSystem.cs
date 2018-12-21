@@ -133,6 +133,7 @@ namespace Game
             mapComp.mapData[entity.coord.y, entity.coord.x] = null;
             entity.coord.x = entity.box.followEntity.coord.x;
             entity.coord.y = entity.box.followEntity.coord.y;
+            entity.box.isRoting = false;
 
             mapComp.mapData[entity.coord.y, entity.coord.x] = entity;
             Util.TurnDiceBox(entity, entity.box.eBoxDir);

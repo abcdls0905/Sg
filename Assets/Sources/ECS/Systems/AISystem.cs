@@ -80,13 +80,12 @@ namespace Game
                     continue;
                 entity.aI.isMoving = true;
                 entity.aI.moveDistance = 1.0f;
-                int index = Random.Range(0, turnList.Count); ;
+                int index = Random.Range(0, turnList.Count);
                 AkTurnDir eMoveDir = turnList[index];
                 ai.eMoveDir = eMoveDir;
                 RotateCommand rotCommand = new RotateCommand();
                 rotCommand.eTurnDir = eMoveDir;
                 Util.PushCommand<RotateCommand>(ref rotCommand, entity.iD.value);
-                entity.move.isAI = true;
                 if (!entity.move.moveStateMachine.IsState("NormalMoveState"))
                     entity.move.moveStateMachine.ChangeState("NormalMoveState");
             }
@@ -113,19 +112,22 @@ namespace Game
                 int x = 0;
                 int y = 0;
                 Util.GetCoordByDir(entity.coord, ai.eMoveDir, ref x, ref y);
-                GameEntity temp = mapComp.mapData[y, x];
-                if (temp == null && !entity.aI.isBack)
+                if (Util.CheckCoordValid(x, y))
                 {
-                    //目标方块不见了
-                    ai.moveDistance = Vec2Distance(entity.transform.position.x, entity.transform.position.z, entity.coord.x, entity.coord.y);
-                    ai.eMoveDir = Util.GetOppositeDir(ai.eMoveDir);
-                    ai.runTime = 0;
-                    ai.moveOffset = 0;
-                    ai.isBack = true;
-                    RotateCommand rotCommand = new RotateCommand();
-                    rotCommand.eTurnDir = ai.eMoveDir;
-                    Util.PushCommand<RotateCommand>(ref rotCommand, entity.iD.value);
-                    continue;
+                    GameEntity temp = mapComp.mapData[y, x];
+                    if ((temp == null || temp.box.isRoting) && !entity.aI.isBack && entity.aI.moveOffset > 0.0f)
+                    {
+                        //目标方块不见了
+                        ai.moveDistance = Vec2Distance(entity.transform.position.x, entity.transform.position.z, entity.coord.x, entity.coord.y);
+                        ai.eMoveDir = Util.GetOppositeDir(ai.eMoveDir);
+                        ai.runTime = 0;
+                        ai.moveOffset = 0;
+                        ai.isBack = true;
+                        RotateCommand rotCommand = new RotateCommand();
+                        rotCommand.eTurnDir = ai.eMoveDir;
+                        Util.PushCommand<RotateCommand>(ref rotCommand, entity.iD.value);
+                        continue;
+                    }
                 }
                 Vector3 forward = Util.GetForwardByDir(ai.eMoveDir);
                 float speed = 2.0f;
@@ -134,8 +136,11 @@ namespace Game
                 if (ai.moveOffset >= ai.moveDistance)
                 {
                     frameOffset = ai.moveOffset - ai.moveDistance;
-                    entity.coord.x = x;
-                    entity.coord.y = y;
+                    int nowX = 0;
+                    int nowY = 0; ;
+                    Util.GetCoordByPosition(entity, ref nowX, ref nowY);
+                    entity.coord.x = nowX;
+                    entity.coord.y = nowY;
                     ai.ClearTemp();
                     if (!entity.move.moveStateMachine.IsState("StopMoveState"))
                         entity.move.moveStateMachine.ChangeState("StopMoveState");
@@ -157,11 +162,6 @@ namespace Game
                 Vector3 monsPos = monster.transform.position;
                 Vector3 plyPos = master.transform.position;
                 float dis = Vector3.Distance(monsPos, plyPos);
-//                 int nowX = 0;
-//                 int nowY = 0; ;
-//                 Util.GetCoordByPosition(monster, ref nowX, ref nowY);
-//                 if (dis <= distance || (nowX == master.coord.x && nowY == master.coord.y))
-//                     ECSManager.Instance.GameEnd();
                 if (dis <= distance || Util.IsSameCoord(monster, master))
                     ECSManager.Instance.GameEnd();
             }

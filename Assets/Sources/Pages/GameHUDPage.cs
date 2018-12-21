@@ -90,6 +90,8 @@ namespace Game
         ImgNumList imgNumYellow = new ImgNumList(2, "ImgTar");
         ImgNumList imgNumRed = new ImgNumList(2, "ImgTar");
 
+        GTextField textTime;
+
         protected override void OnInit()
         {
             InitWindow(packageName, componentName, UIPageLayer.HudPage);
@@ -133,6 +135,8 @@ namespace Game
             textYellow = contentPane.GetChild("ComTarYellow").asCom.GetChild("textTarget").asTextField;
             textRed = contentPane.GetChild("ComTarRed").asCom.GetChild("textTarget").asTextField;
             textBlue = contentPane.GetChild("ComTarBlue").asCom.GetChild("textTarget").asTextField;
+
+            textTime = contentPane.GetChild("TextTimeLeft").asTextField;
 
             var comItem1 = contentPane.GetChild("ComItem1").asButton;
             var comItem2 = contentPane.GetChild("ComItem2").asButton;
@@ -227,10 +231,19 @@ namespace Game
             imgNumRed.ShowImg(red);
         }
 
+        string TimeToString(float value)
+        {
+            int temp = (int)value;
+            int m = temp / 60;
+            int s = temp - m * 60;
+            return m + ":" + s;
+        }
+
         public override void Update(float deltaTime)
         {
             UpdateDebugInfo();
             UpdateCD(deltaTime);
+            textTime.text = TimeToString(Contexts.Instance.game.level.timeLeft);
         }
 
         void UpdateCD(float deltaTime)

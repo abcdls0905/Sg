@@ -12,4 +12,13 @@
     "urgentNum":25,
     "urgentAdd":5,
     "randMonster":5,
+    "defaultTime":300,
+    "addTime":3,
+    "dicTimes":
+    {
+        "1":260,
+        "2":250,
+        "3":250,
+        "4":240,
+    },
 }

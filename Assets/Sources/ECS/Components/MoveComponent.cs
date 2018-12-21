@@ -117,6 +117,7 @@ namespace Game
                 entity.move.eAutoDir = eMoveDir;
                 entity.move.limitX = coordX;
                 entity.move.limitY = coordY;
+                boxEntity.box.isRoting = true;
                 GameEntity master = Contexts.Instance.game.gameMaster.entity;
                 AudioManager.Instance.PlayAudio("Audio/boxrot", master.view.gameObject);
             }
@@ -210,7 +211,7 @@ namespace Game
 
         public override void OnFixedExecute()
         {
-            if (entity.move.isAI)
+            if (entity.hasAI)
                 return;
             Vector3 moveOffset = Util.GetStartMovementByDir(entity, entity.move.moveCommand.eTurnDir, Vector3.forward);
             if (entity.limit.HasLimit(AkLimitType.Ak_LimitCross))
@@ -243,7 +244,6 @@ namespace Game
         public MoveCommand moveCommand;
         public MoveStateMachine moveStateMachine = new MoveStateMachine();
         public bool isUpdateY;
-        public bool isAI;
 
         public void Reset()
         {
@@ -262,7 +262,6 @@ namespace Game
             eAutoDir1 = AkTurnDir.Ak_Max;
             moveStateMachine = new MoveStateMachine();
             isUpdateY = false;
-            isAI = false;
         }
 
         public void ClearAutoMove()
