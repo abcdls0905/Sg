@@ -167,7 +167,7 @@
     <image id="iheiy67toy" name="ImgLevelup9.png" path="/images/level_up/numbers/" exported="true"/>
     <image id="iheiy67toz" name="stars.png" path="/images/level_up/"/>
   </resources>
-  <publish name="Game" maxAtlasSize="1024" square="true" extractAlpha="true">
+  <publish name="Game" square="true" extractAlpha="true">
     <atlas name="默认" index="0"/>
     <atlas name="扩展" index="1"/>
     <atlas name="扩展2" index="2"/>

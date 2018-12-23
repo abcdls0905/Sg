@@ -41,5 +41,8 @@
     <component id="n189_rdxu" name="ComTarBlue" src="rdxuy67to6" fileName="components/ComTargetBlue.xml" xy="649,20"/>
     <component id="n190_rdxu" name="ComTarRed" src="rdxuy67to7" fileName="components/ComTargetRed.xml" xy="780,20"/>
     <component id="n191_rdxu" name="ComTarYellow" src="jpk9y67tm2" fileName="components/ComTargetYellow.xml" xy="522,20"/>
+    <text id="n192_qa1l" name="TextTimeLeft" xy="979,92" size="121,57" fontSize="40" color="#ffffff" vAlign="middle" autoSize="none" text="3:45">
+      <relation target="" sidePair="right-right,top-top"/>
+    </text>
   </displayList>
 </component>
