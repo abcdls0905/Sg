@@ -104,6 +104,7 @@ namespace Game
                 levelComp.timeLeft = 0;
                 int timeLeft = levelConfig.defaultTime;
                 levelConfig.dicTimes.TryGetValue(levelComp.level, out timeLeft);
+                levelComp.timeLeft = timeLeft;
                 EventManager.Instance.PushEvent<LevelParam>(GEventType.EVENT_LEVELCHG, ref paramLevel);
                 RandNextTerms(levelComp.level);
             }

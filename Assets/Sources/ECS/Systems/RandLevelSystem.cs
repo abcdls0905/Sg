@@ -84,7 +84,6 @@ namespace Game
                 ix = levelConfig.tenX;
                 iy = levelConfig.tenY;
             }
-            boxCount = 10;
             emptyList = new List<MapCoord>(mapWidth * mapHeight);
 
             List<MapCoord> list = new List<MapCoord>();
