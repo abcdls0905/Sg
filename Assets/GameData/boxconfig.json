@@ -4,5 +4,6 @@
     "dangerTime":2000,
     "extraTime":2000,
     "burnRange":3,
-    "sinkDistance":-0.1
+    "sinkDistance":-0.1,
+    "iceCount":2
 }

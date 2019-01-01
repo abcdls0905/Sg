@@ -43,7 +43,7 @@ namespace Game
             entity.RemoveItem();
         }
 
-        public static GameEntity CreateBox(ulong uuid)
+        public static GameEntity CreateBox(ulong uuid, AkBoxType eBoxType = AkBoxType.Ak_Normal)
         {
             var game = Contexts.Instance.game;
             GameEntity entity = game.CreateEntity();
@@ -61,6 +61,10 @@ namespace Game
             entity.AddCoord();
             entity.AddBurn();
             entity.AddModel();
+            entity.box.eBoxType = eBoxType;
+            GameJson.BoxConfig boxConfig = DataManager.Instance.boxConfig.Data;
+            if (eBoxType == AkBoxType.Ak_Ice)
+                entity.box.iceCount = boxConfig.iceCount;
             return entity;
         }
 

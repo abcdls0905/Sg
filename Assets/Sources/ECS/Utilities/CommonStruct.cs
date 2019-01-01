@@ -19,6 +19,7 @@ namespace Game
         Ak_Yellow,
         Ak_Blue,
         Ak_Universal,
+        Ak_Ice,
         Ak_Max,
     }
 

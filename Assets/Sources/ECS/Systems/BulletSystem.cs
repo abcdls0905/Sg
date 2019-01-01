@@ -9,6 +9,7 @@ namespace Game
 {
     public class BulletSystem : IFixedExecuteSystem
     {
+        List<GameEntity> boombList = new List<GameEntity>(1);
         public BulletSystem()
         {
         }
@@ -49,7 +50,18 @@ namespace Game
                 GameEntity boxEntity = mapComp.mapData[y, x];
                 if (boxEntity != null)
                 {
-                    if (boxEntity.box.eColor == entity.bullet.eBoxColor && boxEntity.burn.eBurnState == AkBurnState.Ak_None)
+                    if (boxEntity.box.eBoxType == AkBoxType.Ak_Ice)
+                    {
+                        boombList.Clear();
+                        if (boxEntity.box.iceCount <= 1)
+                        {
+                            boombList.Add(boxEntity);
+                            Util.BoomBoxList(boombList);
+                        }
+                        else
+                            boxEntity.box.iceCount -= 1;
+                    }
+                    else if (boxEntity.box.eColor == entity.bullet.eBoxColor && boxEntity.burn.eBurnState == AkBurnState.Ak_None)
                     {
                         boxEntity.box.isPositive = false;
                         mapComp.AddBurnEntity(boxEntity);

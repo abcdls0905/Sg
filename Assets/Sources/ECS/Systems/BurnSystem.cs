@@ -86,96 +86,7 @@ namespace Game
                     boombList.Add(burnEntity);
                 }
             }
-            if (boombList.Count > 0)
-            {
-                ComboComponent combo = Contexts.Instance.game.combo;
-                ScoreParam param = new ScoreParam();
-                float score = boombList.Count * (100 + 20 * (boombList.Count - 3) * (1 + 0.1f * combo.value));
-                param.score = (int)score;
-                Contexts.Instance.game.score.value += param.score;
-                EventManager.Instance.PushEvent(GEventType.EVENT_SCORECHANGE, ref param);
-                EffectComponent effectComp = Contexts.Instance.game.effect;
-                for (int i = boombList.Count - 1; i >= 0; i--)
-                {
-                    GameEntity burnEntity = boombList[i];
-                    //bomb effect
-                    EffectData effectData = new EffectData();
-                    effectData.name = "Prefabs/Effect/cube_explosion01";
-                    effectData.position = burnEntity.transform.position;
-                    effectData.lifeTime = 1.0f;
-                    effectComp.effects.Add(effectData);
-                    DealBombArround(burnEntity);
-                }
-                DesGroupParam desGroupParam = new DesGroupParam();
-                desGroupParam.boxes = boombList;
-                EventManager.Instance.PushEvent(GEventType.EVENT_BOXDESTORYGROUP, ref desGroupParam);
-                for (int i = boombList.Count - 1; i >= 0; i--)
-                {
-                    GameEntity burnEntity = boombList[i];
-                    DesBoxParam desParam = new DesBoxParam();
-                    desParam.entity = burnEntity;
-                    EventManager.Instance.PushEvent(GEventType.EVENT_BOXDESTORY, ref desParam);
-                    ForceRefreshFollowBox(burnEntity);
-                    //Contexts.Instance.game.levelTerms.Add(burnEntity.box.eColor);
-                    CheckPlayerOn(burnEntity);
-                    mapComp.mapData[burnEntity.coord.y, burnEntity.coord.x] = null;
-                    effectComp.RemoveFollow(burnEntity.iD.value);
-                    Util.DestroyEntity(burnEntity);
-                    boombList.RemoveAt(i);
-                }
-                GameEntity master = Contexts.Instance.game.gameMaster.entity;
-                AudioManager.Instance.PlayAudio("Audio/boom", master.view.gameObject);
-            }
-        }
-
-        void ForceRefreshFollowBox(GameEntity entity)
-        {
-            MapComponent mapComp = Contexts.Instance.game.map;
-            if (mapComp.followBoxs.Contains(entity))
-            {
-                mapComp.followBoxs.Remove(entity);
-                entity.coord.x = entity.box.followEntity.coord.x;
-                entity.coord.y = entity.box.followEntity.coord.y;
-            }
-        }
-
-        void EmissinBullet(GameEntity entity, AkTurnDir eDir, ref GameEntity target, ref int minDistance)
-        {
-            MapComponent mapComp = Contexts.Instance.game.map;
-            int x = 0;
-            int y = 0;
-            Util.GetCoordByDir(entity.coord, eDir, ref x, ref y);
-            if (!Util.CheckCoordValid(x, y))
-                return;
-            GameEntity nextEntity = mapComp.mapData[y, x];
-            if (nextEntity != null && nextEntity.box.eColor != entity.box.eColor)
-                return;
-            if (nextEntity != null)
-            {
-                if (nextEntity.box.eColor == entity.box.eColor && nextEntity.burn.eBurnState == AkBurnState.Ak_None)
-                {
-                    nextEntity.box.isPositive = false;
-                    mapComp.AddBurnEntity(nextEntity);
-                }
-            }
-            else
-            {
-                //²úÉú»ð»¨
-                GameEntity bulletEntity = Util.CreateBullet(Util.GetEntityId());
-                bulletEntity.bullet.forward = Util.GetForwardByDir(eDir);
-                bulletEntity.transform.position = entity.transform.position;
-                bulletEntity.bullet.eBoxColor = entity.box.eColor;
-                mapComp.bulletList.Add(bulletEntity);
-            }
-        }
-
-        void DealBombArround(GameEntity entity)
-        {
-            int burnRange = DataManager.Instance.boxConfig.Data.burnRange;
-            int minDistance = 100;
-            GameEntity targetEntity = null;
-            for (int i = 0; i < (int)AkTurnDir.Ak_Max; i++)
-                EmissinBullet(entity, (AkTurnDir)i, ref targetEntity, ref minDistance);
+            Util.BoomBoxList(boombList);
         }
 
         bool CheckEntityBurnBlock(int x, int y, GameEntity entity, ref GameEntity target, ref int minDistance)
@@ -235,14 +146,6 @@ namespace Game
             {
                 targetEntity.burn.eBurnState = AkBurnState.Ak_Stable;
                 toBurnList.Add(targetEntity);
-            }
-        }
-
-        void CheckPlayerOn(GameEntity boxEntity)
-        {
-            if (Util.IsSameCoord(boxEntity, Contexts.Instance.game.gameMaster.entity))
-            {
-                ECSManager.Instance.GameEnd();
             }
         }
     }

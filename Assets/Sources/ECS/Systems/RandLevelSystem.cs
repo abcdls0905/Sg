@@ -9,11 +9,13 @@ namespace Game
     public class RandLevelSystem : IInitializeSystem, IFixedExecuteSystem
     {
         public float lastTime = 0;
+        public float lastTimeIce = 0;
         public List<MapCoord> emptyList;
         public void Initialize()
         {
             InitializeMap();
             lastTime = 0;
+            lastTimeIce = 0;
             Util.ListenCommand<RestartCommand>(HandleRestartCommand);
             var gameMaster = Contexts.Instance.game.gameMaster.entity;
             AudioManager.Instance.PlayAudio("Audio/bgm", gameMaster.view.gameObject, true);
@@ -206,7 +208,7 @@ namespace Game
             }
         }
 
-        bool GenerateBox()
+        bool GenerateBox(AkBoxType eBoxType = AkBoxType.Ak_Normal)
         {
             RefreshEmptyGrid();
             MapComponent mapComp = Contexts.Instance.game.map;
@@ -216,19 +218,22 @@ namespace Game
                 int index = Random.Range(0, emptyList.Count);
                 MapCoord coord = emptyList[index];
 
-                GameEntity boxEntity = Util.CreateBox(Util.GetEntityId());
+                GameEntity boxEntity = Util.CreateBox(Util.GetEntityId(), eBoxType);
+                boxEntity.box.eBoxType = eBoxType;
                 Util.LoadBoxMainModel(boxEntity);
-                Util.InitializeBoxDir(boxEntity);
-                int randIndex = Random.Range(0, 10000) % (int)AkTurnDir.Ak_Max;
-                AkTurnDir eTurnDir = (AkTurnDir)randIndex;
-                Util.TurnDiceBox(boxEntity, eTurnDir);
-                Vector3 rot = Util.GetTurnDirRotation(eTurnDir);
+                if (eBoxType == AkBoxType.Ak_Normal)
+                {
+                    Util.InitializeBoxDir(boxEntity);
+                    int randIndex = Random.Range(0, 10000) % (int)AkTurnDir.Ak_Max;
+                    AkTurnDir eTurnDir = (AkTurnDir)randIndex;
+                    Util.TurnDiceBox(boxEntity, eTurnDir);
+                    Vector3 rot = Util.GetTurnDirRotation(eTurnDir);
+                    rot += boxEntity.transform.rotation.eulerAngles;
+                    boxEntity.transform.rotation = Quaternion.Euler(rot);
+                }
                 boxEntity.transform.position = new Vector3(coord.iX, -0.5f, coord.iY);
-                rot += boxEntity.transform.rotation.eulerAngles;
-                boxEntity.transform.rotation = Quaternion.Euler(rot);
                 boxEntity.coord.x = coord.iX;
                 boxEntity.coord.y = coord.iY;
-
                 bornList.Add(boxEntity);
 
                 //effect
@@ -367,9 +372,31 @@ namespace Game
             }
         }
 
+        void UpdateIceBorn()
+        {
+            LevelComponent levelComp = Contexts.Instance.game.level;
+            GameJson.LevelConfig levelConfig = DataManager.Instance.levelConfig.Data;
+            GameJson.IceBoxConfig iceConfig = null;
+            if (!levelConfig.dicIces.TryGetValue(levelComp.level, out iceConfig))
+                return;
+            MapComponent mapComp = Contexts.Instance.game.map;
+            List<GameEntity> bornList = mapComp.bornList;
+            lastTimeIce += Contexts.Instance.game.frame.frameTime;
+            if (lastTimeIce >= iceConfig.intervalTime / 1000)
+            {
+                lastTimeIce = 0;
+                for (int i = 0; i < iceConfig.count; ++i)
+                {
+                    if (!GenerateBox(AkBoxType.Ak_Ice))
+                        ECSManager.Instance.GameEnd();
+                }
+            }
+        }
+
         public void FixedExecute()
         {
             UpdateRandBorn();
+            UpdateIceBorn();
             UpdateBornPos();
             UpdateTimeLeft();
         }

@@ -26,12 +26,7 @@ namespace GameJson
         public float extraTime;
         public int burnRange;
         public float sinkDistance;
-    }
-
-    [Serializable]
-    public class LevelTime
-    {
-        public Dictionary<int, int> dicTimes;
+        public int iceCount;
     }
 
     [Serializable]
@@ -40,6 +35,13 @@ namespace GameJson
         public int red;
         public int yellow;
         public int blue;
+    }
+
+    [Serializable]
+    public class IceBoxConfig
+    {
+        public int intervalTime;
+        public int count;
     }
 
     [Serializable]
@@ -65,5 +67,6 @@ namespace GameJson
         public int defYellow;
         public int defBlue;
         public Dictionary<int, LevelTerms> dicTerms;
+        public Dictionary<int, IceBoxConfig> dicIces;
     }
 }

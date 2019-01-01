@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace Game
 {
+    public enum AkBoxType
+    {
+        Ak_Normal = 0,
+        Ak_Ice,
+        Ak_Iron,
+        Ak_Max,
+    }
     [Game]
     public class BoxComponent : IComponent
     {
@@ -20,6 +27,8 @@ namespace Game
         public float rotateValue;
         public bool isPositive;
         public bool isRoting;
+        public AkBoxType eBoxType;
+        public int iceCount;
         public void Reset()
         {
             eColor = AkBoxColor.Ak_Max;
@@ -36,6 +45,8 @@ namespace Game
             rotateValue = 0;
             isPositive = false;
             isRoting = false;
+            eBoxType = AkBoxType.Ak_Normal;
+            iceCount = 0;
         }
     }
 }
