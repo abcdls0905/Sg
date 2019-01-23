@@ -58,6 +58,20 @@ namespace Game
             mapComp.monsters.Clear();
             Contexts.Instance.game.effect.Reset();
             InitializeMap();
+            LevelParam param = new LevelParam();
+            param.level = 1;
+            EventManager.Instance.PushEvent<LevelParam>(GEventType.EVENT_LEVELCHG, ref param);
+
+            Contexts.Instance.game.levelTerms.ClearTerms();
+            Contexts.Instance.game.score.value = 0;
+            ScoreParam param1 = new ScoreParam();
+            EventManager.Instance.PushEvent(GEventType.EVENT_SCORECHANGE, ref param1);
+
+            RefTermsParam param2 = new RefTermsParam();
+            EventManager.Instance.PushEvent<RefTermsParam>(GEventType.EVENT_REFTERMS, ref param2);
+
+            TermsChangeParam tCParam = new TermsChangeParam();
+            EventManager.Instance.PushEvent<TermsChangeParam>(GEventType.EVENT_TERMSCHANGE, ref tCParam);
             ECSManager.Instance.Resume();
         }
 
@@ -127,6 +141,7 @@ namespace Game
             gameMaster.coord.x = ix;
             gameMaster.coord.y = iy;
             AudioManager.Instance.PlayAudio("Audio/playstart", gameMaster.view.gameObject);
+            gameMaster.move.moveStateMachine.ChangeState("StopMoveState");
 
             RandMonster();
 
@@ -396,7 +411,7 @@ namespace Game
         public void FixedExecute()
         {
             UpdateRandBorn();
-            UpdateIceBorn();
+            //UpdateIceBorn();
             UpdateBornPos();
             UpdateTimeLeft();
         }

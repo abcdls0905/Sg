@@ -15,8 +15,14 @@ namespace Game
             LevelParam param = new LevelParam();
             param.level = 1;
             EventManager.Instance.PushEvent<LevelParam>(GEventType.EVENT_LEVELCHG, ref param);
+            EventManager.Instance.AddEvent<RefTermsParam>(GEventType.EVENT_REFTERMS, RefTerms);
             RandNextTerms();
             EventManager.Instance.AddEvent<DesGroupParam>(GEventType.EVENT_BOXDESTORYGROUP, DestroyGroup);
+        }
+
+        void RefTerms(ref RefTermsParam param)
+        {
+            RandNextTerms();
         }
 
         void RandNextTerms(int level = 1)

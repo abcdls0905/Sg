@@ -12,6 +12,7 @@ namespace Game
         EVENT_TERMSCHANGE,
         EVENT_COMBO,
         EVENT_USEITEM,
+        EVENT_REFTERMS,
         EVENT_MAX,
     }
 }

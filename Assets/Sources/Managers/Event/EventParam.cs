@@ -47,4 +47,8 @@ namespace Game
     {
         public AkItemType type;
     }
+    public struct RefTermsParam : IEventParam
+    {
+
+    }
 }
