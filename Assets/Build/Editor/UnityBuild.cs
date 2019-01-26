@@ -96,7 +96,7 @@ namespace GameBuild
                                 PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);// Warning Very Important Don't Edit!!!
                                 //EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
                                 EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Internal;
-                                BuildPipeline.BuildPlayer(BuildUtility.GetBuildScenes(), apkPath, BuildTarget.Android, BuildOptions.Development | BuildOptions.ConnectWithProfiler);
+                                BuildPipeline.BuildPlayer(BuildUtility.GetBuildScenes(), apkPath, BuildTarget.Android, BuildOptions.Development);
                             }
                             else
                             {

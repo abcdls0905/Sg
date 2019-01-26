@@ -45,36 +45,8 @@ namespace Game
         {
             //Log日志，测试中开启！！！！
             //if (VersionManager.Instance.TestPackage)
-                gameObject.AddComponent<LogListener>();
-
-
-            CrashReportToELK.Instance.appName = "m2jh";
-            CrashReportToELK.Instance.uuid = GameInterface.GetKeyChain("x6_deviceid");
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-            CrashReportToELK.Instance.url = "http://192.168.112.94:3134";
-#else
-            CrashReportToELK.Instance.url = "http://cdlog1.2980.com:3134";
-#endif
-            CrashReportToELK.Instance.CSharpCrashFunction = (logType, level, logString, stack, time) =>
-            {
-                CrashReportToELK.Instance.EnableCSharpCrash = false;
-
-                StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("uuid={0} \n", CrashReportToELK.Instance.uuid);
-                sb.AppendFormat("time={0:D2}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2} \n", System.DateTime.Now.Year,
-                    System.DateTime.Now.Month, System.DateTime.Now.Day, System.DateTime.Now.Hour, System.DateTime.Now.Minute, System.DateTime.Now.Second);
-                sb.AppendFormat("version={0} \n", VersionManager.Instance.PackVersion);
-                if (VersionManager.Instance.TestPackage)
-                {
-                    sb.AppendFormat("msg={0} \n", logString);
-                    sb.AppendFormat("stack={0} \n", stack);
-                }
-                else
-                    sb.AppendFormat("msg={0} \n", logString);
-            };
-
-
-            //CrashReportToELK.Instance.Install();
+            gameObject.AddComponent<LogListener>();
+            return;
         }
 
         public static int GetPingData()

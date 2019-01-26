@@ -69,7 +69,7 @@ namespace GameUtil
                 if (hasError && needSend)
                 {
                     needSend = false;
-                    FileSendUtil.SendFile(outPath);
+                    //FileSendUtil.SendFile(outPath);
                 }
             }
             catch

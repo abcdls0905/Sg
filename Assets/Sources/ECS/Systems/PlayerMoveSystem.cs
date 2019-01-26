@@ -13,7 +13,7 @@ namespace Game
         public PlayerMoveSystem()
         {
             var _context = Contexts.Instance.game;
-            _group = _context.GetGroup(Matcher<GameEntity>.AllOf(GameMatcher.Move, GameMatcher.Player));
+            _group = _context.GetGroup(Matcher<GameEntity>.AllOf(GameMatcher.Move));
             _group.OnEntityAdded += OnMoveAdded;
         }
 

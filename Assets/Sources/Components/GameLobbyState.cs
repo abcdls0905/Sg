@@ -27,7 +27,7 @@ namespace Game
 
         public override void OnStateLeave()
         {
-            SceneManager.UnloadSceneAsync(lobbyScene);
+            //SceneManager.UnloadSceneAsync(lobbyScene);
             AudioManager.Instance.StopAudio(hallAudio);
         }
 

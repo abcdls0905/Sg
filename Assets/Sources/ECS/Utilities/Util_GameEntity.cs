@@ -18,7 +18,7 @@ namespace Game
             entity.AddID(uuid);
             entity.AddTransform();
             entity.AddPlayer();
-            entity.AddView("Prefabs/Player");
+            entity.AddView("Prefabs/funnyboy_001");
             entity.AddMove();
             entity.AddCoord();
             entity.AddAnimation();
@@ -105,7 +105,7 @@ namespace Game
             GameEntity entity = game.CreateEntity();
             entity.AddID(uuid);
             entity.AddTransform();
-            entity.AddView("Prefabs/Monster");
+            entity.AddView("Prefabs/Monster_New1");
             entity.AddMove();
             entity.AddCoord();
             entity.AddAnimation();
