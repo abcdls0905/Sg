@@ -17,7 +17,6 @@ namespace Game
 //#endif
             FPSCounter.CreateInstance();
             // IMChecker
-            AccountIMChecker.CreateInstance();
 
             DataManager.CreateInstance();
             StartCoroutine(DataManager.Instance.LoadAll());
@@ -38,15 +37,11 @@ namespace Game
             AudioManager.CreateInstance();
         }
 
-        // 宕机查看方式
-        // 内网：http://192.168.112.94:5601/app/kibana
-        // 外网：http://cdlog1.2980.com:5601/app/kibana
         public void InitLogReport()
         {
             //Log日志，测试中开启！！！！
             //if (VersionManager.Instance.TestPackage)
             gameObject.AddComponent<LogListener>();
-            return;
         }
 
         public static int GetPingData()

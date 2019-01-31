@@ -36,7 +36,7 @@ namespace GameUtil
         static UploadFile()
         {
             crashFileFormName = "crashrpt";
-            crashServerAddress = "http://log.2980.com:28081/upload.php?name=X6";
+            crashServerAddress = "127.0.0.1";
             LocalNet = false;
         }
 
