@@ -23,6 +23,7 @@ namespace Game
         Ak_Max,
     }
 
+    [Serializable]
     public enum AkTurnDir
     {
         AK_Front = 0,

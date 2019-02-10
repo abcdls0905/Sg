@@ -20,6 +20,7 @@ namespace Game
         public JsonDataType<PlayerConfig> playerConfig = new JsonDataType<PlayerConfig>("playerconfig");
         public JsonDataType<CameraConfig> cameraConfig = new JsonDataType<CameraConfig>("cameraconfig");
         public JsonDataType<SceneEditor.BuildConfig> buildConfg = new JsonDataType<SceneEditor.BuildConfig>("building");
+        public JsonDataType<GuideConfig> guideConfg = new JsonDataType<GuideConfig>("guideconfig");
 
         public void OnEnterScene(int mapID)
         {

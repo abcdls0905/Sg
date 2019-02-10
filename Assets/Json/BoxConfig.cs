@@ -69,4 +69,20 @@ namespace GameJson
         public Dictionary<int, LevelTerms> dicTerms;
         public Dictionary<int, IceBoxConfig> dicIces;
     }
+
+    [Serializable]
+    public class BoxGenerate
+    {
+        public int x;
+        public int y;
+        public AkBoxColor color;
+    }
+
+    [Serializable]
+    public class GuideConfig
+    {
+        public List<BoxGenerate> boxDic;
+        public List<AkTurnDir> moveStep;
+        public List<int> internalTime;
+    }
 }

@@ -207,6 +207,7 @@ namespace Game
         {
             return new Feature("GameSystems")
                 .Add(new FrameSystem())
+                .Add(new GuideSystem())
                 .Add(new GameStartSystem())
                 .Add(new InputSystem())
                 .Add(new AudioSystem())

@@ -1,0 +1,37 @@
+{
+	"boxDic":
+	[
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"},
+		{"x":5,"y":5,"color":"Ak_Yellow"}
+	],
+	"moveStep":
+	[
+		"AK_Front",
+		"AK_Front",
+		"AK_Front",
+		"AK_Front",
+		"AK_Front"
+	],
+	"internalTime":
+	[
+		"4000",
+		"4000",
+		"4000",
+		"4000",
+		"4000",
+		"4000"
+	]
+}
