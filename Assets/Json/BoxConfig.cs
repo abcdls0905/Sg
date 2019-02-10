@@ -73,6 +73,7 @@ namespace GameJson
     [Serializable]
     public class BoxGenerate
     {
+        public int id;
         public int x;
         public int y;
         public AkBoxColor color;

@@ -1,21 +1,14 @@
 {
 	"boxDic":
 	[
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"},
-		{"x":5,"y":5,"color":"Ak_Yellow"}
+		{"id":1,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":1,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":1,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":2,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":2,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":2,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":3,"x":5,"y":5,"color":"Ak_Yellow"},
+		{"id":3,"x":5,"y":5,"color":"Ak_Yellow"}
 	],
 	"moveStep":
 	[
